@@ -714,6 +714,1244 @@
             </div>
         </div>
     </section>
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>پورتفولیو اختصاصی شما | طراح مستقل و خلاق</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;700;900&display=swap');
+
+        /* ==========================================================================
+           بخش متغیرهای رنگی (CSS Variables) - تم طلایی و نارنجی لوکس
+           ========================================================================== */
+        :root {
+            --bg: #030712;                        
+            --card-bg: rgba(17, 24, 39, 0.45);    
+            --card-border: rgba(255, 255, 255, 0.08); 
+            
+            --neon-orange: #FF7A00;               
+            --neon-gold: #F59E0B;                 
+            --neon-glow: rgba(255, 122, 0, 0.15);  
+            
+            --text-main: #F9FAFB;                 
+            --text-muted: #9CA3AF;                
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Vazirmatn', 'Tahoma', sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--bg);
+            color: var(--text-main);
+            overflow-x: hidden;
+            position: relative;
+            line-height: 1.7;
+        }
+
+        /* هاله‌های نورانی پس‌زمینه */
+        .orb {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(140px);
+            z-index: -1;
+            pointer-events: none;
+            opacity: 0.35;
+        }
+        .orb-1 {
+            top: -100px;
+            right: -100px;
+            width: 500px;
+            height: 500px;
+            background: var(--neon-orange);
+        }
+        .orb-2 {
+            top: 600px;
+            left: -150px;
+            width: 600px;
+            height: 600px;
+            background: var(--neon-gold);
+        }
+
+        /* هدر و ناوبری */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 8%;
+            background: rgba(3, 7, 18, 0.7);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border-bottom: 1px solid var(--card-border);
+            position: sticky;
+            top: 0;
+            z-index: 99;
+        }
+
+        .logo {
+            font-size: 1.4rem;
+            font-weight: 900;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo-icon {
+            width: 32px;
+            height: 32px;
+            background: linear-gradient(135deg, var(--neon-orange), var(--neon-gold));
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 0 15px rgba(255, 122, 0, 0.4);
+        }
+
+        .logo-text {
+            background: linear-gradient(to left, #FFFFFF, var(--text-muted));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+
+        .nav-links a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 0.95rem;
+            font-weight: bold;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--text-main);
+        }
+
+        .btn-premium {
+            background: linear-gradient(135deg, var(--neon-orange) 0%, #D97706 100%);
+            color: white;
+            border: none;
+            padding: 10px 24px;
+            border-radius: 50px;
+            font-weight: bold;
+            font-size: 0.9rem;
+            cursor: pointer;
+            box-shadow: 0 0 20px var(--neon-glow);
+            text-decoration: none;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .btn-premium:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 0 25px rgba(255, 122, 0, 0.5);
+        }
+
+        /* بخش معرفی اصلی (Hero Section) */
+        .hero {
+            display: grid;
+            grid-template-columns: 1.12fr 0.88fr;
+            padding: 80px 8% 100px 8%;
+            align-items: center;
+            gap: 50px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        @media (max-width: 968px) {
+            .hero {
+                grid-template-columns: 1fr;
+                text-align: center;
+                padding-top: 40px;
+            }
+            .hero-right {
+                order: -1;
+            }
+        }
+
+        .hero-left h1 {
+            font-size: 3.3rem;
+            font-weight: 900;
+            line-height: 1.3;
+            margin-bottom: 25px;
+        }
+
+        .hero-left h1 span.gradient-highlight {
+            background: linear-gradient(to left, var(--neon-gold), var(--neon-orange));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero-left p {
+            color: var(--text-muted);
+            font-size: 1.15rem;
+            margin-bottom: 40px;
+            text-align: justify;
+        }
+
+        /* کارت نمونه کار تعاملی با افکت هاور */
+        .portfolio-card {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 30px;
+            width: 100%;
+            max-width: 450px; 
+            margin: 0 auto;
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+            display: flex; 
+            overflow: hidden;
+            transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1); 
+            position: relative;
+        }
+
+        .portfolio-card:hover {
+            transform: scale(1.03); 
+            max-width: 410px;        
+            border-color: rgba(255, 122, 0, 0.3);
+            box-shadow: 0 30px 60px rgba(255, 122, 0, 0.15);
+        }
+
+        .card-sidebar-text {
+            width: 0; 
+            opacity: 0; 
+            background: rgba(0, 0, 0, 0.3);
+            border-left: 1px solid rgba(255, 255, 255, 0.05);
+            transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1); 
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .portfolio-card:hover .card-sidebar-text {
+            width: 160px; 
+            opacity: 1;  
+            padding: 20px 15px;
+        }
+
+        .card-sidebar-text h4 {
+            font-size: 1.1rem;
+            color: var(--neon-gold);
+            margin-bottom: 10px;
+            font-weight: 900;
+        }
+
+        .card-sidebar-text p {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            line-height: 1.6;
+        }
+
+        .card-slider-area {
+            flex: 1; 
+            height: 350px;
+            position: relative;
+            background: #000;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            padding: 25px;
+        }
+
+        .slide-img {
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0; 
+            transition: opacity 0.8s ease; 
+            z-index: 1;
+        }
+
+        .slide-img.active {
+            opacity: 0.55; 
+            z-index: 2;
+        }
+
+        .slider-overlay-content {
+            position: relative;
+            z-index: 10; 
+            pointer-events: auto;
+        }
+
+        .slider-controls {
+            display: flex;
+            gap: 10px;
+            margin-top: auto;
+            z-index: 10;
+        }
+
+        .control-btn {
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: white;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            transition: background 0.2s;
+        }
+
+        .control-btn:hover {
+            background: var(--neon-orange);
+            border-color: var(--neon-orange);
+        }
+
+        /* درباره من */
+        .about-section {
+            padding: 80px 8%;
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+            border-top: 1px solid var(--card-border);
+        }
+
+        @media (max-width: 768px) {
+            .about-section {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+        }
+
+        /* بخش سوالات متداول (FAQ Accordion) */
+        .faq-section {
+            padding: 80px 8%;
+            max-width: 1000px;
+            margin: 0 auto;
+            border-top: 1px solid var(--card-border);
+        }
+
+        .faq-item {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 16px;
+            margin-bottom: 15px;
+            overflow: hidden;
+            transition: border-color 0.3s;
+        }
+
+        .faq-question {
+            padding: 20px 25px;
+            font-weight: bold;
+            font-size: 1.05rem;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            user-select: none;
+        }
+
+        .faq-answer {
+            padding: 0 25px;
+            max-height: 0;
+            overflow: hidden;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            line-height: 1.8;
+            transition: max-height 0.4s cubic-bezier(0.16, 1, 0.3, 1), padding 0.4s;
+        }
+
+        .faq-item.active {
+            border-color: rgba(255, 122, 0, 0.3);
+        }
+
+        .faq-item.active .faq-answer {
+            padding: 10px 25px 25px 25px;
+            max-height: 200px; /* حداکثر ارتفاع باز شدن کشویی */
+        }
+
+        .faq-icon {
+            font-size: 1.2rem;
+            color: var(--neon-gold);
+            transition: transform 0.3s;
+        }
+
+        .faq-item.active .faq-icon {
+            transform: rotate(45deg);
+        }
+
+        /* گرید خدمات */
+        .services-section {
+            padding: 100px 8%;
+            max-width: 1400px;
+            margin: 0 auto;
+            border-top: 1px solid var(--card-border);
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+            gap: 25px;
+        }
+
+        .service-card {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 24px;
+            padding: 30px;
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            transition: transform 0.3s, border-color 0.3s, box-shadow 0.3s;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(255, 122, 0, 0.3);
+            box-shadow: 0 15px 30px var(--neon-glow);
+        }
+
+        .service-badge {
+            background: rgba(255, 122, 0, 0.1);
+            color: var(--neon-gold);
+            padding: 4px 12px;
+            border-radius: 50px;
+            font-size: 0.75rem;
+            font-weight: bold;
+            align-self: flex-start;
+            margin-bottom: 15px;
+            border: 1px solid rgba(255, 122, 0, 0.2);
+        }
+
+        .service-title {
+            font-size: 1.3rem;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .service-desc {
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            margin-bottom: 20px;
+            text-align: justify;
+        }
+
+        .price-tag {
+            font-size: 1.6rem;
+            font-weight: 900;
+            color: var(--neon-gold);
+            margin-bottom: 20px;
+            display: flex;
+            align-items: baseline;
+            gap: 5px;
+        }
+
+        .price-tag span {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            font-weight: normal;
+        }
+
+        .btn-order {
+            width: 100%;
+            padding: 12px;
+            border-radius: 10px;
+            border: 1px solid rgba(255,255,255,0.05);
+            background: rgba(255,255,255,0.02);
+            color: var(--text-main);
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .btn-order:hover {
+            background: var(--text-main);
+            color: var(--bg);
+            box-shadow: 0 0 15px rgba(255, 255, 255, 0.15);
+        }
+
+        /* چت پشتیبانی */
+        .chat-widget {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            z-index: 1000;
+        }
+
+        .chat-trigger {
+            width: 55px;
+            height: 55px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--neon-orange), var(--neon-gold));
+            box-shadow: 0 4px 20px rgba(255, 122, 0, 0.4);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: none;
+            transition: transform 0.2s;
+        }
+
+        .chat-trigger:hover {
+            transform: scale(1.1);
+        }
+
+        .chat-box {
+            position: absolute;
+            bottom: 70px;
+            right: 0;
+            width: 330px;
+            height: 430px;
+            background: rgba(17, 24, 39, 0.98);
+            border: 1px solid var(--card-border);
+            border-radius: 24px;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.5);
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            opacity: 0;
+            pointer-events: none;
+            transform: translateY(20px);
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .chat-box.active {
+            opacity: 1;
+            pointer-events: auto;
+            transform: translateY(0);
+        }
+
+        .chat-header {
+            background: linear-gradient(135deg, #111827 0%, #1F2937 100%);
+            padding: 15px 20px;
+            border-bottom: 1px solid var(--card-border);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .chat-header h4 {
+            font-size: 0.95rem;
+            color: var(--neon-gold);
+            font-weight: 900;
+        }
+
+        .chat-close {
+            background: transparent;
+            border: none;
+            color: var(--text-muted);
+            cursor: pointer;
+            font-size: 1.1rem;
+        }
+
+        .chat-messages {
+            flex: 1;
+            padding: 20px;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            font-size: 0.85rem;
+        }
+
+        .msg-bot {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 10px 15px;
+            border-radius: 12px 12px 0 12px;
+            align-self: flex-start;
+            max-width: 80%;
+        }
+
+        .msg-user {
+            background: var(--neon-orange);
+            color: white;
+            padding: 10px 15px;
+            border-radius: 12px 12px 12px 0;
+            align-self: flex-end;
+            max-width: 80%;
+        }
+
+        .chat-input-area {
+            padding: 15px;
+            border-top: 1px solid var(--card-border);
+            display: flex;
+            gap: 10px;
+        }
+
+        .chat-input {
+            flex: 1;
+            background: rgba(0, 0, 0, 0.3);
+            border: 1px solid var(--card-border);
+            border-radius: 10px;
+            padding: 8px 12px;
+            color: white;
+            font-size: 0.85rem;
+            outline: none;
+        }
+
+        .chat-send {
+            background: var(--neon-orange);
+            border: none;
+            color: white;
+            padding: 8px 15px;
+            border-radius: 10px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        /* پاپ‌آپ خرید */
+        .modal-overlay {
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(3, 7, 18, 0.85);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+        }
+
+        .modal-overlay.active {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .modal {
+            background: rgba(17, 24, 39, 0.95);
+            border: 1px solid var(--card-border);
+            width: 100%;
+            max-width: 480px;
+            padding: 40px;
+            border-radius: 28px;
+            box-shadow: 0 25px 50px rgba(0,0,0,0.5);
+            position: relative;
+            transform: scale(0.9);
+            transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .modal-overlay.active .modal {
+            transform: scale(1);
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 20px; left: 20px;
+            background: transparent;
+            border: none;
+            color: var(--text-muted);
+            cursor: pointer;
+            font-size: 1.5rem;
+        }
+
+        .modal h3 {
+            font-size: 1.8rem;
+            font-weight: 900;
+            margin-bottom: 10px;
+            background: linear-gradient(to left, #FFFFFF, var(--neon-gold));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .modal p {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            margin-bottom: 25px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .form-group label {
+            font-size: 0.85rem;
+            font-weight: bold;
+            color: var(--text-main);
+        }
+
+        .form-input {
+            background: rgba(0, 0, 0, 0.4);
+            border: 1px solid var(--card-border);
+            border-radius: 10px;
+            padding: 12px 15px;
+            color: var(--text-main);
+            font-size: 0.95rem;
+            outline: none;
+        }
+
+        .btn-submit-zarin {
+            width: 100%;
+            padding: 14px;
+            border: none;
+            border-radius: 12px;
+            background: linear-gradient(135deg, var(--neon-orange) 0%, var(--neon-gold) 100%);
+            color: #000000;
+            font-weight: 900;
+            font-size: 1rem;
+            cursor: pointer;
+            box-shadow: 0 0 15px rgba(255, 122, 0, 0.3);
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .btn-submit-zarin:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 0 20px rgba(255, 122, 0, 0.5);
+        }
+
+        footer {
+            border-top: 1px solid var(--card-border);
+            padding: 40px 8%;
+            text-align: center;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
+
+    <!-- ناوبری بالایی سایت -->
+    <nav>
+        <div class="logo">
+            <div class="logo-icon">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" style="color: white;"><polygon points="12 2 2 7 12 12 22 7 12 2"/></svg>
+            </div>
+            <span class="logo-text">استودیو خلاق کُدپرو</span>
+        </div>
+        <ul class="nav-links">
+            <li><a href="#">صفحه اصلی</a></li>
+            <li><a href="#about">درباره من</a></li>
+            <li><a href="#faq">سوالات متداول</a></li>
+            <li><a href="#services">خدمات و تعرفه‌ها</a></li>
+            <li><a href="keywords.md" target="_blank">واژه‌نامه AI</a></li>
+        </ul>
+        <a href="#services" class="btn-premium">ثبت سفارش فوری</a>
+    </nav>
+
+    <!-- بخش معرفی اصلی (Hero Section) -->
+    <section class="hero">
+        <div class="hero-left">
+            <h1>خلق سایت‌های <span class="gradient-highlight">فوق‌العاده لوکس و اختصاصی</span> با مدرن‌ترین کدهای فرانت‌اند</h1>
+            <p>
+                هیچ سایت موفقی با قالب‌های کپی شده ساخته نشده است. من به عنوان طراح خلاق، به صورت کاملاً سفارشی و با استفاده از قدرت هوش مصنوعی، سایت‌های شما را از صفر طراحی و کدنویسی می‌کنم. برای دیدن کیفیت و پویایی کار، ماوس خود را روی کارت نمونه‌کار تعاملی سمت چپ ببرید!
+            </p>
+            <div style="display: flex; gap: 15px; flex-wrap: wrap;">
+                <a href="#services" class="btn-premium" style="padding: 14px 35px; font-size: 1rem;">سفارش و تعرفه خدمات</a>
+                <button onclick="toggleChat()" style="color: white; border: 1px solid rgba(255,255,255,0.1); padding: 14px 35px; border-radius: 50px; cursor: pointer; font-weight: bold; background: rgba(255,255,255,0.02);">گفتگو با دستیار هوشمند</button>
+            </div>
+        </div>
+
+        <div class="hero-right">
+            <div class="portfolio-card" id="interactive-card">
+                <div class="card-sidebar-text">
+                    <h4>درباره پروژه</h4>
+                    <p id="slider-desc">یک رابط کاربری لوکس برای صرافی دیجیتال و کیف پول ارزهای رمزنگاری شده با کدهای مدرن.</p>
+                </div>
+
+                <div class="card-slider-area" id="slider-container">
+                    <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='400' height='350' viewBox='0 0 400 350'><rect width='100%' height='100%' fill='%231E1B4B'/><text x='50%' y='50%' dominant-baseline='middle' text-anchor='middle' font-family='sans-serif' font-size='20' fill='%238B5CF6'>Web3 Crypto Card UI</text></svg>" class="slide-img active" alt="نمونه کار اول">
+                    <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='400' height='350' viewBox='0 0 400 350'><rect width='100%' height='100%' fill='%2378350F'/><text x='50%' y='50%' dominant-baseline='middle' text-anchor='middle' font-family='sans-serif' font-size='20' fill='%23F59E0B'>Luxury Fashion Store UI</text></svg>" class="slide-img" alt="نمونه کار دوم">
+                    <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='400' height='350' viewBox='0 0 400 350'><rect width='100%' height='100%' fill='%23064E3B'/><text x='50%' y='50%' dominant-baseline='middle' text-anchor='middle' font-family='sans-serif' font-size='20' fill='%2310B981'>Premium Consultant UI</text></svg>" class="slide-img" alt="نمونه کار سوم">
+
+                    <div class="slider-overlay-content">
+                        <span style="font-size: 0.75rem; background: rgba(255, 122, 0, 0.2); color: var(--neon-gold); padding: 4px 12px; border-radius: 50px; font-weight: bold;" id="slider-tag">تم وب۳ و ارز دیجیتال</span>
+                        <h3 style="font-size: 1.4rem; font-weight: 900; margin-top: 15px;" id="slider-title">پلتفرم سرمایه‌گذاری Elite</h3>
+                    </div>
+
+                    <div class="slider-controls">
+                        <button class="control-btn" onclick="prevSlide(event)">&lt;</button>
+                        <button class="control-btn" onclick="nextSlide(event)">&gt;</button>
+                        <span style="font-size: 0.8rem; margin-right: auto; align-self: center; color: var(--text-muted);" id="slide-num">پوسته ۱ از ۳</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==========================================================================
+       بخش درباره من و مهارت‌ها
+       ========================================================================== -->
+    <section class="about-section" id="about">
+        <div>
+            <span class="service-badge">درباره من</span>
+            <h2 style="font-size: 2.3rem; font-weight: 900; margin-bottom: 20px;">معمار آینده دیجیتال شما</h2>
+            <p style="color: var(--text-muted); text-align: justify; margin-bottom: 25px;">
+                من پارسا، طراح و توسعه‌دهنده مستقل وب‌سایت‌های اختصاصی هستم. رسالت من این است که کسب‌وکار شما را با طراحی‌های خاص، لوکس و متمایز، از شلوغی بازار متمایز کنم. من قالب‌های آماده را کنار گذاشته‌ام و هر پروژه را به عنوان یک اثر هنری دیجیتال منحصر‌به‌فرد خلق می‌کنم.
+            </p>
+            <div style="background: rgba(255, 122, 0, 0.05); border-right: 4px solid var(--neon-orange); padding: 15px 20px; border-radius: 8px; color: var(--text-main); font-weight: bold;">
+                "برندهای لوکس تکرار نمی‌شوند؛ آن‌ها متمایز خلق می‌شوند."
+            </div>
+        </div>
+        
+        <div style="background: var(--card-bg); border: 1px solid var(--card-border); border-radius: 24px; padding: 35px; backdrop-filter: blur(10px);">
+            <h3 style="font-size: 1.3rem; font-weight: bold; margin-bottom: 25px; color: var(--neon-gold);">تخصص‌ها و سلاح‌های من:</h3>
+            
+            <div style="margin-bottom: 20px;">
+                <div style="display: flex; justify-content: space-between; font-size: 0.85rem; margin-bottom: 8px;">
+                    <span>طراحی رابط کاربری اختصاصی (UI/UX)</span>
+                    <span style="color: var(--neon-gold);">۹۵٪</span>
+                </div>
+                <div style="height: 6px; background: rgba(255,255,255,0.05); border-radius: 10px; overflow: hidden;">
+                    <div style="width: 95%; height: 100%; background: linear-gradient(to left, var(--neon-orange), var(--neon-gold)); border-radius: 10px;"></div>
+                </div>
+            </div>
+
+            <div style="margin-bottom: 20px;">
+                <div style="display: flex; justify-content: space-between; font-size: 0.85rem; margin-bottom: 8px;">
+                    <span>کدنویسی خلاق فرانت‌اند (HTML5, CSS3, JS)</span>
+                    <span style="color: var(--neon-gold);">۹۰٪</span>
+                </div>
+                <div style="height: 6px; background: rgba(255,255,255,0.05); border-radius: 10px; overflow: hidden;">
+                    <div style="width: 90%; height: 100%; background: linear-gradient(to left, var(--neon-orange), var(--neon-gold)); border-radius: 10px;"></div>
+                </div>
+            </div>
+
+            <div style="margin-bottom: 20px;">
+                <div style="display: flex; justify-content: space-between; font-size: 0.85rem; margin-bottom: 8px;">
+                    <span>مهندسی پرامپت و ابزارهای هوش مصنوعی</span>
+                    <span style="color: var(--neon-gold);">۱۰۰٪</span>
+                </div>
+                <div style="height: 6px; background: rgba(255,255,255,0.05); border-radius: 10px; overflow: hidden;">
+                    <div style="width: 100%; height: 100%; background: linear-gradient(to left, var(--neon-orange), var(--neon-gold)); border-radius: 10px;"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==========================================================================
+       بخش روند همکاری و مراحل کار
+       ========================================================================== -->
+    <section class="process-section" style="padding: 80px 8%; max-width: 1400px; margin: 0 auto; border-top: 1px solid var(--card-border);">
+        <div style="text-align: center; margin-bottom: 50px;">
+            <span class="service-badge">روند همکاری</span>
+            <h2 style="font-size: 2.3rem; font-weight: 900; margin-top: 10px;">ما چطور رویای شما را می‌سازیم؟</h2>
+        </div>
+
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 25px;">
+            <div style="background: rgba(255, 255, 255, 0.02); border: 1px solid var(--card-border); border-radius: 20px; padding: 30px; position: relative;">
+                <span style="font-size: 3rem; font-weight: 900; color: rgba(255, 122, 0, 0.1); position: absolute; top: 10px; left: 20px;">۰۱</span>
+                <h3 style="font-size: 1.15rem; font-weight: bold; margin-bottom: 15px; color: var(--neon-orange); margin-top: 15px;">۱. کشف و مشاوره</h3>
+                <p style="color: var(--text-muted); font-size: 0.85rem; text-align: justify;">دریافت اهداف برند شما، بررسی رقبای ایرانی و تعیین دقیق مسیر پروژه.</p>
+            </div>
+
+            <div style="background: rgba(255, 255, 255, 0.02); border: 1px solid var(--card-border); border-radius: 20px; padding: 30px; position: relative;">
+                <span style="font-size: 3rem; font-weight: 900; color: rgba(255, 122, 0, 0.1); position: absolute; top: 10px; left: 20px;">۰۲</span>
+                <h3 style="font-size: 1.15rem; font-weight: bold; margin-bottom: 15px; color: var(--neon-orange); margin-top: 15px;">۲. اتود خلاق با AI</h3>
+                <p style="color: var(--text-muted); font-size: 0.85rem; text-align: justify;">طراحی و تصویرسازی اولیه ظاهر و ترکیب رنگ لوکس با هوش مصنوعی.</p>
+            </div>
+
+            <div style="background: rgba(255, 255, 255, 0.02); border: 1px solid var(--card-border); border-radius: 20px; padding: 30px; position: relative;">
+                <span style="font-size: 3rem; font-weight: 900; color: rgba(255, 122, 0, 0.1); position: absolute; top: 10px; left: 20px;">۰۳</span>
+                <h3 style="font-size: 1.15rem; font-weight: bold; margin-bottom: 15px; color: var(--neon-orange); margin-top: 15px;">۳. کدنویسی اختصاصی</h3>
+                <p style="color: var(--text-muted); font-size: 0.85rem; text-align: justify;">تبدیل طرح به کدهای فرانت‌اند فوق‌العاده بهینه، سریع و ۱۰۰٪ سفارشی.</p>
+            </div>
+
+            <div style="background: rgba(255, 255, 255, 0.02); border: 1px solid var(--card-border); border-radius: 20px; padding: 30px; position: relative;">
+                <span style="font-size: 3rem; font-weight: 900; color: rgba(255, 122, 0, 0.1); position: absolute; top: 10px; left: 20px;">۰۴</span>
+                <h3 style="font-size: 1.15rem; font-weight: bold; margin-bottom: 15px; color: var(--neon-orange); margin-top: 15px;">۴. تحویل و پرداخت</h3>
+                <p style="color: var(--text-muted); font-size: 0.85rem; text-align: justify;">تست نهایی سرعت و سئو، اتصال درگاه پرداخت آنلاین و تحویل نهایی کلید پروژه.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==========================================================================
+       بخش جدید سوم: سوالات متداول تعاملی (FAQ) با افکت کشویی شیک
+       ========================================================================== -->
+    <section class="faq-section" id="faq">
+        <div style="text-align: center; margin-bottom: 50px;">
+            <span class="service-badge">پاسخ به سوالات شما</span>
+            <h2 style="font-size: 2.3rem; font-weight: 900; margin-top: 10px;">ابهامات خود را برطرف کنید</h2>
+        </div>
+
+        <!-- سوال ۱ -->
+        <div class="faq-item">
+            <div class="faq-question" onclick="toggleFaq(this)">
+                <span>چرا قیمت وب‌سایت‌های اختصاصی از وردپرس بیشتر است؟</span>
+                <span class="faq-icon">+</span>
+            </div>
+            <div class="faq-answer">
+                وب‌سایت‌های اختصاصی به صورت خط به خط برای کسب‌وکار شما کدنویسی می‌شوند. سرعت لود آن‌ها فوق‌العاده بالاتر است (زیر نیم ثانیه)، امنیت نزدیک به ۱۰۰٪ دارند و هیچ محدودیت طراحی یا کدهای تکراری در آن‌ها وجود ندارد. این سایت‌ها تا سال‌ها بدون قطعی و باکلاس‌ترین وجهه برند شما را حفظ می‌کنند.
+            </div>
+        </div>
+
+        <!-- سوال ۲ -->
+        <div class="faq-item">
+            <div class="faq-question" onclick="toggleFaq(this)">
+                <span>چگونه هزینه را پرداخت کنیم؟ آیا امکان قسط‌بندی هست؟</span>
+                <span class="faq-icon">+</span>
+            </div>
+            <div class="faq-answer">
+                بله! پرداخت‌ها به صورت دو یا سه مرحله‌ای (پیش‌پرداخت برای شروع، تحویل دمو اولیه و تسویه نهایی هنگام آپلود لایو) انجام می‌شود. برای راحتی شما، پرداخت آنلاین امن مستقیم از طریق درگاه زرین‌لینک در هر مرحله فراهم است.
+            </div>
+        </div>
+
+        <!-- سوال ۳ -->
+        <div class="faq-item">
+            <div class="faq-question" onclick="toggleFaq(this)">
+                <span>آیا سایت‌ها در موبایل و تبلت هم درست نشان داده می‌شوند؟</span>
+                <span class="faq-icon">+</span>
+            </div>
+            <div class="faq-answer">
+                ۱۰۰٪ بله! تمامی سایت‌هایی که توسط من طراحی و پیاده‌سازی می‌شوند، به صورت کامل واکنش‌گرا (Responsive) هستند و در تمامی دستگاه‌ها، به ویژه موبایل، با مدرن‌ترین ظاهر چیده و لود می‌شوند.
+            </div>
+        </div>
+
+        <!-- سوال ۴ -->
+        <div class="faq-item">
+            <div class="faq-question" onclick="toggleFaq(this)">
+                <span>پس از اتمام کار، چطور باید متون یا قیمت‌های سایتم را ویرایش کنم؟</span>
+                <span class="faq-icon">+</span>
+            </div>
+            <div class="faq-answer">
+                من فایل نهایی را همراه با یک راهنمای بسیار ساده فارسی ویدیویی یا متنی (دقیقاً مثل راهنمای ۱۰۰ واژه AI در سایت) تحویل می‌دهم تا خودتان در ۱ ثانیه و به راحتی بتوانید نوشته‌ها و تصاویر را بدون یک خط کدنویسی ویرایش و ذخیره کنید.
+            </div>
+        </div>
+    </section>
+
+    <!-- بخش خدمات مستقیم سفارش (۸ سرویسی که درخواست کردی) -->
+    <section class="services-section" id="services">
+        <div class="section-title">
+            <h2>تعرفه‌گذاری و سفارش آنلاین خدمات اختصاصی</h2>
+            <p>روی دکمه سفارش هر کدام کلیک کنید تا مستقیماً به درگاه پرداخت زرین‌لینک همان خدمت متصل شوید.</p>
+        </div>
+
+        <div class="services-grid">
+            <!-- سرویس ۱ -->
+            <div class="service-card">
+                <div>
+                    <span class="service-badge">اصلی</span>
+                    <h3 class="service-title">لندینگ‌پیج تک‌صفحه‌ای مدرن</h3>
+                    <p class="service-desc">طراحی و کدنویسی یک صفحه فرود شیک، ۱۰۰٪ واکنش‌گرا و سریع برای معرفی یا کمپین‌های فروش محصول شما.</p>
+                </div>
+                <div>
+                    <div class="price-tag">۵,۰۰۰,۰۰۰ <span>تومان</span></div>
+                    <button class="btn-order" onclick="openPaymentModal('لندینگ‌پیج تک‌صفحه‌ای مدرن', '۵,۰۰۰,۰۰۰ تومان')">اتصال به درگاه پرداخت</button>
+                </div>
+            </div>
+
+            <!-- سرویس ۲ -->
+            <div class="service-card">
+                <div>
+                    <span class="service-badge">لوکس</span>
+                    <h3 class="service-title">سایت پورتفولیو اختصاصی ۲بعدی/۳بعدی</h3>
+                    <p class="service-desc">یک سایت گالری و معرفی شخصی خیره‌کننده با انواع افکت‌های حرکتی و تغییر پوسته برای فریلنسرها و طراحان طراز اول.</p>
+                </div>
+                <div>
+                    <div class="price-tag">۸,۰۰۰,۰۰۰ <span>تومان</span></div>
+                    <button class="btn-order" onclick="openPaymentModal('سایت پورتفولیو اختصاصی ۳بعدی', '۸,۰۰۰,۰۰۰ تومان')">اتصال به درگاه پرداخت</button>
+                </div>
+            </div>
+
+            <!-- سرویس ۳ -->
+            <div class="service-card">
+                <div>
+                    <span class="service-badge">کامل</span>
+                    <h3 class="service-title">سایت شرکتی و معرفی خدمات خلاق</h3>
+                    <p class="service-desc">وب‌سایت چندصفحه‌ای فوق‌العاده سبک با سئوی تضمین شده برای معرفی کسب‌وکار شما بدون محدودیت‌های قالب وردپرس.</p>
+                </div>
+                <div>
+                    <div class="price-tag">۱۵,۰۰۰,۰۰۰ <span>تومان</span></div>
+                    <button class="btn-order" onclick="openPaymentModal('سایت شرکتی چندصفحه‌ای لوکس', '۱۵,۰۰۰,۰۰۰ تومان')">اتصال به درگاه پرداخت</button>
+                </div>
+            </div>
+
+            <!-- سرویس ۴: طراحی لوگو -->
+            <div class="service-card">
+                <div>
+                    <span class="service-badge">هویت بصری</span>
+                    <h3 class="service-title">طراحی لوگو اختصاصی برند</h3>
+                    <p class="service-desc">خلق یک نشان تجاری و لوگوی بی‌نظیر، کاملاً اختصاصی و متناسب با روانشناسی بازار مخاطب شما با فرمت‌های برداری باکیفیت.</p>
+                </div>
+                <div>
+                    <div class="price-tag">۷,۰۰۰,۰۰۰ <span>تومان</span></div>
+                    <button class="btn-order" onclick="openPaymentModal('طراحی لوگو اختصاصی برند', '۷,۰۰۰,۰۰۰ تومان')">اتصال به درگاه پرداخت</button>
+                </div>
+            </div>
+
+            <!-- سرویس ۵: طراحی رنگ سازمانی -->
+            <div class="service-card">
+                <div>
+                    <span class="service-badge">هویت بصری</span>
+                    <h3 class="service-title">طراحی پالت رنگ سازمانی</h3>
+                    <p class="service-desc">طراحی و پیاده‌سازی هویت رنگی و روانشناسی رنگ‌های برند برای همخوانی ۱۰۰ درصدی کارت ویزیت، سایت و شبکه‌های اجتماعی.</p>
+                </div>
+                <div>
+                    <div class="price-tag">۵,۰۰۰,۰۰۰ <span>تومان</span></div>
+                    <button class="btn-order" onclick="openPaymentModal('طراحی پالت رنگ سازمانی', '۵,۰۰۰,۰۰۰ تومان')">اتصال به درگاه پرداخت</button>
+                </div>
+            </div>
+
+            <!-- سرویس ۶: اتصال به درگاه پرداخت آنلاین -->
+            <div class="service-card">
+                <div>
+                    <span class="service-badge">فنی</span>
+                    <h3 class="service-title">اتصال به درگاه پرداخت آنلاین</h3>
+                    <p class="service-desc">اتصال انواع درگاه‌های پرداخت بانکی مستقیم یا واسط (زرین‌پال، نکست‌پی و...) به کدهای سایت اختصاصی شما بدون دردسر.</p>
+                </div>
+                <div>
+                    <div class="price-tag">۴,۰۰۰,۰۰۰ <span>تومان</span></div>
+                    <button class="btn-order" onclick="openPaymentModal('اتصال به درگاه پرداخت آنلاین', '۴,۰۰۰,۰۰۰ تومان')">اتصال به درگاه پرداخت</button>
+                </div>
+            </div>
+
+            <!-- سرویس ۷: طراحی فونت اختصاصی -->
+            <div class="service-card">
+                <div>
+                    <span class="service-badge">تایپوگرافی</span>
+                    <h3 class="service-title">طراحی فونت اختصاصی</h3>
+                    <p class="service-desc">خلق و بهینه‌سازی یک تایپ‌فیس و فونت اختصاصی برای متون وب‌سایت و بنرهای برند شما جهت متمایز شدن مطلق از رقبا.</p>
+                </div>
+                <div>
+                    <div class="price-tag">۶,۰۰۰,۰۰۰ <span>تومان</span></div>
+                    <button class="btn-order" onclick="openPaymentModal('طراحی فونت اختصاصی', '۶,۰۰۰,۰۰۰ تومان')">اتصال به درگاه پرداخت</button>
+                </div>
+            </div>
+
+            <!-- سرویس ۸: تولید و ادیت عکس تبلیغاتی -->
+            <div class="service-card">
+                <div>
+                    <span class="service-badge">گرافیک</span>
+                    <h3 class="service-title">تولید و ادیت عکس محصول</h3>
+                    <p class="service-desc">تولید تصاویر ۳بعدی تبلیغاتی و ادیت و روتوش فوق‌العاده باکیفیت و نئونی عکس‌های محصولات شما با هوش مصنوعی برای سایت.</p>
+                </div>
+                <div>
+                    <div class="price-tag">۵,۰۰۰,۰۰۰ <span>تومان</span></div>
+                    <button class="btn-order" onclick="openPaymentModal('تولید و ادیت عکس محصول', '۵,۰۰۰,۰۰۰ تومان')">اتصال به درگاه پرداخت</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- پنجره بازشوی خرید نهایی -->
+    <div class="modal-overlay" id="payment-modal-overlay">
+        <div class="modal">
+            <button class="modal-close" onclick="closePaymentModal()">&times;</button>
+            <h3 id="modal-title">خرید سرویس</h3>
+            <p id="modal-desc">مبلغ درگاه: ۰ تومان</p>
+            
+            <form id="payment-form" onsubmit="processZarinLink(event)">
+                <input type="hidden" id="service-name-hidden">
+                <input type="hidden" id="service-price-hidden">
+
+                <div class="form-group">
+                    <label for="payer-name">نام و نام خانوادگی خریدار</label>
+                    <input type="text" id="payer-name" class="form-input" placeholder="مثلاً: محمد حسینی" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="payer-phone">شماره همراه جهت فعال‌سازی</label>
+                    <input type="tel" id="payer-phone" class="form-input" style="direction: ltr; text-align: left;" placeholder="09123456789" required>
+                </div>
+
+                <div style="margin-top: 10px; font-size: 0.75rem; color: var(--text-muted); margin-bottom: 20px;">
+                    * پس از تایید اطلاعات، مستقیماً به صفحه پرداخت آنلاین زرین‌پال این سرویس هدایت خواهید شد.
+                </div>
+
+                <button type="submit" class="btn-submit-zarin">تایید و انتقال به درگاه پرداخت امن زرین‌پال</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- پشتیبانی و دستیار چت‌بات هوش مصنوعی اختصاصی -->
+    <div class="chat-widget">
+        <button class="chat-trigger" onclick="toggleChat()">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="2.5" style="transform: scaleX(-1);"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+        </button>
+
+        <div class="chat-box" id="chat-box">
+            <div class="chat-header">
+                <h4>دستیار هوشمند کُدپرو</h4>
+                <button class="chat-close" onclick="toggleChat()">&times;</button>
+            </div>
+            
+            <div class="chat-messages" id="chat-messages">
+                <div class="msg-bot">
+                    سلام! من دستیار هوشمند شما هستم. چطور می‌توانم در انتخاب خدمات یا طراحی وب‌سایت اختصاصی به شما کمک کنم؟
+                </div>
+            </div>
+
+            <div class="chat-input-area">
+                <input type="text" id="chat-input-field" class="chat-input" placeholder="پیام خود را بنویسید..." onkeypress="handleChatEnter(event)">
+                <button class="chat-send" onclick="sendChatMessage()">ارسال</button>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>استودیو طراحی خلاق شما • با قدرت کدهای اختصاصی و هوش مصنوعی مستقل • ۲۰۲۶</p>
+    </footer>
+
+    <!-- کدهای جاوااسکریپت (مغز و حرکات وب‌سایت) -->
+    <script>
+        // اطلاعات اسلایدرهای نمونه کار تعاملی
+        const slidesData = [
+            {
+                tag: "تم وب۳ و ارز دیجیتال",
+                title: "پلتفرم سرمایه‌گذاری Elite",
+                desc: "یک رابط کاربری لوکس برای صرافی دیجیتال و کیف پول ارزهای رمزنگاری شده با کدهای مدرن."
+            },
+            {
+                tag: "برند مد لوکس و پوشاک",
+                title: "فروشگاه لباس Iconic",
+                desc: "نمونه کار عالی برای برندهای شخصی حوزه مد و پوشاک با طراحی مینی‌مالیستی و لوکس طلایی."
+            },
+            {
+                tag: "مشاوره اختصاصی و بیزینس",
+                title: "سایت پرمیوم پرسنال برندینگ",
+                desc: "یک وب‌سایت لوکس برای پزشکان، مشاوران و مدیران ارشد برای جذب هدفمند مشتریان خاص."
+            }
+        ];
+
+        let currentSlideIndex = 0;
+        const slides = document.querySelectorAll('.slide-img');
+        let sliderTimer;
+
+        // تابع تعویض عکس و اطلاعات متنی اسلایدر
+        function showSlide(index) {
+            slides.forEach(slide => slide.classList.remove('active'));
+            slides[index].classList.add('active');
+
+            document.getElementById('slider-tag').innerText = slidesData[index].tag;
+            document.getElementById('slider-title').innerText = slidesData[index].title;
+            document.getElementById('slider-desc').innerText = slidesData[index].desc;
+            document.getElementById('slide-num').innerText = `پوسته ${index + 1} از ۳`;
+        }
+
+        function nextSlide(event) {
+            if (event) event.stopPropagation(); 
+            currentSlideIndex = (currentSlideIndex + 1) % slides.length;
+            showSlide(currentSlideIndex);
+        }
+
+        function prevSlide(event) {
+            if (event) event.stopPropagation(); 
+            currentSlideIndex = (currentSlideIndex - 1 + slides.length) % slides.length;
+            showSlide(currentSlideIndex);
+        }
+
+        function startAutoSlider() {
+            sliderTimer = setInterval(() => {
+                nextSlide();
+            }, 5000);
+        }
+
+        function stopAutoSlider() {
+            clearInterval(sliderTimer);
+        }
+
+        const card = document.getElementById('interactive-card');
+        card.addEventListener('mouseenter', stopAutoSlider);
+        card.addEventListener('mouseleave', startAutoSlider);
+
+        startAutoSlider();
+
+        // مدیریت باز و بسته شدن سوالات متداول (FAQ Accordion)
+        function toggleFaq(element) {
+            const item = element.parentElement;
+            const isActive = item.classList.contains('active');
+            
+            // بستن تمام سوالات قبلی باز شده
+            const activeItems = document.querySelectorAll('.faq-item.active');
+            activeItems.forEach(activeItem => {
+                activeItem.classList.remove('active');
+            });
+
+            // باز کردن سوال کلیک شده (اگر در حال حاضر بسته بود)
+            if (!isActive) {
+                item.classList.add('active');
+            }
+        }
+
+        // مدیریت پنجره خرید نهایی
+        function openPaymentModal(serviceName, priceText) {
+            document.getElementById('service-name-hidden').value = serviceName;
+            document.getElementById('service-price-hidden').value = priceText;
+            document.getElementById('modal-title').innerText = 'خرید آنلاین ' + serviceName;
+            document.getElementById('modal-desc').innerText = 'مبلغ پرداختی این خدمت: ' + priceText;
+            document.getElementById('payment-modal-overlay').classList.add('active');
+        }
+
+        function closePaymentModal() {
+            document.getElementById('payment-modal-overlay').classList.remove('active');
+        }
+
+        function processZarinLink(event) {
+            event.preventDefault();
+            const service = document.getElementById('service-name-hidden').value;
+            const price = document.getElementById('service-price-hidden').value;
+            const name = document.getElementById('payer-name').value;
+            const phone = document.getElementById('payer-phone').value;
+
+            alert(`پرداخت آنلاین فعال شد!\n\nخریدار: ${name}\nسرویس انتخابی: ${service}\nمبلغ: ${price}\nشماره همراه شما: ${phone}\n\nشما اکنون به درگاه مستقیم پرداخت زرین‌لینک هدایت می‌شوید تا وجه را امن کارت بکشید.`);
+            
+            window.open('https://zarinp.al', '_blank'); 
+            closePaymentModal();
+        }
+
+        // چت پشتیبانی هوش مصنوعی
+        function toggleChat() {
+            document.getElementById('chat-box').classList.toggle('active');
+        }
+
+        function handleChatEnter(event) {
+            if (event.key === 'Enter') {
+                sendChatMessage();
+            }
+        }
+
+        function sendChatMessage() {
+            const input = document.getElementById('chat-input-field');
+            const messageText = input.value.trim();
+            if (messageText === '') return;
+
+            const chatMessages = document.getElementById('chat-messages');
+
+            const userMsgDiv = document.createElement('div');
+            userMsgDiv.className = 'msg-user';
+            userMsgDiv.innerText = messageText;
+            chatMessages.appendChild(userMsgDiv);
+
+            input.value = '';
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+
+            setTimeout(() => {
+                const botMsgDiv = document.createElement('div');
+                botMsgDiv.className = 'msg-bot';
+                
+                if (messageText.includes('قیمت') || messageText.includes('تعرفه')) {
+                    botMsgDiv.innerText = "لیست تعرفه تمام خدمات ما در صفحه موجود است. ما ۸ خدمت پرمیوم از لندینگ‌پیج تا عکس‌برداری تبلیغاتی با هوش مصنوعی داریم که همگی به درگاه پرداخت آنلاین زرین‌پال مجهز هستند.";
+                } else if (messageText.includes('لوگو') || messageText.includes('لوگو اختصاصی')) {
+                    botMsgDiv.innerText = "طراحی لوگوی اختصاصی برند با قیمت ۷,۰۰۰,۰۰۰ تومان قابل سفارش است. این طراحی کاملاً اختصاصی و برداری است و مرزهای هویت بصری شما را متمایز می‌کند.";
+                } else {
+                    botMsgDiv.innerText = "پیام شما دریافت شد! در حال حاضر من یک دستیار هوش مصنوعی در حال تست هستم. شما بعداً می‌توانید این کادر چت را به یک چت‌بات واقعی متصل کنید تا به صورت زنده کارهای جذب مشتری شما را انجام دهد.";
+                }
+
+                chatMessages.appendChild(botMsgDiv);
+                chatMessages.scrollTop = chatMessages.scrollHeight;
+            }, 1000);
+        }
+    </script>
+</body>
+</html>
 
     <!-- بخش خدمات مستقیم سفارش (۸ سرویسی که درخواست کردی) -->
     <section class="services-section" id="services">
