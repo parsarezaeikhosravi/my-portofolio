@@ -1,0 +1,724 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta id="viewport-meta" name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>درباره من | پارسا رضائی خسروی</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;700;900&display=swap');
+
+        /* تنظیمات تم رنگی جدید (فضا را کمی روشن‌تر و لوکس‌تر کرده‌ایم) */
+        :root {
+            --bg: #0F172A;                        
+            --card-bg: rgba(30, 41, 59, 0.6);     
+            --card-border: rgba(255, 255, 255, 0.12); 
+            --neon-orange: #FF7A00;               
+            --neon-gold: #F59E0B;                 
+            --neon-glow: rgba(255, 122, 0, 0.25);  
+            --text-main: #F9FAFB;                 
+            --text-muted: #CBD5E1;                
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Vazirmatn', 'Tahoma', sans-serif;
+        }
+
+        body {
+            background-color: var(--bg);
+            color: var(--text-main);
+            overflow-x: hidden;
+            position: relative;
+            line-height: 1.8;
+            padding: 0;
+        }
+
+        /* هدر ناوبری */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 8%;
+            background: rgba(15, 23, 42, 0.85);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border-bottom: 1px solid var(--card-border);
+            position: sticky;
+            top: 0;
+            z-index: 99;
+        }
+
+        /* لوگوی الهام گرفته شده از تصویر آپلود شده کاربر */
+        .logo {
+            font-size: 1.4rem;
+            font-weight: 900;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .logo-icon {
+            width: 42px;
+            height: 42px;
+            background: linear-gradient(135deg, var(--neon-orange), var(--neon-gold));
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 0 20px rgba(255, 122, 0, 0.45);
+        }
+
+        /* متن برندینگ بسیار واضح‌تر و درخشان‌تر متناسب با خواسته‌ی شما */
+        .logo-text {
+            color: #FFFFFF !important;
+            font-size: 1.5rem;
+            font-weight: 900;
+            text-shadow: 0 0 15px rgba(255, 255, 255, 0.5), 0 0 5px var(--neon-orange);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 0.95rem;
+            font-weight: bold;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--text-main);
+        }
+
+        /* هاله‌های نورانی پس‌زمینه */
+        .orb {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(140px);
+            z-index: -1;
+            pointer-events: none;
+            opacity: 0.45;
+        }
+        .orb-1 {
+            top: 20%;
+            left: 10%;
+            width: 500px;
+            height: 500px;
+            background: var(--neon-orange);
+        }
+        .orb-2 {
+            bottom: 10%;
+            right: 10%;
+            width: 500px;
+            height: 500px;
+            background: var(--neon-gold);
+        }
+
+        /* باکس شیشه‌ای اصلی محتوا */
+        .about-container {
+            max-width: 900px;
+            margin: 40px auto;
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 30px;
+            padding: 50px;
+            backdrop-filter: blur(25px);
+            -webkit-backdrop-filter: blur(25px);
+            box-shadow: 0 30px 60px rgba(0,0,0,0.3);
+            position: relative;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            font-weight: 900;
+            margin-bottom: 30px;
+            background: linear-gradient(to left, #FFFFFF, var(--neon-gold));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        p {
+            color: var(--text-muted);
+            font-size: 1.05rem;
+            margin-bottom: 25px;
+            text-align: justify;
+        }
+
+        /* دکمه‌های پایینی */
+        .buttons-group {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+            margin-top: 40px;
+        }
+
+        .btn-action {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            color: white;
+            border: none;
+            padding: 14px 30px;
+            border-radius: 50px;
+            font-weight: bold;
+            font-size: 0.95rem;
+            cursor: pointer;
+            text-decoration: none;
+            transition: transform 0.2s, box-shadow 0.2s, background 0.2s;
+        }
+
+        .btn-orange {
+            background: linear-gradient(135deg, var(--neon-orange) 0%, #D97706 100%);
+            box-shadow: 0 0 20px var(--neon-glow);
+        }
+
+        .btn-orange:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 0 25px rgba(255, 122, 0, 0.6);
+        }
+
+        .btn-cv {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--card-border);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        .btn-cv:hover {
+            background: rgba(255, 255, 255, 0.1);
+            transform: translateY(-2px);
+            border-color: var(--neon-gold);
+            box-shadow: 0 0 15px rgba(245, 158, 11, 0.3);
+        }
+
+        /* بخش تخصص‌ها و سلاح‌های من (دو ستون ۴ تایی منظم) */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 25px;
+            margin-top: 40px;
+            border-top: 1px solid rgba(255,255,255,0.08);
+            padding-top: 35px;
+        }
+
+        .skills-column {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .skill-item {
+            background: rgba(0,0,0,0.15);
+            padding: 15px 20px;
+            border-radius: 12px;
+            border: 1px solid rgba(255,255,255,0.03);
+            transition: border-color 0.3s;
+        }
+
+        .skill-item:hover {
+            border-color: var(--neon-orange);
+        }
+
+        .skill-info {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.85rem;
+            margin-bottom: 8px;
+            font-weight: bold;
+        }
+
+        .skill-bar {
+            height: 6px;
+            background: rgba(255,255,255,0.05);
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .skill-fill {
+            height: 100%;
+            background: linear-gradient(to left, var(--neon-orange), var(--neon-gold));
+            border-radius: 10px;
+        }
+
+        /* بخش گواهینامه‌ها */
+        .certificates-section {
+            margin-top: 45px;
+            border-top: 1px solid rgba(255,255,255,0.08);
+            padding-top: 35px;
+        }
+
+        .certificates-title {
+            font-size: 1.5rem;
+            font-weight: 900;
+            margin-bottom: 25px;
+            color: var(--neon-gold);
+        }
+
+        .certificates-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 20px;
+        }
+
+        .cert-card {
+            background: rgba(0, 0, 0, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 20px;
+            padding: 20px;
+            transition: all 0.3s;
+        }
+
+        .cert-card:hover {
+            border-color: var(--neon-orange);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(255, 122, 0, 0.1);
+        }
+
+        .cert-badge {
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 122, 0, 0.1);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 15px;
+            color: var(--neon-orange);
+        }
+
+        .cert-name {
+            font-size: 1rem;
+            font-weight: bold;
+            margin-bottom: 8px;
+        }
+
+        .cert-issuer {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+        }
+
+        /* تنظیمات شناور */
+        .settings-widget {
+            position: fixed;
+            bottom: 30px;
+            left: 30px;
+            z-index: 1000;
+        }
+
+        .settings-trigger {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: rgba(30, 41, 59, 0.9);
+            border: 1px solid var(--card-border);
+            color: white;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+            transition: transform 0.3s;
+        }
+
+        .settings-trigger:hover {
+            transform: rotate(45deg);
+            border-color: var(--neon-gold);
+        }
+
+        .settings-panel {
+            position: absolute;
+            bottom: 60px;
+            left: 0;
+            width: 260px;
+            background: rgba(15, 23, 42, 0.98);
+            border: 1px solid var(--card-border);
+            border-radius: 20px;
+            padding: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            display: none;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .settings-panel.active {
+            display: flex;
+        }
+
+        .settings-title {
+            font-size: 0.95rem;
+            font-weight: bold;
+            color: var(--neon-gold);
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+            padding-bottom: 8px;
+        }
+
+        .setting-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.8rem;
+        }
+
+        .setting-select {
+            background: #0F172A;
+            border: 1px solid var(--card-border);
+            color: white;
+            padding: 5px 10px;
+            border-radius: 8px;
+            outline: none;
+            font-size: 0.8rem;
+            cursor: pointer;
+        }
+
+        .switch {
+            position: relative;
+            display: inline-block;
+            width: 44px;
+            height: 22px;
+        }
+
+        .switch input { 
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+
+        .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background-color: #334155;
+            transition: .3s;
+            border-radius: 34px;
+        }
+
+        .slider:before {
+            position: absolute;
+            content: "";
+            height: 16px; width: 16px;
+            left: 3px; bottom: 3px;
+            background-color: white;
+            transition: .3s;
+            border-radius: 50%;
+        }
+
+        input:checked + .slider {
+            background-color: var(--neon-orange);
+        }
+
+        input:checked + .slider:before {
+            transform: translateX(22px);
+        }
+    </style>
+</head>
+<body>
+
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
+
+    <!-- ناوبری بالایی سایت (استودیو پارسا) -->
+    <nav>
+        <div class="logo">
+            <!-- لوگوی لوکس و فوق‌العاده مدرن بر مبنای عکس آپلود شده‌ی کاربر -->
+            <div class="logo-icon">
+                <svg width="24" height="24" viewBox="0 0 100 90" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <!-- شکل بالا سمت چپ با گوشه منحنی بالا چپ -->
+                    <path d="M 10 40 A 30 30 0 0 1 40 10 H 48 V 40 Z" fill="white" />
+                    <!-- شکل بالا سمت راست با گوشه منحنی پایین راست -->
+                    <path d="M 52 10 H 90 V 20 A 20 20 0 0 1 70 40 H 52 Z" fill="white" />
+                    <!-- شکل سرتاسری پایین با گوشه منحنی پایین چپ -->
+                    <path d="M 10 80 A 30 30 0 0 1 40 50 H 90 V 80 Z" fill="white" />
+                </svg>
+            </div>
+            <span class="logo-text">استودیو پارسا</span>
+        </div>
+        <ul class="nav-links">
+            <li><a href="index.html">صفحه اصلی</a></li>
+            <li><a href="about.html">درباره من</a></li>
+            <li><a href="index.html#faq">سوالات متداول</a></li>
+            <li><a href="index.html#services">خدمات و تعرفه‌ها</a></li>
+        </ul>
+        <a href="index.html#services" class="btn-premium">ثبت سفارش فوری</a>
+    </nav>
+
+    <div class="about-container">
+        <h1>
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="url(#gold-grad)" stroke-width="2.5"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/><defs><linearGradient id="gold-grad" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="%23FF7A00"/><stop offset="100%" stop-color="%23F59E0B"/></linearGradient></defs></svg>
+            <span id="about-main-header">درباره من | پارسا رضائی خسروی</span>
+        </h1>
+
+        <!-- متن توصیف درباره من (کلمات اضافی حذف و نام شما به صورت سفید ساده نوشته شده است) -->
+        <p id="about-p1">
+            سلام! من <strong style="color: white;">پارسا رضائی خسروی</strong> هستم؛ طراح و توسعه‌دهنده مستقل وب‌سایت‌های اختصاصی لوکس. از زمانی که وارد دنیای بی‌کران کدنویسی فرانت‌اند شدم، تصمیم گرفتم استانداردهای مرسوم را جابه‌جا کنم. من بر این باورم که دنیای اینترنت پر از سایت‌های تکراری وردپرسی شده است و برندهای بزرگ و خاص، لایق کدهای اختصاصی، سرعت فضایی و طراحی‌های ۱٠٠٪ متمایز هستند.
+        </p>
+
+        <p id="about-p2">
+            من با تلفیق برنامه‌نویسی مدرن فرانت‌اند و قدرت جادویی ابزارهای هوش مصنوعی، کارهای سخت را فشرده کرده‌ام تا بتوانم خلاقانه‌ترین افکت‌ها و انیمیشن‌های تعاملی را در کوتاه‌ترین زمان برای مشتریانم خلق کنم. سرعت لود صفحات سایت‌هایی که می‌سازم معمولاً زیر <span class="highlight-text">۰.۴ ثانیه</span> است که در بازار ایران یک شاهکار فنی به حساب می‌آید.
+        </p>
+
+        <!-- بخش تخصص‌ها و سلاح‌ها (دو ستون ۴ تایی منظم) -->
+        <h2 style="font-size: 1.5rem; font-weight: 900; margin-top: 40px; border-top: 1px solid rgba(255,255,255,0.08); padding-top: 35px; color: var(--neon-gold);" id="about-skills-header">تخصص‌ها و سلاح‌های من</h2>
+        
+        <div class="skills-grid">
+            
+            <!-- ستون اول (۴ تخصص اول) -->
+            <div class="skills-column">
+                <div class="skill-item">
+                    <div class="skill-info">
+                        <span id="sk-1-title">طراحی رابط کاربری اختصاصی (UI/UX)</span>
+                        <span style="color: var(--neon-gold);">۸۵٪</span>
+                    </div>
+                    <div class="skill-bar">
+                        <div class="skill-fill" style="width: 85%;"></div>
+                    </div>
+                </div>
+
+                <div class="skill-item">
+                    <div class="skill-info">
+                        <span id="sk-2-title">کدنویسی خلاق فرانت‌اند</span>
+                        <span style="color: var(--neon-gold);">۷۰٪</span>
+                    </div>
+                    <div class="skill-bar">
+                        <div class="skill-fill" style="width: 70%;"></div>
+                    </div>
+                </div>
+
+                <div class="skill-item">
+                    <div class="skill-info">
+                        <span id="sk-3-title">مهندسی پرامپت دستیار هوش مصنوعی</span>
+                        <span style="color: var(--neon-gold);">۸۵٪</span>
+                    </div>
+                    <div class="skill-bar">
+                        <div class="skill-fill" style="width: 85%;"></div>
+                    </div>
+                </div>
+
+                <div class="skill-item">
+                    <div class="skill-info">
+                        <span id="sk-4-title">طراحی CRM</span>
+                        <span style="color: var(--neon-gold);">۵۰٪</span>
+                    </div>
+                    <div class="skill-bar">
+                        <div class="skill-fill" style="width: 50%;"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ستون دوم (۴ تخصص دوم) -->
+            <div class="skills-column">
+                <div class="skill-item">
+                    <div class="skill-info">
+                        <span id="sk-5-title">سیستم‌سازی سازمانی</span>
+                        <span style="color: var(--neon-gold);">۵۰٪</span>
+                    </div>
+                    <div class="skill-bar">
+                        <div class="skill-fill" style="width: 50%;"></div>
+                    </div>
+                </div>
+
+                <div class="skill-item">
+                    <div class="skill-info">
+                        <span id="sk-6-title">تولید محتوا و ادیت عکس</span>
+                        <span style="color: var(--neon-gold);">۸۰٪</span>
+                    </div>
+                    <div class="skill-bar">
+                        <div class="skill-fill" style="width: 80%;"></div>
+                    </div>
+                </div>
+
+                <div class="skill-item">
+                    <div class="skill-info">
+                        <span id="sk-7-title">طراحی فونت</span>
+                        <span style="color: var(--neon-gold);">۱۰۰٪</span>
+                    </div>
+                    <div class="skill-bar">
+                        <div class="skill-fill" style="width: 100%;"></div>
+                    </div>
+                </div>
+
+                <div class="skill-item">
+                    <div class="skill-info">
+                        <span id="sk-8-title">طراحی لوگو</span>
+                        <span style="color: var(--neon-gold);">۹۰٪</span>
+                    </div>
+                    <div class="skill-bar">
+                        <div class="skill-fill" style="width: 90%;"></div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- بخش گواهینامه‌ها -->
+        <div class="certificates-section">
+            <h2 class="certificates-title" id="cert-title-header">مدارک و گواهینامه‌های من</h2>
+            
+            <div class="certificates-grid">
+                <div class="cert-card">
+                    <div class="cert-badge">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                    </div>
+                    <h3 class="cert-name" id="cert-n1">گواهینامه طراحی وب مدرن</h3>
+                    <p class="cert-issuer" id="cert-i1">آکادمی بین‌المللی توسعه فرانت‌اند</p>
+                </div>
+
+                <div class="cert-card">
+                    <div class="cert-badge">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="7"/><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"/></svg>
+                    </div>
+                    <h3 class="cert-name" id="cert-n2">مدرک مهندسی پرامپت وب</h3>
+                    <p class="cert-issuer" id="cert-i2">دوره پیشرفته ابزارهای هوش مصنوعی (AI)</p>
+                </div>
+
+                <div class="cert-card">
+                    <div class="cert-badge">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg>
+                    </div>
+                    <h3 class="cert-name" id="cert-n3">بهینه‌سازی سرعت و سئوی فنی</h3>
+                    <p class="cert-issuer" id="cert-i3">پلتفرم رشد و توسعه فرانت‌اند ایران</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="buttons-group">
+            <a href="index.html" class="btn-action btn-orange" id="btn-back-home">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="transform: scaleX(-1);"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 19 12 12 5"/></svg>
+                بازگشت به صفحه اصلی
+            </a>
+
+            <a href="CV-File.pdf" target="_blank" class="btn-action btn-cv" id="btn-cv-download">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                مشاهده و دانلود رزومه (CV)
+            </a>
+        </div>
+    </div>
+
+    <!-- تنظیمات شناور (یکپارچه‌سازی متغیرهای سراسری) -->
+    <div class="settings-widget">
+        <button class="settings-trigger" onclick="toggleSettingsPanel()">⚙️</button>
+        <div class="settings-panel" id="settings-panel">
+            <div class="settings-title" id="lbl-settings-t">تنظیمات وب‌سایت</div>
+            <div class="setting-row">
+                <span id="lbl-lang-t">زبان سایت (Language)</span>
+                <select class="setting-select" id="lang-select" onchange="changeLanguage(this.value)">
+                    <option value="fa">فارسی (FA)</option>
+                    <option value="en">English (EN)</option>
+                </select>
+            </div>
+            <div class="setting-row">
+                <span id="lbl-desk-t">نمای دسکتاپ گوشی</span>
+                <label class="switch">
+                    <input type="checkbox" id="desktop-view-toggle" onchange="toggleDesktopView(this.checked)">
+                    <span class="slider"></span>
+                </label>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // دیتابیس ترجمه‌های کامل صفحه درباره من برای حل مشکل عدم پویایی ترجمه
+        const aboutTranslations = {
+            fa: {
+                "about-main-header": "درباره من | پارسا رضائی خسروی",
+                "about-p1": "سلام! من <strong style='color: white;'>پارسا رضائی خسروی</strong> هستم؛ طراح و توسعه‌دهنده مستقل وب‌سایت‌های اختصاصی لوکس. از زمانی که وارد دنیای بی‌کران کدنویسی فرانت‌اند شدم، تصمیم گرفتم استانداردهای مرسوم را جابه‌جا کنم. من بر این باورم که دنیای اینترنت پر از سایت‌های تکراری وردپرسی شده است و برندهای بزرگ و خاص، لایق کدهای اختصاصی، سرعت فضایی و طراحی‌های ۱٠٠٪ متمایز هستند.",
+                "about-p2": "من با تلفیق برنامه‌نویسی مدرن فرانت‌اند و قدرت جادویی ابزارهای هوش مصنوعی، کارهای سخت را فشرده کرده‌ام تا بتوانم خلاقانه‌ترین افکت‌ها و انیمیشن‌های تعاملی را در کوتاه‌ترین زمان برای مشتریانم خلق کنم. سرعت لود صفحات سایت‌هایی که می‌سازم معمولاً زیر <span class='highlight-text'>۰.۴ ثانیه</span> است که در بازار ایران یک شاهکار فنی به حساب می‌آید.",
+                "about-skills-header": "تخصص‌ها و سلاح‌های من",
+                "sk-1-title": "طراحی رابط کاربری اختصاصی (UI/UX)",
+                "sk-2-title": "کدنویسی خلاق فرانت‌اند",
+                "sk-3-title": "مهندسی پرامپت دستیار هوش مصنوعی",
+                "sk-4-title": "طراحی CRM",
+                "sk-5-title": "سیستم‌سازی سازمانی",
+                "sk-6-title": "تولید محتوا و ادیت عکس",
+                "sk-7-title": "طراحی فونت",
+                "sk-8-title": "طراحی لوگو",
+                "cert-title-header": "مدارک و گواهینامه‌های من",
+                "cert-n1": "گواهینامه طراحی وب مدرن",
+                "cert-i1": "آکادمی بین‌المللی توسعه فرانت‌اند",
+                "cert-n2": "مدرک مهندسی پرامپت وب",
+                "cert-i2": "دوره پیشرفته ابزارهای هوش مصنوعی (AI)",
+                "cert-n3": "بهینه‌سازی سرعت و سئوی فنی",
+                "cert-i3": "پلتفرم رشد و توسعه فرانت‌اند ایران",
+                "btn-back-home": "بازگشت به صفحه اصلی",
+                "btn-cv-download": "مشاهده و دانلود رزومه (CV)",
+                "lbl-settings-t": "تنظیمات وب‌سایت",
+                "lbl-lang-t": "زبان سایت (Language)",
+                "lbl-desk-t": "نمای دسکتاپ گوشی"
+            },
+            en: {
+                "about-main-header": "About Me | Parsa Rezaei Khosravi",
+                "about-p1": "Hello! I am <strong style='color: white;'>Parsa Rezaei Khosravi</strong>, an independent custom web developer. I believe the internet is saturated with generic WordPress sites, and premium brands deserve custom coding, insane loading speeds, and 100% unique design.",
+                "about-p2": "By merging modern frontend coding with AI assistance, I compress complex workflows to create custom web interfaces with speeds consistently under 0.4 seconds.",
+                "about-skills-header": "My Specialties & Weapons",
+                "sk-1-title": "Custom UI/UX Design",
+                "sk-2-title": "Creative Frontend Coding",
+                "sk-3-title": "Prompt Engineering & AI Assistant",
+                "sk-4-title": "CRM Systems Design",
+                "sk-5-title": "Corporate System Building",
+                "sk-6-title": "Content Creation & Photo Editing",
+                "sk-7-title": "Custom Typography / Font Design",
+                "sk-8-title": "Custom Logo Design",
+                "cert-title-header": "My Certificates & Credentials",
+                "cert-n1": "Modern Web Design Certificate",
+                "cert-i1": "International Academy of Frontend Dev",
+                "cert-n2": "Advanced Web Prompt Engineering Credential",
+                "cert-i2": "Advanced AI Tools Institute",
+                "cert-n3": "Technical SEO & Speed Optimization",
+                "cert-i3": "Iran Frontend Developers Network",
+                "btn-back-home": "Back to Home Page",
+                "btn-cv-download": "View & Download CV (Resume)",
+                "lbl-settings-t": "Website Settings",
+                "lbl-lang-t": "Site Language (Language)",
+                "lbl-desk-t": "Mobile Desktop View"
+            }
+        };
+
+        function toggleSettingsPanel() {
+            document.getElementById('settings-panel').classList.toggle('active');
+        }
+
+        function changeLanguage(lang) {
+            localStorage.setItem('site-lang', lang);
+            if (lang === 'fa') {
+                document.documentElement.dir = "rtl";
+                document.documentElement.lang = "fa";
+            } else {
+                document.documentElement.dir = "ltr";
+                document.documentElement.lang = "en";
+            }
+            
+            const data = aboutTranslations[lang] || aboutTranslations.fa;
+            for (let key in data) {
+                const el = document.getElementById(key);
+                if (el) el.innerHTML = data[key];
+            }
+        }
+
+        function toggleDesktopView(isEnabled) {
+            localStorage.setItem('desktop-view', isEnabled ? 'true' : 'false');
+            const meta = document.getElementById('viewport-meta');
+            if (isEnabled) {
+                meta.setAttribute('content', 'width=1200, initial-scale=0.3, shrink-to-fit=no');
+            } else {
+                meta.setAttribute('content', 'width=device-width, initial-scale=1.0');
+            }
+        }
+
+        const savedDesktop = localStorage.getItem('desktop-view') === 'true';
+        document.getElementById('desktop-view-toggle').checked = savedDesktop;
+        toggleDesktopView(savedDesktop);
+
+        const savedLang = localStorage.getItem('site-lang') || 'fa';
+        document.getElementById('lang-select').value = savedLang;
+        changeLanguage(savedLang);
+    </script>
+</body>
+</html>
