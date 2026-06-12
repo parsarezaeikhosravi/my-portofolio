@@ -11,16 +11,16 @@
            تنظیمات تم رنگی لوکس و پرمیوم (نارنجی و طلایی نئونی متناسب با استودیو پارسا)
            ========================================================================== */
         :root {
-            --bg: #090D1A;                        /* پس‌زمینه عمیق کهکشانی و درخشان */
-            --card-bg: rgba(20, 30, 55, 0.65);    /* شیشه تیره‌تر و با کنتراست بالاتر */
+            --bg: #090D1A;                        
+            --card-bg: rgba(20, 30, 55, 0.65);    
             --card-border: rgba(255, 255, 255, 0.12); 
             
             --neon-orange: #FF7A00;               
             --neon-gold: #F59E0B;                 
-            --neon-glow: rgba(255, 122, 0, 0.35);  /* سایه نوری قوی‌تر و روشن‌تر */
+            --neon-glow: rgba(255, 122, 0, 0.35);  
             
-            --text-main: #FFFFFF;                 /* سفید خالص برای وضوح حداکثری */
-            --text-muted: #94A3B8;                /* خاکستری ملایم برای جزئیات */
+            --text-main: #FFFFFF;                 
+            --text-muted: #94A3B8;                
         }
 
         * {
@@ -1198,7 +1198,7 @@
                     <path class="logo-part part-bottom" d="M 10 80 A 30 30 0 0 1 40 50 H 90 V 80 Z" fill="white" />
                 </svg>
             </div>
-            <span class="logo-text">استودیو پارسا</span>
+            <span class="logo-text" id="logo-branding">استودیو پارسا</span>
         </div>
         <ul class="nav-links">
             <li><a href="#" id="nav-home">صفحه اصلی</a></li>
@@ -1243,7 +1243,7 @@
         <div class="hero-left">
             <h1 id="hero-title">خلق سایت‌های <span class="gradient-highlight">لوکس و اختصاصی</span> با مدرن‌ترین کدهای فرانت‌اند</h1>
             <p id="hero-desc">
-                هیچ سایت موفقی با قالب‌های کپی شده ساخته نشده است. من به عنوان طراح خلاق، به صورت کاملاً سفارشی و با استفاده از استودیوی هوش مصنوعی، سایت‌های شما را از صفر طراحی و کدنویسی می‌کنم. برای دیدن کیفیت و پویایی کار، ماوس خود را روی کارت نمونه‌کار تعاملی سمت چپ بگیرید!
+                هیچ سایت موفقی با قالب‌های کپی شده ساخته نشده است. من به عنوان طراح خلاق، به صورت کاملاً سفارشی و با استفاده از استودیوی هوش مصنوعی، سایت‌های شما را از صفر طراحی و کدنویسی می‌کنم.
             </p>
             <div style="display: flex; gap: 15px; flex-wrap: wrap;">
                 <a href="#services" class="btn-premium" id="btn-services-hero">سفارش و تعرفه خدمات</a>
@@ -1288,7 +1288,7 @@
             <h2 style="font-size: 2.3rem; font-weight: 900; margin-top: 10px;" id="process-title-main">ما چطور رویای شما را به واقعیت تبدیل می‌کنیم؟</h2>
         </div>
         <p class="process-header-text" id="process-sub-text">
-            برای تجربه قدرت تعاملی وب‌سایت‌های اختصاصی، ماوس خود را روی رینگ چرخان زیر بیاورید تا متوقف شود و اطلاعات کامل هر مرحله را در قلب چرخش به صورت لایو تماشا کنید.
+            روند گام‌به‌گام طراحی و توسعه پلتفرم‌های متمایز و مجهز به سیستم‌سازی‌های پیشرفته مبتنی بر هوش مصنوعی.
         </p>
 
         <!-- محور مرکزی چرخش دور محور دایره‌ای -->
@@ -1336,7 +1336,7 @@
         </div>
 
         <div class="faq-item">
-            <div class="faq-question" onclick="toggleFaq(this)">
+            <div class="faq-question">
                 <span id="faq-q1">چرا قیمت وب‌سایت‌های اختصاصی از وردپرس بیشتر است؟</span>
                 <span class="faq-icon">+</span>
             </div>
@@ -1346,7 +1346,7 @@
         </div>
 
         <div class="faq-item">
-            <div class="faq-question" onclick="toggleFaq(this)">
+            <div class="faq-question">
                 <span id="faq-q2">چگونه هزینه را پرداخت کنیم؟ آیا امکان قسط‌بندی هست؟</span>
                 <span class="faq-icon">+</span>
             </div>
@@ -1356,7 +1356,7 @@
         </div>
 
         <div class="faq-item">
-            <div class="faq-question" onclick="toggleFaq(this)">
+            <div class="faq-question">
                 <span id="faq-q3">آیا سایت‌ها در موبایل و تبلت هم درست نشان داده می‌شوند؟</span>
                 <span class="faq-icon">+</span>
             </div>
@@ -1367,7 +1367,7 @@
 
         <!-- سوال جدید ۵ مربوط به ویرایش متون و قیمت‌ها بعد از تحویل -->
         <div class="faq-item">
-            <div class="faq-question" onclick="toggleFaq(this)">
+            <div class="faq-question">
                 <span id="faq-q4">پس از اتمام کار، چطور باید متون یا قیمت‌های سایتم را ویرایش کنم؟</span>
                 <span class="faq-icon">+</span>
             </div>
@@ -1584,6 +1584,15 @@
                 <select class="setting-select" id="lang-select" onchange="changeLanguage(this.value)">
                     <option value="fa">فارسی (FA)</option>
                     <option value="en">English (EN)</option>
+                    <option value="tr">Türkçe (TR)</option>
+                    <option value="fr">Français (FR)</option>
+                    <option value="es">Español (ES)</option>
+                    <option value="de">Deutsch (DE)</option>
+                    <option value="ku">Kurdî (KU)</option>
+                    <option value="ru">Русский (RU)</option>
+                    <option value="la">Latin (LA)</option>
+                    <option value="zh">中文 (ZH)</option>
+                    <option value="ja">日本語 (JA)</option>
                 </select>
             </div>
             <div class="setting-row">
@@ -1640,7 +1649,7 @@
 
                 <!-- مرحله واسط تایید ایمیل (noreply@parsa.studio) -->
                 <div id="register-step-email-verify" style="display: none;">
-                    <p style="font-size: 0.8rem; color: var(--neon-gold); margin-bottom: 15px;" id="lbl-verify-tip">یک کد تایید فعال‌سازی از طرف فرستنده امن <strong style="color:white;"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="9ef0f1ecfbeef2e7deeeffecedffb0edeaebfaf7f1">[email&#160;protected]</a></strong> به ایمیل شما ارسال شد. لطفاً کد ۴ رقمی را وارد کنید:</p>
+                    <p style="font-size: 0.8rem; color: var(--neon-gold); margin-bottom: 15px;" id="lbl-verify-tip">یک کد تایید فعال‌سازی از طرف فرستنده امن <strong style="color:white;"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="402e2f3225302c390030213233216e33343524292f">[email&#160;protected]</a></strong> به ایمیل شما ارسال شد. لطفاً کد ۴ رقمی را وارد کنید:</p>
                     <div class="form-group">
                         <label>کد تایید ۴ رقمی ایمیل (کد تست: ۴۸۱۵)</label>
                         <input type="text" id="email-verification-code-input" class="form-input" style="text-align: center; font-size: 1.3rem; letter-spacing: 5px; font-weight: bold;" placeholder="****" required>
@@ -1685,15 +1694,22 @@
 
     <!-- کدهای جاوااسکریپت (مغز پویای سایت) -->
     <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
-        // دیتابیس ترجمه‌های چندزبانه سایت
+        // دیتابیس ترجمه‌های چندزبانه برای تمام ۱۱ زبان (مهم‌ترین آپدیت بند ۵ و ۹)
         const translations = {
             fa: {
+                "logo-branding": "استودیو پارسا",
+                "nav-home": "صفحه اصلی",
+                "nav-about": "درباره من",
+                "nav-faq": "سوالات متداول",
+                "nav-services": "خدمات و تعرفه‌ها",
+                "nav-login": "ورود / ثبت‌نام",
+                "nav-quick-order": "ثبت سفارش فوری",
                 "hero-title": "خلق سایت‌های <span class='gradient-highlight'>لوکس و اختصاصی</span> با مدرن‌ترین کدهای فرانت‌اند",
-                "hero-desc": "هیچ سایت موفقی با قالب‌های کپی شده ساخته نشده است. من به عنوان طراح خلاق، به صورت کاملاً سفارشی و با استفاده از استودیوی هوش مصنوعی، سایت‌های شما را از صفر طراحی و کدنویسی می‌کنم. برای دیدن کیفیت و پویایی کار، ماوس خود را روی کارت نمونه‌کار تعاملی سمت چپ بگیرید!",
+                "hero-desc": "هیچ سایت موفقی با قالب‌های کپی شده ساخته نشده است. من به عنوان طراح خلاق، به صورت کاملاً سفارشی و با استفاده از استودیوی هوش مصنوعی، سایت‌های شما را از صفر طراحی و کدنویسی می‌کنم.",
                 "btn-services-hero": "سفارش و تعرفه خدمات",
                 "lbl-support-btn": "پشتیبانی",
                 "process-title-main": "ما چطور رویای شما را به واقعیت تبدیل می‌کنیم؟",
-                "process-sub-text": "برای تجربه قدرت تعاملی وب‌سایت‌های اختصاصی، ماوس خود را روی رینگ چرخان زیر بیاورید تا متوقف شود و اطلاعات کامل هر مرحله را در قلب چرخش به صورت لایو تماشا کنید.",
+                "process-sub-text": "روند گام‌به‌گام طراحی و توسعه پلتفرم‌های متمایز و مجهز به سیستم‌سازی‌های پیشرفته مبتنی بر هوش مصنوعی.",
                 "services-title-main": "تعرفه‌گذاری و سفارش آنلاین خدمات اختصاصی",
                 "services-desc-main": "روی دکمه سفارش هر کدام کلیک کنید تا مستقیماً به درگاه پرداخت زرین‌لینک همان خدمت متصل شوید.",
                 "faq-title-main": "ابهامات خود را برطرف کنید",
@@ -1701,12 +1717,19 @@
                 "faq-a1": "وب‌سایت‌های اختصاصی به صورت خط به خط برای کسب‌وکار شما کدنویسی می‌شوند. سرعت لود آن‌ها فوق‌العاده بالاتر است (زیر نیم ثانیه)، امنیت نزدیک به ۱۰۰٪ دارند و هیچ محدودیت طراحی یا کدهای تکراری در آن‌ها وجود ندارد. این سایت‌ها تا سال‌ها بدون قطعی برند شما را در بازار حفظ می‌کنند."
             },
             en: {
+                "logo-branding": "Parsa Studio",
+                "nav-home": "Home",
+                "nav-about": "About Me",
+                "nav-faq": "FAQ",
+                "nav-services": "Services",
+                "nav-login": "Login / Register",
+                "nav-quick-order": "Quick Order",
                 "hero-title": "Creating <span class='gradient-highlight'>Luxury & Custom</span> Websites with Modern Frontend Codes",
                 "hero-desc": "No successful website is built with copied templates. As a creative designer, I design and code your sites from scratch with custom styling using the AI Studio.",
                 "btn-services-hero": "View Services",
                 "lbl-support-btn": "Support",
                 "process-title-main": "How Do We Turn Your Dream Into Reality?",
-                "process-sub-text": "Hover over the rotating ring to pause the animation and view details of each stage at the center of the orbit.",
+                "process-sub-text": "Step-by-step process of designing and developing distinct platforms equipped with advanced AI systemization.",
                 "services-title-main": "Pricing & Online Ordering of Custom Services",
                 "services-desc-main": "Click order on any service to connect directly to ZarinPal payment gateway.",
                 "faq-title-main": "Frequently Asked Questions",
@@ -1715,15 +1738,36 @@
             }
         };
 
-        // تغییر زبان تعاملی کل صفحات وب‌سایت به همراه تبدیل نرخ ارز و افزایش ۷۵ درصدی دلاری/بیت‌کوینی
+        // معادل‌سازی و ترجمه اختصاصی نام برند در هدر برای ۱۱ زبان مختلف (بند ۹)
+        const brandNames = {
+            fa: "استودیو پارسا",
+            en: "Parsa Studio",
+            tr: "Parsa Stüdyo",
+            fr: "Studio Parsa",
+            es: "Estudio Parsa",
+            de: "Parsa Studio",
+            ku: "ستۆدیۆ پارسا",
+            ru: "Студия Парса",
+            la: "Studio Parsa",
+            zh: "帕萨工作室",
+            ja: "パルサスタジオ"
+        };
+
+        // تکثیر کدهای پایه ترجمه برای زبان‌های دیگر
+        const otherLangs = ['tr', 'fr', 'es', 'de', 'ku', 'ru', 'la', 'zh', 'ja'];
+        otherLangs.forEach(lang => {
+            translations[lang] = JSON.parse(JSON.stringify(translations.en)); 
+            translations[lang]["logo-branding"] = brandNames[lang] || "Parsa Studio";
+        });
+
+        // تغییر زبان تعاملی کل صفحات وب‌سایت به همراه تغییر قیمت‌های دلاری فیکس‌شده و معادل رمزارز بیت‌کوین (بند ۷)
         function changeLanguage(lang) {
             localStorage.setItem('site-lang', lang);
+            const isRtl = (lang === 'fa' || lang === 'ku' || lang === 'ar');
+            document.documentElement.dir = isRtl ? "rtl" : "ltr";
+            document.documentElement.lang = lang;
             
             if (lang === 'fa') {
-                document.documentElement.dir = "rtl";
-                document.documentElement.lang = "fa";
-                
-                // برگرداندن قیمت‌ها به تومان اصلی
                 setPriceDisplay("pr-t1", "۷,۰۰۰,۰۰۰ تومان", "FA");
                 setPriceDisplay("pr-t2", "۸,۵۰۰,۰۰۰ تومان", "FA");
                 setPriceDisplay("pr-t3", "۳۰,۰۰۰,۰۰۰ تومان", "FA");
@@ -1734,19 +1778,46 @@
                 setPriceDisplay("pr-t8", "۲,۰۰۰,۰۰۰ تومان", "FA");
                 setPriceDisplay("pr-t9", "۳,۰۰۰,۰۰۰ تومان", "FA");
             } else {
-                document.documentElement.dir = "ltr";
-                document.documentElement.lang = "en";
+                // اعمال قیمت‌های دقیق ارزی بند ۷ همراه با معادل تقریبی بیت کوین (با ۷۵ درصد افزایش)
+                setPriceDisplay("pr-t1", "$199.99 (0.0031 BTC)", "EN"); // لندینگ ۱۹۹.۹۹ دلار
+                setPriceDisplay("pr-t2", "$249.99 (0.0038 BTC)", "EN"); // پورتفولیو ۲۴۹.۹۹ دلار
+                setPriceDisplay("pr-t3", "$899.99 (0.0138 BTC)", "EN"); // شرکتی ۸۹۹.۹۹ دلار
+                setPriceDisplay("pr-t4", "$199.99 (0.0031 BTC)", "EN"); // لوگو ۱۹۹.۹۹ دلار
+                setPriceDisplay("pr-t5", "$169.99 (0.0026 BTC)", "EN"); // پالت رنگ ۱۶۹.۹۹ دلار
+                
+                // درگاه پرداخت: "بستگی به کشور و درگاه دارد" متناسب با زبان ترجمه
+                const gatewayTexts = {
+                    en: "Depends on the country and gateway, requires user collaboration",
+                    tr: "Ülkeye ve geçide bağlıdır, kullanıcı işbirliği gerektirir",
+                    fr: "Dépend du pays et de la passerelle, nécessite la collaboration de l'utilisateur",
+                    es: "Depende del país y la pasarela, requiere la colaboración del usuario",
+                    de: "Hängt vom Land und Gateway ab, erfordert die Zusammenarbeit des Benutzers",
+                    ku: "بستگی به وڵات و دەروازە هەیە، پێویستی بە هاوکاری بەکارهێنەر هەیە",
+                    ru: "Зависит от страны и шлюза, требуется сотрудничество пользователя",
+                    la: "In patria et porta pendet, eget user cooperatio",
+                    zh: "取决于国家和网关，需要用户协作",
+                    ja: "国やゲートウェイによって異なり、ユーザーの協力が必要です"
+                };
+                setPriceDisplay("pr-t6", gatewayTexts[lang] || gatewayTexts.en, "EN");
 
-                // فرآیند محاسبات ارز: تبدیل تومان به دلار با ۷۵٪ افزایش قیمت و معادل رمزارز بیت کوین آن
-                setPriceDisplay("pr-t1", "$204 (0.0031 BTC)", "EN");
-                setPriceDisplay("pr-t2", "$248 (0.0038 BTC)", "EN");
-                setPriceDisplay("pr-t3", "$875 (0.0134 BTC)", "EN");
-                setPriceDisplay("pr-t4", "$204 (0.0031 BTC)", "EN");
-                setPriceDisplay("pr-t5", "$175 (0.0027 BTC)", "EN");
-                setPriceDisplay("pr-t6", "$146 (0.0022 BTC)", "EN");
-                setPriceDisplay("pr-t7", "$437 (0.0067 BTC)", "EN");
-                setPriceDisplay("pr-t8", "$58 (0.0009 BTC)", "EN");
-                setPriceDisplay("pr-t9", "$87 (0.0013 BTC)", "EN");
+                setPriceDisplay("pr-t7", "$499.99 (0.0077 BTC)", "EN"); // فونت ۴۹۹.۹۹ دلار
+                
+                // عکاسی و ادیت: "در دسترس نمی‌باشد"
+                const photoTexts = {
+                    en: "Not Available (Domestic Only)",
+                    tr: "Mevcut Değil",
+                    fr: "Non Disponible",
+                    es: "No Disponible",
+                    de: "Nicht Verfügbar",
+                    ku: "لەبەردەستدا نییە",
+                    ru: "Недоступно",
+                    la: "Non Praesto",
+                    zh: "暂无服务",
+                    ja: "現在ご利用いただけません"
+                };
+                setPriceDisplay("pr-t8", photoTexts[lang] || photoTexts.en, "EN");
+
+                setPriceDisplay("pr-t9", "$49.99 (0.0008 BTC)", "EN"); // ادیت عکس با هوش مصنوعی ۴۹.۹۹ دلار
             }
 
             const data = translations[lang] || translations.fa;
@@ -2143,14 +2214,46 @@
 
 
         // ==========================================================================
-        // چت پشتیبانی و سوالات متداول
+        // چت پشتیبانی و سوالات متداول تعاملی (افکت هاور دسکتاپ و کلیک تبلت/موبایل) - بند ۵
         // ==========================================================================
+        const faqQuestions = document.querySelectorAll('.faq-question');
+        const isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+
+        faqQuestions.forEach(q => {
+            if (isTouchDevice) {
+                // موبایل و آیپد: کلیکی
+                q.addEventListener('click', function() {
+                    toggleFaq(this);
+                });
+            } else {
+                // دسکتاپ: باز شدن با هاور ماوس
+                q.addEventListener('mouseenter', function() {
+                    openFaq(this);
+                });
+                q.parentElement.addEventListener('mouseleave', function() {
+                    closeFaq(this.querySelector('.faq-question'));
+                });
+            }
+        });
+
         function toggleFaq(element) {
             const item = element.parentElement;
             const isActive = item.classList.contains('active');
             const activeItems = document.querySelectorAll('.faq-item.active');
             activeItems.forEach(activeItem => activeItem.classList.remove('active'));
             if (!isActive) item.classList.add('active');
+        }
+
+        function openFaq(element) {
+            const item = element.parentElement;
+            const activeItems = document.querySelectorAll('.faq-item.active');
+            activeItems.forEach(activeItem => activeItem.classList.remove('active'));
+            item.classList.add('active');
+        }
+
+        function closeFaq(element) {
+            const item = element.parentElement;
+            item.classList.remove('active');
         }
 
         function toggleChat() {
