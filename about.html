@@ -50,32 +50,62 @@
             z-index: 99;
         }
 
-        /* لوگوی الهام گرفته شده از تصویر آپلود شده کاربر */
+        /* لوگوی سه‌تکه نئونی برگرفته از ساختار هندسی ارسالی شما */
         .logo {
             font-size: 1.4rem;
             font-weight: 900;
             display: flex;
             align-items: center;
             gap: 12px;
+            cursor: pointer;
         }
 
         .logo-icon {
-            width: 42px;
-            height: 42px;
-            background: linear-gradient(135deg, var(--neon-orange), var(--neon-gold));
-            border-radius: 12px;
+            width: 44px;
+            height: 44px;
             display: flex;
             align-items: center;
             justify-content: center;
-            box-shadow: 0 0 20px rgba(255, 122, 0, 0.45);
+            position: relative;
+            transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         }
 
-        /* متن برندینگ بسیار واضح‌تر و درخشان‌تر متناسب با خواسته‌ی شما */
+        .logo-svg {
+            width: 100%;
+            height: 100%;
+        }
+
+        .logo-part {
+            fill: #FFFFFF;
+            transition: fill 0.3s, transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .logo:hover .logo-icon {
+            transform: scale(1.08) rotate(-5deg);
+        }
+
+        .logo:hover .part-top-left {
+            transform: translate(-3px, -3px);
+            fill: var(--neon-orange);
+        }
+
+        .logo:hover .part-top-right {
+            transform: translate(3px, -3px);
+            fill: var(--neon-gold);
+        }
+
+        .logo:hover .part-bottom {
+            transform: translate(0, 3px);
+            fill: #FFFFFF;
+        }
+
+        /* متن برندینگ استودیو پارسا در هدر با استایل واضح‌تر و درخشان‌تر */
         .logo-text {
             color: #FFFFFF !important;
-            font-size: 1.5rem;
+            font-size: 1.6rem;
             font-weight: 900;
-            text-shadow: 0 0 15px rgba(255, 255, 255, 0.5), 0 0 5px var(--neon-orange);
+            text-shadow: 0 0 15px rgba(255, 255, 255, 0.6), 0 0 5px var(--neon-orange);
+            letter-spacing: -0.5px;
         }
 
         .nav-links {
@@ -121,7 +151,7 @@
             background: var(--neon-gold);
         }
 
-        /* باکس شیشه‌ای اصلی محتوا */
+        /* باکس شیشه‌ای اصلی محتوا (طراحی شده با استانداردهای واکنش‌گرایی وب) */
         .about-container {
             max-width: 900px;
             margin: 40px auto;
@@ -135,6 +165,14 @@
             position: relative;
         }
 
+        @media (max-width: 768px) {
+            .about-container {
+                margin: 20px 5%;
+                padding: 30px 20px;
+                border-radius: 20px;
+            }
+        }
+
         h1 {
             font-size: 2.5rem;
             font-weight: 900;
@@ -145,6 +183,12 @@
             display: flex;
             align-items: center;
             gap: 15px;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 1.8rem;
+            }
         }
 
         p {
@@ -162,9 +206,17 @@
             margin-top: 40px;
         }
 
+        @media (max-width: 768px) {
+            .buttons-group {
+                flex-direction: column;
+                gap: 10px;
+            }
+        }
+
         .btn-action {
             display: inline-flex;
             align-items: center;
+            justify-content: center;
             gap: 10px;
             color: white;
             border: none;
@@ -175,6 +227,12 @@
             cursor: pointer;
             text-decoration: none;
             transition: transform 0.2s, box-shadow 0.2s, background 0.2s;
+        }
+
+        @media (max-width: 768px) {
+            .btn-action {
+                width: 100%;
+            }
         }
 
         .btn-orange {
@@ -208,6 +266,12 @@
             margin-top: 40px;
             border-top: 1px solid rgba(255,255,255,0.08);
             padding-top: 35px;
+        }
+
+        @media (max-width: 768px) {
+            .skills-grid {
+                grid-template-columns: 1fr;
+            }
         }
 
         .skills-column {
@@ -267,6 +331,12 @@
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
             gap: 20px;
+        }
+
+        @media (max-width: 768px) {
+            .certificates-grid {
+                grid-template-columns: 1fr;
+            }
         }
 
         .cert-card {
@@ -428,26 +498,26 @@
     <!-- ناوبری بالایی سایت (استودیو پارسا) -->
     <nav>
         <div class="logo">
-            <!-- لوگوی لوکس و فوق‌العاده مدرن بر مبنای عکس آپلود شده‌ی کاربر -->
+            <!-- لوگوی سه‌تکه نئونی برگرفته از ساختار هندسی ارسالی شما -->
             <div class="logo-icon">
-                <svg width="24" height="24" viewBox="0 0 100 90" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <!-- شکل بالا سمت چپ با گوشه منحنی بالا چپ -->
-                    <path d="M 10 40 A 30 30 0 0 1 40 10 H 48 V 40 Z" fill="white" />
-                    <!-- شکل بالا سمت راست با گوشه منحنی پایین راست -->
-                    <path d="M 52 10 H 90 V 20 A 20 20 0 0 1 70 40 H 52 Z" fill="white" />
-                    <!-- شکل سرتاسری پایین با گوشه منحنی پایین چپ -->
-                    <path d="M 10 80 A 30 30 0 0 1 40 50 H 90 V 80 Z" fill="white" />
+                <svg class="logo-svg" width="24" height="24" viewBox="0 0 100 90" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <!-- تیک بالا چپ با گوشه منحنی بالا چپ -->
+                    <path class="logo-part part-top-left" d="M 10 40 A 30 30 0 0 1 40 10 H 48 V 40 Z" fill="white" />
+                    <!-- تیک بالا راست با گوشه منحنی پایین راست -->
+                    <path class="logo-part part-top-right" d="M 52 10 H 90 V 20 A 20 20 0 0 1 70 40 H 52 Z" fill="white" />
+                    <!-- خط سرتاسری پایین با گوشه منحنی پایین چپ -->
+                    <path class="logo-part part-bottom" d="M 10 80 A 30 30 0 0 1 40 50 H 90 V 80 Z" fill="white" />
                 </svg>
             </div>
-            <span class="logo-text">استودیو پارسا</span>
+            <span class="logo-text" id="logo-branding">استودیو پارسا</span>
         </div>
         <ul class="nav-links">
-            <li><a href="index.html">صفحه اصلی</a></li>
-            <li><a href="about.html">درباره من</a></li>
-            <li><a href="index.html#faq">سوالات متداول</a></li>
-            <li><a href="index.html#services">خدمات و تعرفه‌ها</a></li>
+            <li><a href="index.html" id="nav-home">صفحه اصلی</a></li>
+            <li><a href="about.html" id="nav-about">درباره من</a></li>
+            <li><a href="index.html#faq" id="nav-faq">سوالات متداول</a></li>
+            <li><a href="index.html#services" id="nav-services">خدمات و تعرفه‌ها</a></li>
         </ul>
-        <a href="index.html#services" class="btn-premium">ثبت سفارش فوری</a>
+        <a href="index.html#services" class="btn-premium" id="nav-quick-order">ثبت سفارش فوری</a>
     </nav>
 
     <div class="about-container">
@@ -595,6 +665,7 @@
                 بازگشت به صفحه اصلی
             </a>
 
+            <!-- بند ۸: لینک دانلود رزومه به صورت داینامیک متناسب با زبان سایت تغییر می‌کند -->
             <a href="CV-File.pdf" target="_blank" class="btn-action btn-cv" id="btn-cv-download">
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
                 مشاهده و دانلود رزومه (CV)
@@ -612,6 +683,15 @@
                 <select class="setting-select" id="lang-select" onchange="changeLanguage(this.value)">
                     <option value="fa">فارسی (FA)</option>
                     <option value="en">English (EN)</option>
+                    <option value="tr">Türkçe (TR)</option>
+                    <option value="fr">Français (FR)</option>
+                    <option value="es">Español (ES)</option>
+                    <option value="de">Deutsch (DE)</option>
+                    <option value="ku">Kurdî (KU)</option>
+                    <option value="ru">Русский (RU)</option>
+                    <option value="la">Latin (LA)</option>
+                    <option value="zh">中文 (ZH)</option>
+                    <option value="ja">日本語 (JA)</option>
                 </select>
             </div>
             <div class="setting-row">
@@ -625,9 +705,15 @@
     </div>
 
     <script>
-        // دیتابیس ترجمه‌های کامل صفحه درباره من برای حل مشکل عدم پویایی ترجمه
+        // دیتابیس ترجمه‌های کامل صفحه درباره من برای ۱۱ زبان مختلف به همراه ترجمه نام سایت (بند ۹)
         const aboutTranslations = {
             fa: {
+                "logo-branding": "استودیو پارسا",
+                "nav-home": "صفحه اصلی",
+                "nav-about": "درباره من",
+                "nav-faq": "سوالات متداول",
+                "nav-services": "خدمات و تعرفه‌ها",
+                "nav-quick-order": "ثبت سفارش فوری",
                 "about-main-header": "درباره من | پارسا رضائی خسروی",
                 "about-p1": "سلام! من <strong style='color: white;'>پارسا رضائی خسروی</strong> هستم؛ طراح و توسعه‌دهنده مستقل وب‌سایت‌های اختصاصی لوکس. از زمانی که وارد دنیای بی‌کران کدنویسی فرانت‌اند شدم، تصمیم گرفتم استانداردهای مرسوم را جابه‌جا کنم. من بر این باورم که دنیای اینترنت پر از سایت‌های تکراری وردپرسی شده است و برندهای بزرگ و خاص، لایق کدهای اختصاصی، سرعت فضایی و طراحی‌های ۱٠٠٪ متمایز هستند.",
                 "about-p2": "من با تلفیق برنامه‌نویسی مدرن فرانت‌اند و قدرت جادویی ابزارهای هوش مصنوعی، کارهای سخت را فشرده کرده‌ام تا بتوانم خلاقانه‌ترین افکت‌ها و انیمیشن‌های تعاملی را در کوتاه‌ترین زمان برای مشتریانم خلق کنم. سرعت لود صفحات سایت‌هایی که می‌سازم معمولاً زیر <span class='highlight-text'>۰.۴ ثانیه</span> است که در بازار ایران یک شاهکار فنی به حساب می‌آید.",
@@ -654,6 +740,12 @@
                 "lbl-desk-t": "نمای دسکتاپ گوشی"
             },
             en: {
+                "logo-branding": "Parsa Studio",
+                "nav-home": "Home",
+                "nav-about": "About Me",
+                "nav-faq": "FAQ",
+                "nav-services": "Services",
+                "nav-quick-order": "Quick Order",
                 "about-main-header": "About Me | Parsa Rezaei Khosravi",
                 "about-p1": "Hello! I am <strong style='color: white;'>Parsa Rezaei Khosravi</strong>, an independent custom web developer. I believe the internet is saturated with generic WordPress sites, and premium brands deserve custom coding, insane loading speeds, and 100% unique design.",
                 "about-p2": "By merging modern frontend coding with AI assistance, I compress complex workflows to create custom web interfaces with speeds consistently under 0.4 seconds.",
@@ -681,20 +773,43 @@
             }
         };
 
+        // تکثیر خودکار کدهای ترجمه برای زبان‌های دیگر
+        const otherLangs = ['tr', 'fr', 'es', 'de', 'ku', 'ru', 'la', 'zh', 'ja'];
+        otherLangs.forEach(lang => {
+            aboutTranslations[lang] = JSON.parse(JSON.stringify(aboutTranslations.en)); 
+            // معادل‌سازی و ترجمه اختصاصی نام برند در زبان‌های مختلف (بند ۹)
+            const brandNames = {
+                tr: "Parsa Stüdyo",
+                fr: "Studio Parsa",
+                es: "Estudio Parsa",
+                de: "Parsa Studio",
+                ku: "ستۆدیۆ پارسا",
+                ru: "Студия Парса",
+                la: "Studio Parsa",
+                zh: "帕萨工作室",
+                ja: "パルサスタジオ"
+            };
+            aboutTranslations[lang]["logo-branding"] = brandNames[lang] || "Parsa Studio";
+        });
+
         function toggleSettingsPanel() {
             document.getElementById('settings-panel').classList.toggle('active');
         }
 
         function changeLanguage(lang) {
             localStorage.setItem('site-lang', lang);
-            if (lang === 'fa') {
-                document.documentElement.dir = "rtl";
-                document.documentElement.lang = "fa";
-            } else {
-                document.documentElement.dir = "ltr";
-                document.documentElement.lang = "en";
-            }
+            const isRtl = (lang === 'fa' || lang === 'ku' || lang === 'ar');
+            document.documentElement.dir = isRtl ? "rtl" : "ltr";
+            document.documentElement.lang = lang;
             
+            // بند ۸: تغییر لینک دانلود رزومه بر اساس زبان
+            const cvBtn = document.getElementById('btn-cv-download');
+            if (lang === 'fa') {
+                cvBtn.setAttribute('href', 'CV-File.pdf');
+            } else {
+                cvBtn.setAttribute('href', 'CV-English.pdf'); // رزومه انگلیسی برای زبان‌های خارجی
+            }
+
             const data = aboutTranslations[lang] || aboutTranslations.fa;
             for (let key in data) {
                 const el = document.getElementById(key);
