@@ -1,71 +1,70 @@
-# 🎨 استودیو پارسا | Parsa Studio
-## پورتفولیو و آژانس خلاق وب لوکس + پنل مدیریت ابری CRM متصل به هوش مصنوعی
-### Premium Multi-Page Web Portfolio & AI-Powered Cloud CRM Platform
+[README (en).md](https://github.com/user-attachments/files/28901121/README.en.md)
+# 🎨 Parsa Studio
+## Premium Multi-Page Creative Web Agency & AI-Powered Cloud CRM Platform
+### Insanely Optimized, Custom-Coded Digital Solutions Without Template Limitations
 
 ---
 
-## 🎯 درباره پروژه (About the Project)
+## 🎯 About the Project
 
-این پروژه، وب‌سایت پورتفولیو شخصی و پلتفرم آژانس دیجیتال اختصاصی **پارسا رضائی خسروی** است. این سامانه با تلفیق مدرن‌ترین متدهای طراحی فرانت‌اند، متدهای روانشناسی و جامعه‌شناسی فروش روز دنیا و زیرساخت ابری مدیریت ارتباط با مشتری (CRM)، به عنوان یک نمونه کار تراز اول و سطح جهانی (Awwwards Grade) توسعه یافته است.
+**Parsa Studio** is an elite, high-end custom multi-page portfolio and digital agency platform built for **Parsa Rezaei Khosravi**. Built strictly from scratch with pristine, modular code and zero template or WordPress bloat, this platform represents the pinnacle of modern frontend engineering, behavioral marketing psychology, and seamless backend automation. 
 
-کل سیستم فاقد هرگونه قالب آماده یا کدهای کپی‌شده وردپرس است و خط به خط آن به صورت فوق‌سریع، بهینه و با بهره‌گیری از استودیوهای هوش مصنوعی برتر دنیا برنامه‌نویسی شده است.
-
----
-
-## 🛠 تکنولوژی‌های استفاده شده (Tech Stack)
-
-*   **فرانت‌اند (Frontend):** HTML5, CSS3 Custom Variables, Vanilla JavaScript, CSS Grid, Flexbox, Dynamic Keyframe Animations, SVG Vector Graphics.
-*   **بک‌اند و پایگاه داده (Cloud DB):** Supabase (PostgreSQL), LocalStorage State Sync.
-*   **اتوماسیون و هوش مصنوعی:** Python (FastAPI - CrewAI), SMS Gateway APIs (Faraz SMS), VoIP Telephony (AloVoIP SIP).
+Every single line of code is optimized to achieve an astounding page load speed of **under 0.4 seconds**, meeting the strict speed and technical SEO requirements of the modern web.
 
 ---
 
-## ✨ ویژگی‌های برجسته و خلاقانه (Core Features)
+## 🛠 Tech Stack & Ecosystem
 
-1.  **لوگوی سه‌تکه متحرک نئونی (Inspired Abstract SVG Logo):**
-    الهام گرفته شده از طرح‌های هندسی مینیمال و لوکس. دارای انیمیشن کشسانی و متحرک (Explode/Merge) اختصاصی در زمان هاور ماوس.
-2.  **موشن‌گرافیک چرخشی «روند همکاری» دور محور مرکزی (Orbital Process Loop):**
-    مراحل ۵گانه پروژه به صورت دایره‌وار به دور یک رینگ هولوگرافیک مینی‌مال می‌چرخند. با بردن ماوس، چرخش متوقف شده و توضیحات لایو هر گام همراه با آیکون‌های وکتور اختصاصی در دایره مرکزی رندر می‌شود.
-3.  **پشتیبانی و معادل‌سازی لایو ۱۱ زبان دنیا (11-Language Engine):**
-    ترجمه مستقل کل صفحات، منوها و تعرفه‌ها به زبان‌های: **فارسی، انگلیسی، ترکی، فرانسوی، اسپانیایی، آلمانی، کردی، روسی، لاتین، چینی و ژاپنی** همراه با جابجایی خودکار تراز LTR/RTL.
-4.  **تبدیل هوشمند نرخ ارز و معادل رمزارز بیت‌کوین (Dynamic Currency Converter):**
-    با تغییر زبان سایت به انگلیسی یا زبان‌های خارجی، قیمت خدمات به طور خودکار با **۷۵٪ افزایش نرخ لوکس بین‌المللی** از تومان به **دلار ($)** تبدیل شده و معادل دقیق رمزارز **بیت‌کوین (BTC)** آن را نیز با رقم‌های زبان مقصد محاسبه و نمایش می‌دهد.
-5.  **ثبت‌نام دو مرحله‌ای با تاییدیه ایمیل امن (Verification System):**
-    دارای شبیه‌ساز ارسال کد تایید از فرستنده معتبر **`noreply@parsa.studio`** با کد تست فعال‌سازی `4815` و اعتبارسنجی شماره‌های همراه داخل ایران (`09`).
-6.  **پروفایل کاربری کشویی زنده (Live Profile & Dropdown):**
-    تغییر پویای منوی ورود به دکمه نام کاربر پس از لاگین و باز شدن پنل کشویی باریک نشان‌دهنده مشخصات، سبد خرید زنده و خروج از حساب.
-7.  **پنجره سوالات متداول تعاملی (FAQ Accordion):**
-    هوشمندسازی شده به طوری که روی دسکتاپ با هاور ماوس باز می‌شود و روی موبایل و آی‌پد با کلیک لمسی.
-8.  **پنل اختصاصی مدیریت ارتباط با مشتری (`crm.html`):**
-    یک CRM ابری و مجهز به قیف فروش (Sales Pipeline) ۵ مرحله‌ای متحرک، سیستم اتوماسیون پیامکی فراز اس‌ام‌اس و شبیه‌ساز پایانه سیاه هوش مصنوعی (AI Agent Terminal) برای پایش خودکار فاکتورها و پیگیری باپرستیژ مشتریان.
-9.  **واکنش‌گرایی ۱۰۰ درصدی (Perfect Responsiveness):**
-    سازگاری کامل و بدون باگ کادربندی‌ها با چرخش‌های افقی/عمودی موبایل، آی‌پد، نوت‌بوک و مک‌بوک.
+*   **Frontend Architecture:** Semantic HTML5, CSS3 Custom Variables, Modular Vanilla JS (ES6+), CSS Grid & Flexbox, Dynamic Keyframe Animations, Responsive SVG Vectors.
+*   **Database & State Management:** Supabase (Cloud PostgreSQL), HTML5 LocalStorage persistence for multi-page state synchronization.
+*   **Automation & Integrations:** Python (FastAPI / CrewAI), SMS Gateway REST APIs (Faraz SMS), Cloud VoIP Telephony (AloVoIP SIP).
 
 ---
 
-## 📂 ساختار فایل‌های پروژه (File Structure)
+## ✨ Groundbreaking Features & Innovations
+
+1.  **Futuristic Modular SVG Logo (Explode/Merge Hover Motion):**
+    Inspired by high-end geometric and minimalist vector art. Features a custom CSS/JS elastic hover effect where modular paths slide apart and expand with a neon orange and gold glow.
+2.  **Holographic Circular Axis Process Loop (Opposite-Spin Math):**
+    The 5-stage cooperation roadmap (Discovery ➔ Contract ➔ AI Mockup ➔ Dev ➔ Handoff) rotates automatically on a circular orbit. On desktop, hover freezes the rotation and projects custom glowing SVG icons and text directly in the central hub. On mobile, it responds beautifully to touch-click events.
+3.  **11-Language Native Client-Side Translation Engine:**
+    Full, seamless on-the-fly translation of headers, navigation, services, and footers across: **Farsi (FA), English (EN), Turkish (TR), French (FR), Spanish (ES), German (DE), Kurdish (KU), Russian (RU), Latin (LA), Chinese (ZH), and Japanese (JA)**.
+4.  **Automatic RTL/LTR Layout Alignment:**
+    When changing to/from Middle Eastern languages (Farsi, Kurdish), the document direction (`dir="rtl" / dir="ltr"`) toggles dynamically, perfectly mirroring the entire grid alignment and flex flow.
+5.  **Dynamic Fiat/Crypto Currency Converter (+75% International Rate):**
+    Toggling from Farsi to any international language automatically converts the services base prices from Tomans to **US Dollars ($) with a 75% international surcharge adjustment**, while dynamically calculating and rendering the exact live **Bitcoin (BTC) equivalent** in target numerals.
+6.  **Multi-Step Registration with Simulated `noreply` Secure Verification:**
+    Features a premium user onboarding flow. Registration via email triggers a mock activation overlay from the secure address **`noreply@parsa.studio`**, requiring the activation code `4815` before unlocking profile completion and Persian/Arabic Captcha validation.
+7.  **Dynamic Profile Dropdown & Cart Badge Sync:**
+    Toggles the login navigation item to a custom User Profile button upon authentication. Clicking it slides down a narrow, elegant glassmorphic dashboard showcasing user info, pending orders/cart items, profile edits, and secure logout.
+8.  **Automated Cloud CRM Portal (`crm.html`):**
+    A fully integrated client dashboard containing an interactive 5-stage Kanban sales pipeline, cloud VoIP dialing, and a custom **AI Agent Terminal Console** that scans unpaid invoices, drafts high-prestige localized follow-ups, and fires them via the SMS Gateway.
+
+---
+
+## 📂 Repository File Structure
 
 ```text
 my-portofolio/
-├── index.html            # صفحه اصلی (هدر، رینگ چرخان، سوالات متداول، تعرفه‌ها، چت‌بات)
-├── about.html            # صفحه مستقل درباره من (بیوگرافی، دو ستون تخصص‌ها، گواهینامه‌ها، دانلود CV)
-├── subscriptions.html    # جدول مقایسه پویای اشتراک‌های ماهیانه برنز، نقره‌ای و طلایی آژانس
-├── crm.html              # پنل مدیریت ارتباط با مشتریان و شبیه‌ساز ایجنت هوش مصنوعی
-├── parsa-ai-agent-config.md # دستورالعمل و پرامپت رفتاری ایجنت هوش مصنوعی لوکس فارسی
-└── README.md             # فایل معرفی و مستندات پروژه گیت‌هاب شما
+├── index.html               # Main Landing Page (Header, Orbit Loop, FAQ, Services, Chatbot)
+├── about.html               # Personal Bio, 2-Column Skills Grid, Certificates, Resume (CV)
+├── subscriptions.html       # Dynamic subscription packages (Bronze, Silver, Gold) comparison
+├── crm.html                 # Cloud CRM Client Dashboard & AI Agent Terminal Console
+├── parsa-ai-agent-config.md # Prompt configuration and personality guide for the Sales AI Agent
+└── README.md                # English system documentation & repository showcase
 ```
 
 ---
 
-## 👤 توسعه‌دهنده (Developer)
+## 💻 Developer & Creative Architect
 
-*   **نام:** پارسا رضائی خسروی (Parsa Rezaei Khosravi)
-*   **پست الکترونیک:** `parsarezaeikhosravi@gmail.com`
-*   **سایت لایو:** [https://parsarezaeikhosravi.github.io/my-portofolio/](https://parsarezaeikhosravi.github.io/my-portofolio/)
-*   **برند:** استودیو پارسا (Parsa Studio)
+*   **Lead Architect:** Parsa Rezaei Khosravi
+*   **E-mail:** `parsarezaeikhosravi@gmail.com`
+*   **Live Demo:** [https://parsarezaeikhosravi.github.io/my-portofolio/](https://parsarezaeikhosravi.github.io/my-portofolio/)
+*   **Ecosystem Brand:** Parsa Studio
 
 ---
 
-## 📝 لایسنس (License)
+## 📝 License
 
-این پروژه تحت لایسنس MIT منتشر شده است و هرگونه استفاده تجاری یا کپی‌برداری با ذکر نام توسعه‌دهنده بلامانع است.
+This project is released under the **MIT License**. Feel free to customize, modify, and deploy for commercial or personal agency use.
