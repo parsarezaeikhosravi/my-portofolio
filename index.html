@@ -2,26 +2,321 @@
 <html lang="fa" dir="rtl">
 <head>
     <meta charset="UTF-8">
-    <!-- شناسه viewport پیش‌فرض که قابلیت تغییر دینامیک برای نمای دسکتاپ دارد -->
+    <meta id="viewport-meta" name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>اشتراک‌های ویژه | استودیو پارسا</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;700;900&display=swap');
+
+        :root {
+            --bg: #0F172A;                        
+            --card-bg: rgba(30, 41, 59, 0.6);     
+            --card-border: rgba(255, 255, 255, 0.12); 
+            --neon-orange: #FF7A00;               
+            --neon-gold: #F59E0B;                 
+            --neon-glow: rgba(255, 122, 0, 0.25);  
+            --text-main: #F9FAFB;                 
+            --text-muted: #CBD5E1;                
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Vazirmatn', 'Tahoma', sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--bg);
+            color: var(--text-main);
+            overflow-x: hidden;
+            position: relative;
+            line-height: 1.7;
+            padding: 40px 8%;
+        }
+
+        .orb {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(140px);
+            z-index: -1;
+            pointer-events: none;
+            opacity: 0.45;
+        }
+        .orb-1 {
+            top: -100px;
+            right: -100px;
+            width: 500px;
+            height: 500px;
+            background: var(--neon-orange);
+        }
+
+        /* دکمه بازگشت لوکس */
+        .btn-back {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: linear-gradient(135deg, var(--neon-orange) 0%, #D97706 100%);
+            color: white;
+            border: none;
+            padding: 12px 28px;
+            border-radius: 50px;
+            font-weight: bold;
+            font-size: 0.95rem;
+            cursor: pointer;
+            box-shadow: 0 0 20px var(--neon-glow);
+            text-decoration: none;
+            transition: transform 0.2s, box-shadow 0.2s;
+            margin-bottom: 40px;
+        }
+
+        .btn-back:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 0 25px rgba(255, 122, 0, 0.5);
+        }
+
+        .header-title {
+            font-size: 2.5rem;
+            font-weight: 900;
+            text-align: center;
+            margin-bottom: 10px;
+            background: linear-gradient(to left, #FFFFFF, var(--neon-gold));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .header-desc {
+            text-align: center;
+            color: var(--text-muted);
+            max-width: 600px;
+            margin: 0 auto 50px auto;
+        }
+
+        /* جدول مقایسه اشتراک‌ها */
+        .table-container {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 24px;
+            padding: 40px;
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            box-shadow: 0 30px 60px rgba(0,0,0,0.4);
+            overflow-x: auto;
+            margin-bottom: 50px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            text-align: right;
+        }
+
+        th, td {
+            padding: 18px 20px;
+            border-bottom: 1px solid rgba(255,255,255,0.06);
+        }
+
+        th {
+            font-weight: 900;
+            font-size: 1.1rem;
+            color: var(--neon-gold);
+        }
+
+        tr:last-child td {
+            border-bottom: none;
+        }
+
+        .check-icon {
+            color: #10B981;
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        .cross-icon {
+            color: #EF4444;
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        .package-header {
+            font-size: 1.3rem;
+            font-weight: 900;
+            color: white;
+        }
+
+        .package-price {
+            font-size: 1.1rem;
+            color: var(--neon-orange);
+            font-weight: bold;
+            margin-top: 5px;
+        }
+
+        .btn-sub-buy {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--card-border);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 10px;
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 0.85rem;
+            transition: all 0.2s;
+        }
+
+        .btn-sub-buy:hover {
+            background: var(--neon-orange);
+            border-color: var(--neon-orange);
+            color: white;
+            box-shadow: 0 0 15px var(--neon-glow);
+        }
+    </style>
+</head>
+<body>
+
+    <div class="orb orb-1"></div>
+
+    <a href="index.html" class="btn-back">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="transform: scaleX(-1);"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 19 12 12 5"/></svg>
+        بازگشت به استودیو پارسا
+    </a>
+
+    <h1 class="header-title" id="sub-title">پلن‌های اشتراک ماهیانه اختصاصی</h1>
+    <p class="header-desc" id="sub-desc">تفاوت و امکانات بی‌نظیر هر سه بسته برنز، نقره‌ای و طلایی را در جدول پویا و متمایز زیر با هم مقایسه کنید.</p>
+
+    <div class="table-container">
+        <table>
+            <thead>
+                <tr>
+                    <th style="width: 40%;" id="th-feat">ویژگی‌ها و امکانات</th>
+                    <th style="text-align: center;">
+                        <div class="package-header" id="pkg-b">برنز (Bronze)</div>
+                        <div class="package-price" id="pr-b">۴,۹۰۰,۰۰۰ تومان</div>
+                    </th>
+                    <th style="text-align: center;">
+                        <div class="package-header" id="pkg-s" style="color: var(--neon-gold);">نقره‌ای (Silver)</div>
+                        <div class="package-price" id="pr-s">۹,۹۰۰,۰۰۰ تومان</div>
+                    </th>
+                    <th style="text-align: center;">
+                        <div class="package-header" id="pkg-g" style="color: var(--neon-orange);">طلایی (Gold)</div>
+                        <div class="package-price" id="pr-g">۱۹,۹۰۰,۰۰۰ تومان</div>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td id="f-1">پشتیبانی آنلاین ۲۴ ساعته</td>
+                    <td style="text-align: center;"><span class="check-icon">✔</span></td>
+                    <td style="text-align: center;"><span class="check-icon">✔</span></td>
+                    <td style="text-align: center;"><span class="check-icon">✔</span></td>
+                </tr>
+                <tr>
+                    <td id="f-2">ادیت و تولید عکس با AI</td>
+                    <td style="text-align: center;" id="f-2-b">تا ۵ عکس در ماه</td>
+                    <td style="text-align: center;" id="f-2-s">تا ۲۰ عکس در ماه</td>
+                    <td style="text-align: center;"><span class="check-icon" id="f-2-g">نامحدود ✔</span></td>
+                </tr>
+                <tr>
+                    <td id="f-3">تغییر و ویرایش کدهای اختصاصی</td>
+                    <td style="text-align: center;"><span class="cross-icon">✖</span></td>
+                    <td style="text-align: center;" id="f-3-s">۲ بار در ماه</td>
+                    <td style="text-align: center;"><span class="check-icon" id="f-3-g">نامحدود ✔</span></td>
+                </tr>
+                <tr>
+                    <td id="f-4">مشاوره اختصاصی سئو و رشد برند</td>
+                    <td style="text-align: center;"><span class="cross-icon">✖</span></td>
+                    <td style="text-align: center;"><span class="check-icon">✔</span></td>
+                    <td style="text-align: center;"><span class="check-icon">✔</span></td>
+                </tr>
+                <tr>
+                    <td id="f-5">هاست ابری فوق‌سریع رایگان</td>
+                    <td style="text-align: center;"><span class="cross-icon">✖</span></td>
+                    <td style="text-align: center;"><span class="cross-icon">✖</span></td>
+                    <td style="text-align: center;"><span class="check-icon">✔</span></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td style="text-align: center;">
+                        <button class="btn-sub-buy" onclick="purchaseSubscription('Bronze', '۴,۹۰۰,۰۰۰')" id="btn-b">انتخاب برنز</button>
+                    </td>
+                    <td style="text-align: center;">
+                        <button class="btn-sub-buy" onclick="purchaseSubscription('Silver', '۹,۹۰۰,۰۰۰')" id="btn-s">انتخاب نقره‌ای</button>
+                    </td>
+                    <td style="text-align: center;">
+                        <button class="btn-sub-buy" onclick="purchaseSubscription('Gold', '۱۹,۹۰۰,۰۰۰')" id="btn-g">انتخاب طلایی</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <script>
+        // کنترل خرید اشتراک با تایید احراز هویت
+        function purchaseSubscription(packName, priceText) {
+            const isLoggedIn = localStorage.getItem('is-logged-in') === 'true';
+            if (!isLoggedIn) {
+                alert('کاربر گرامی، لطفاً ابتدا در صفحه اصلی سایت ثبت‌نام یا ورود کنید تا بتوانید اشتراک تهیه کنید.');
+                window.location.href = "index.html?triggerAuth=true";
+            } else {
+                alert(`درخواست خرید اشتراک ماهیانه "${packName}" با قیمت ${priceText} تومان صادر شد. شما اکنون به درگاه پرداخت متصل می‌شوید.`);
+                window.open('https://zarinp.al', '_blank');
+            }
+        }
+
+        // یکپارچه‌سازی ارز و زبان
+        const savedLang = localStorage.getItem('site-lang') || 'fa';
+        if (savedLang !== 'fa') {
+            document.documentElement.dir = "ltr";
+            document.getElementById('sub-title').innerText = "Premium Monthly Subscriptions";
+            document.getElementById('sub-desc').innerText = "Compare and choose our premium subscription packages: Bronze, Silver, and Gold.";
+            document.getElementById('th-feat').innerText = "Features & Limits";
+            
+            // تبدیل قیمت‌ها به دلار با ۷۵٪ افزایش
+            document.getElementById('pr-b').innerText = "$140.00 / mo";
+            document.getElementById('pr-s').innerText = "$280.00 / mo";
+            document.getElementById('pr-g').innerText = "$560.00 / mo";
+
+            document.getElementById('f-1').innerText = "24/7 Premium Support";
+            document.getElementById('f-2').innerText = "AI Product Photo Generation";
+            document.getElementById('f-2-b').innerText = "5 photos / mo";
+            document.getElementById('f-2-s').innerText = "20 photos / mo";
+            document.getElementById('f-2-g').innerText = "Unlimited";
+            document.getElementById('f-3').innerText = "Custom Code Maintenance";
+            document.getElementById('f-3-s').innerText = "2 updates / mo";
+            document.getElementById('f-3-g').innerText = "Unlimited";
+            document.getElementById('f-4').innerText = "SEO & Branding Consultations";
+            document.getElementById('f-5').innerText = "Free Ultra-fast Cloud Hosting";
+
+            document.getElementById('btn-b').innerText = "Buy Bronze";
+            document.getElementById('btn-s').innerText = "Buy Silver";
+            document.getElementById('btn-g').innerText = "Buy Gold";
+        }
+    </script>
+</body>
+</html>
+
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
     <meta id="viewport-meta" name="viewport" content="width=device-width, initial-scale=1.0">
     <title>استودیو پارسا | پورتفولیو و خدمات وب لوکس</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;700;900&display=swap');
 
         /* ==========================================================================
-           بخش متغیرهای رنگی (CSS Variables) - تم طلایی و نارنجی لوکس
+           تنظیمات تم رنگی لوکس و پرمیوم (نارنجی و طلایی نئونی متناسب با استودیو پارسا)
            ========================================================================== */
         :root {
-            --bg: #0F172A;                        
-            --card-bg: rgba(30, 41, 59, 0.6);     
+            --bg: #090D1A;                        /* پس‌زمینه عمیق کهکشانی و درخشان */
+            --card-bg: rgba(20, 30, 55, 0.65);    /* شیشه تیره‌تر و با کنتراست بالاتر */
             --card-border: rgba(255, 255, 255, 0.12); 
             
             --neon-orange: #FF7A00;               
             --neon-gold: #F59E0B;                 
-            --neon-glow: rgba(255, 122, 0, 0.25);  
+            --neon-glow: rgba(255, 122, 0, 0.35);  /* سایه نوری قوی‌تر و روشن‌تر */
             
-            --text-main: #F9FAFB;                 
-            --text-muted: #CBD5E1;                
+            --text-main: #FFFFFF;                 /* سفید خالص برای وضوح حداکثری */
+            --text-muted: #94A3B8;                /* خاکستری ملایم برای جزئیات */
         }
 
         * {
@@ -41,7 +336,7 @@
             transition: background 0.3s, color 0.3s;
         }
 
-        /* هاله‌های نورانی پس‌زمینه قوی‌تر برای روشنایی محیطی لوکس */
+        /* هاله‌های درخشان اتمسفریک در پس‌زمینه */
         .orb {
             position: absolute;
             border-radius: 50%;
@@ -51,58 +346,93 @@
             opacity: 0.45;
         }
         .orb-1 {
-            top: -100px;
+            top: -150px;
             right: -100px;
-            width: 500px;
-            height: 500px;
-            background: var(--neon-orange);
-        }
-        .orb-2 {
-            top: 600px;
-            left: -150px;
             width: 600px;
             height: 600px;
-            background: var(--neon-gold);
+            background: radial-gradient(circle, var(--neon-orange) 0%, transparent 70%);
+        }
+        .orb-2 {
+            top: 50%;
+            left: -150px;
+            width: 700px;
+            height: 700px;
+            background: radial-gradient(circle, var(--neon-gold) 0%, transparent 70%);
         }
 
-        /* هدر و ناوبری */
+        /* ناوبری بالایی (استودیو پارسا) */
         nav {
             display: flex;
             justify-content: space-between;
             align-items: center;
             padding: 20px 8%;
-            background: rgba(15, 23, 42, 0.85);
-            backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
+            background: rgba(9, 13, 26, 0.85);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
             border-bottom: 1px solid var(--card-border);
             position: sticky;
             top: 0;
             z-index: 99;
         }
 
+        /* لوگوی بسیار مدرن و انتزاعی برگرفته از مدل هندسی ارسالی شما */
         .logo {
             font-size: 1.4rem;
             font-weight: 900;
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 15px;
+            cursor: pointer;
         }
 
+        /* لوگوی سه‌تکه متحرک نئونی */
         .logo-icon {
-            width: 32px;
-            height: 32px;
-            background: linear-gradient(135deg, var(--neon-orange), var(--neon-gold));
-            border-radius: 10px;
+            width: 44px;
+            height: 44px;
             display: flex;
             align-items: center;
             justify-content: center;
-            box-shadow: 0 0 15px rgba(255, 122, 0, 0.4);
+            position: relative;
+            transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         }
 
+        .logo-svg {
+            width: 100%;
+            height: 100%;
+        }
+
+        .logo-part {
+            fill: #FFFFFF;
+            transition: fill 0.3s, transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        /* افکت خلاقانه باز شدن قطعات لوگو هنگام هاور */
+        .logo:hover .logo-icon {
+            transform: scale(1.08) rotate(-5deg);
+        }
+
+        .logo:hover .part-top-left {
+            transform: translate(-3px, -3px);
+            fill: var(--neon-orange);
+        }
+
+        .logo:hover .part-top-right {
+            transform: translate(3px, -3px);
+            fill: var(--neon-gold);
+        }
+
+        .logo:hover .part-bottom {
+            transform: translate(0, 3px);
+            fill: #FFFFFF;
+        }
+
+        /* متن استودیو پارسا در هدر با استایل واضح‌تر و درخشان‌تر */
         .logo-text {
-            background: linear-gradient(to left, #FFFFFF, var(--text-muted));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+            color: #FFFFFF !important;
+            font-size: 1.6rem;
+            font-weight: 900;
+            text-shadow: 0 0 15px rgba(255, 255, 255, 0.5), 0 0 5px var(--neon-orange);
+            letter-spacing: -0.5px;
         }
 
         .nav-links {
@@ -125,7 +455,7 @@
             color: var(--text-main);
         }
 
-        /* سبد خرید با نشان دایره‌ای در گوشه بالا چپ */
+        /* سبد خرید با نشان دایره‌ای */
         .cart-link-container {
             position: relative;
         }
@@ -145,7 +475,7 @@
             align-items: center;
             justify-content: center;
             box-shadow: 0 0 10px var(--neon-orange);
-            display: none; /* در صورت نبود آیتم مخفی است */
+            display: none; 
         }
 
         .btn-premium {
@@ -167,10 +497,10 @@
             box-shadow: 0 0 25px rgba(255, 122, 0, 0.5);
         }
 
-        /* استایل منوی کشویی پروفایل کاربری */
+        /* منوی حساب کاربری کشویی */
         .profile-container {
             position: relative;
-            display: none; /* فقط بعد از لاگین نمایش داده می‌شود */
+            display: none; 
         }
 
         .profile-trigger {
@@ -298,7 +628,7 @@
             text-align: justify;
         }
 
-        /* کارت نمونه کار تعاملی */
+        /* کارت نمونه کار تعاملی با افکت ۳بعدی */
         .portfolio-card {
             background: var(--card-bg);
             border: 1px solid var(--card-border);
@@ -413,7 +743,7 @@
             border-color: var(--neon-orange);
         }
 
-        /* درباره من */
+        /* درباره من (نام شما بدون هایلایت زرد رنگ طبق خواسته شما نوشته شده است) */
         .about-section {
             padding: 80px 8%;
             max-width: 1400px;
@@ -424,48 +754,188 @@
             border-top: 1px solid var(--card-border);
         }
 
-        /* روند همکاری (تنظیم مجدد تعداد مراحل و شماره‌بندی‌ها) */
+        /* ==========================================================================
+           شاهکار جادویی: روند همکاری هولوگرافیک با انیمیشن چرخش دایره‌ای دور محور مرکزی
+           ========================================================================== */
         .process-section {
-            padding: 80px 8%;
+            padding: 100px 8%;
             max-width: 1400px;
             margin: 0 auto;
             border-top: 1px solid var(--card-border);
-        }
-
-        .process-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 25px;
-        }
-
-        .process-card {
-            background: rgba(255, 255, 255, 0.02);
-            border: 1px solid var(--card-border);
-            border-radius: 20px;
-            padding: 30px;
             position: relative;
-            transition: border-color 0.3s;
         }
 
-        .process-card:hover {
-            border-color: var(--neon-orange);
-        }
-
-        .process-num {
-            font-size: 3rem;
-            font-weight: 900;
-            color: rgba(255, 122, 0, 0.1);
-            position: absolute;
-            top: 10px;
-            left: 20px;
-        }
-
-        .process-title {
+        .process-header-text {
+            text-align: center;
             font-size: 1.15rem;
+            color: var(--text-muted);
+            max-width: 750px;
+            margin: 0 auto 60px auto;
+            line-height: 1.8;
             font-weight: bold;
-            margin-bottom: 15px;
+            border-bottom: 1px solid rgba(255,255,255,0.03);
+            padding-bottom: 20px;
+        }
+
+        /* محور مرکزی چرخش دور محور دایره‌ای */
+        .cooperation-orbit-area {
+            position: relative;
+            width: 500px;
+            height: 500px;
+            margin: 0 auto 50px auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        @media (max-width: 768px) {
+            .cooperation-orbit-area {
+                width: 340px;
+                height: 340px;
+            }
+        }
+
+        /* رینگ چرخان مینی‌مال دایره‌ای */
+        .orbit-ring {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border: 2px dashed rgba(255, 122, 0, 0.25);
+            border-radius: 50%;
+            animation: spinOrbit 45s linear infinite; 
+            transition: animation-play-state 0.3s;
+        }
+
+        @keyframes spinOrbit {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        /* توقف چرخش هنگام هاور */
+        .cooperation-orbit-area:hover .orbit-ring {
+            animation-play-state: paused;
+        }
+
+        /* توپک‌های ۵ مرحله روند همکاری به صورت چرخشی */
+        .orbit-node {
+            position: absolute;
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--bg) 0%, rgba(30, 41, 59, 0.95) 100%);
+            border: 2px solid var(--card-border);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: 900;
+            color: var(--neon-gold);
+            cursor: pointer;
+            box-shadow: 0 0 20px rgba(0,0,0,0.4);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            user-select: none;
+        }
+
+        /* موقعیت‌دهی ۵ توپک به صورت فیزیکی در زوایای دایره */
+        .node-1 { top: -40px; left: calc(50% - 40px); }
+        .node-2 { top: 120px; right: -40px; }
+        .node-3 { bottom: -40px; right: 40px; }
+        .node-4 { bottom: -40px; left: 40px; }
+        .node-5 { top: 120px; left: -40px; }
+
+        /* استایل خاص در زمان هاور روی هر گام */
+        .orbit-node:hover {
+            transform: scale(1.3);
+            border-color: var(--neon-orange);
+            color: white;
+            box-shadow: 0 0 25px var(--neon-orange);
+        }
+
+        /* مرکز رینگ چرخش: جعبه هولوگرافیک نشان‌دهنده اطلاعات */
+        .orbit-center-detail {
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            background: rgba(15, 23, 42, 0.96);
+            border: 2px solid var(--neon-orange);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 30px;
+            text-align: center;
+            box-shadow: inset 0 0 35px rgba(255, 122, 0, 0.15), 0 0 35px rgba(255, 122, 0, 0.2);
+            z-index: 5;
+            transition: all 0.3s;
+        }
+
+        @media (max-width: 768px) {
+            .orbit-center-detail {
+                width: 220px;
+                height: 220px;
+                padding: 15px;
+            }
+        }
+
+        /* آیکون تعاملی هولوگرافیک مرکزی */
+        .orbit-detail-icon {
+            width: 50px;
+            height: 50px;
+            margin-bottom: 12px;
+            color: var(--neon-gold);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            filter: drop-shadow(0 0 8px var(--neon-orange));
+        }
+
+        .orbit-detail-num {
+            font-size: 2.2rem;
+            font-weight: 900;
             color: var(--neon-orange);
-            margin-top: 15px;
+            margin-bottom: 2px;
+        }
+
+        .orbit-detail-title {
+            font-size: 1.15rem;
+            font-weight: 900;
+            color: white;
+            margin-bottom: 8px;
+        }
+
+        .orbit-detail-desc {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            line-height: 1.5;
+        }
+
+        /* دکمه "خلق رویا (+)" زیر روند همکاری */
+        .cooperation-cta-container {
+            text-align: center;
+            margin-top: 30px;
+        }
+
+        .btn-create-dream {
+            background: linear-gradient(135deg, var(--neon-gold) 0%, var(--neon-orange) 100%);
+            color: black;
+            border: none;
+            padding: 12px 35px;
+            border-radius: 50px;
+            font-weight: 900;
+            font-size: 1.05rem;
+            cursor: pointer;
+            box-shadow: 0 0 25px rgba(255, 122, 0, 0.4);
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .btn-create-dream:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 0 35px rgba(255, 122, 0, 0.6);
         }
 
         /* سوالات متداول */
@@ -550,6 +1020,7 @@
             display: flex;
             flex-direction: column;
             justify-content: space-between;
+            position: relative;
         }
 
         .service-card:hover {
@@ -746,7 +1217,7 @@
             font-weight: bold;
         }
 
-        /* تنظیمات شناور (زبان و نسخه دسکتاپ) */
+        /* تنظیمات شناور */
         .settings-widget {
             position: fixed;
             bottom: 30px;
@@ -819,7 +1290,6 @@
             cursor: pointer;
         }
 
-        /* سوییچ تعویض دسکتاپ */
         .switch {
             position: relative;
             display: inline-block;
@@ -860,7 +1330,7 @@
             transform: translateX(22px);
         }
 
-        /* پنجره‌های بازشوی لاگین و ثبت‌نام */
+        /* پاپ‌آپ‌ها */
         .modal-overlay {
             position: fixed;
             top: 0; left: 0; right: 0; bottom: 0;
@@ -965,7 +1435,6 @@
             box-shadow: 0 0 20px rgba(255, 122, 0, 0.5);
         }
 
-        /* استایل کلیدهای ورود شبکه اجتماعی */
         .social-login-group {
             display: flex;
             gap: 10px;
@@ -994,7 +1463,6 @@
             border-color: var(--neon-gold);
         }
 
-        /* کپچای فارسی شیک */
         .captcha-box {
             background: rgba(0,0,0,0.3);
             border: 1px solid var(--card-border);
@@ -1026,10 +1494,18 @@
     <!-- ناوبری بالایی سایت (استودیو پارسا) -->
     <nav>
         <div class="logo">
+            <!-- لوگوی سه‌تکه نئونی برگرفته از ساختار هندسی ارسالی شما -->
             <div class="logo-icon">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" style="color: white;"><polygon points="12 2 2 7 12 12 22 7 12 2"/></svg>
+                <svg class="logo-svg" width="24" height="24" viewBox="0 0 100 90" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <!-- تیک بالا چپ با گوشه منحنی بالا چپ -->
+                    <path class="logo-part part-top-left" d="M 10 40 A 30 30 0 0 1 40 10 H 48 V 40 Z" fill="white" />
+                    <!-- تیک بالا راست با گوشه منحنی پایین راست -->
+                    <path class="logo-part part-top-right" d="M 52 10 H 90 V 20 A 20 20 0 0 1 70 40 H 52 Z" fill="white" />
+                    <!-- خط سرتاسری پایین با گوشه منحنی پایین چپ -->
+                    <path class="logo-part part-bottom" d="M 10 80 A 30 30 0 0 1 40 50 H 90 V 80 Z" fill="white" />
+                </svg>
             </div>
-            <span class="logo-text" id="logo-branding">استودیو پارسا</span>
+            <span class="logo-text">استودیو پارسا</span>
         </div>
         <ul class="nav-links">
             <li><a href="#" id="nav-home">صفحه اصلی</a></li>
@@ -1039,11 +1515,9 @@
                 <a href="#services" id="nav-services">خدمات و تعرفه‌ها</a>
                 <span class="cart-badge" id="cart-counter">0</span>
             </li>
-            <!-- منوی ورود / ثبت نام جدید به جای واژه نامه -->
             <li id="auth-nav-item">
                 <a href="#" onclick="openAuthModal(event)" id="nav-login">ورود / ثبت‌نام</a>
             </li>
-            <!-- منوی اطلاعات پروفایل کاربری بعد از لاگین -->
             <li class="profile-container" id="user-profile-menu">
                 <button class="profile-trigger" onclick="toggleProfileDropdown()" id="profile-btn-username">حساب کاربری</button>
                 <div class="profile-dropdown" id="profile-dropdown-menu">
@@ -1059,7 +1533,6 @@
                         <span id="profile-lbl-phone">تلفن همراه:</span>
                         <strong id="profile-display-phone">-</strong>
                     </div>
-                    <!-- سبد خرید درون پروفایل کاربری -->
                     <div class="profile-info-item" id="profile-cart-container" style="display: none; border-bottom: none; padding-bottom: 0;">
                         <span id="profile-lbl-pending">در انتظار پرداخت:</span>
                         <strong id="profile-display-pending" style="color: var(--neon-gold);">0 مورد</strong>
@@ -1077,7 +1550,7 @@
         <div class="hero-left">
             <h1 id="hero-title">خلق سایت‌های <span class="gradient-highlight">لوکس و اختصاصی</span> با مدرن‌ترین کدهای فرانت‌اند</h1>
             <p id="hero-desc">
-                هیچ سایت موفقی با قالب‌های کپی شده ساخته نشده است. من به عنوان طراح خلاق، به صورت کاملاً سفارشی و با استفاده از استودیوی هوش مصنوعی، سایت‌های شما را از صفر طراحی و کدنویسی می‌کنم. برای دیدن کیفیت و پویایی کار، ماوس خود را روی کارت نمونه‌کار تعاملی سمت چپ ببرید!
+                هیچ سایت موفقی با قالب‌های کپی شده ساخته نشده است. من به عنوان طراح خلاق، به صورت کاملاً سفارشی و با استفاده از استودیوی هوش مصنوعی، سایت‌های شما را از صفر طراحی و کدنویسی می‌کنم. برای دیدن کیفیت و پویایی کار، ماوس خود را روی کارت نمونه‌کار تعاملی سمت چپ بگیرید!
             </p>
             <div style="display: flex; gap: 15px; flex-wrap: wrap;">
                 <a href="#services" class="btn-premium" id="btn-services-hero">سفارش و تعرفه خدمات</a>
@@ -1115,7 +1588,7 @@
         </div>
     </section>
 
-    <!-- بخش درباره من خلاصه -->
+    <!-- بخش درباره من خلاصه (رنگ زرد از روی نام شما حذف شد) -->
     <section class="about-section" id="about">
         <div>
             <span class="service-badge" id="badge-about-me">درباره من</span>
@@ -1126,58 +1599,62 @@
             <div style="background: rgba(255, 122, 0, 0.05); border-right: 4px solid var(--neon-orange); padding: 15px 20px; border-radius: 8px; color: var(--text-main); font-weight: bold;" id="about-quote">
                 "برندهای لوکس تکرار نمی‌شوند؛ آن‌ها متمایز خلق می‌شوند."
             </div>
-            <div style="margin-top: 15px; font-weight: 900; font-size: 1.15rem; color: var(--neon-gold);" id="about-signature">
+            <div style="margin-top: 15px; font-weight: 900; font-size: 1.15rem; color: var(--text-main);" id="about-signature">
                 پارسا رضائی خسروی
             </div>
         </div>
     </section>
 
-    <!-- روند همکاری (۵ مرحله با اضافه شدن مرحله قرارداد) -->
+    <!-- ==========================================================================
+       روند همکاری با افکت موشن گرافیک چرخش دایره‌ای دور محور مرکزی
+       ========================================================================== -->
     <section class="process-section" id="process">
-        <div style="text-align: center; margin-bottom: 50px;">
+        <div style="text-align: center; margin-bottom: 20px;">
             <span class="service-badge" id="badge-cooperation">روند همکاری</span>
             <h2 style="font-size: 2.3rem; font-weight: 900; margin-top: 10px;" id="process-title-main">ما چطور رویای شما را به واقعیت تبدیل می‌کنیم؟</h2>
         </div>
+        <p class="process-header-text" id="process-sub-text">
+            برای تجربه قدرت تعاملی وب‌سایت‌های اختصاصی، ماوس خود را روی رینگ چرخان زیر بیاورید تا متوقف شود و اطلاعات کامل هر مرحله را در قلب چرخش به صورت لایو تماشا کنید.
+        </p>
 
-        <div class="process-grid">
-            <!-- مرحله ۱ -->
-            <div class="process-card">
-                <span class="process-num">۰۱</span>
-                <h3 class="process-title" id="proc-t1">۱. کشف و مشاوره</h3>
-                <p style="color: var(--text-muted); font-size: 0.85rem; text-align: justify;" id="proc-d1">دریافت اهداف برند شما، بررسی رقبای ایرانی و تعیین دقیق مسیر پروژه.</p>
+        <!-- محور مرکزی چرخش دور محور دایره‌ای -->
+        <div class="cooperation-orbit-area">
+            
+            <!-- رینگ چرخان مینی‌مال -->
+            <div class="orbit-ring" id="orbit-ring-container">
+                <!-- گام ۱ -->
+                <div class="orbit-node node-1" onmouseenter="setOrbitActive(0)" id="node-0">۰۱</div>
+                <!-- گام ۲ -->
+                <div class="orbit-node node-2" onmouseenter="setOrbitActive(1)" id="node-1">۰۲</div>
+                <!-- گام ۳ -->
+                <div class="orbit-node node-3" onmouseenter="setOrbitActive(2)" id="node-2">۰۳</div>
+                <!-- گام ۴ -->
+                <div class="orbit-node node-4" onmouseenter="setOrbitActive(3)" id="node-3">۰۴</div>
+                <!-- گام ۵ -->
+                <div class="orbit-node node-5" onmouseenter="setOrbitActive(4)" id="node-4">۰۵</div>
             </div>
 
-            <!-- مرحله ۲ (جدید) -->
-            <div class="process-card">
-                <span class="process-num">۰۲</span>
-                <h3 class="process-title" id="proc-t2" style="color: var(--neon-gold);">۲. قرارداد و پیش‌پرداخت</h3>
-                <p style="color: var(--text-muted); font-size: 0.85rem; text-align: justify;" id="proc-d2">توافق بر سر جزئیات فنی و حقوقی پروژه، امضای قرارداد دیجیتال و واریز پیش‌پرداخت برای شروع طراحی.</p>
+            <!-- مرکز رینگ: نمایشگر زنده اطلاعات گام انتخاب شده -->
+            <div class="orbit-center-detail">
+                <!-- آیکون هولوگرافیک متحرک مرکزی -->
+                <div class="orbit-detail-icon" id="orbit-display-icon">
+                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+                </div>
+                <div class="orbit-detail-num" id="orbit-display-num">۰۱</div>
+                <div class="orbit-detail-title" id="orbit-display-title">کشف و مشاوره</div>
+                <div class="orbit-detail-desc" id="orbit-display-desc">دریافت اهداف برند شما، بررسی رقبای ایرانی و تعیین دقیق مسیر پروژه.</div>
             </div>
+        </div>
 
-            <!-- مرحله ۳ -->
-            <div class="process-card">
-                <span class="process-num">۰۳</span>
-                <h3 class="process-title" id="proc-t3">۳. اتود خلاق با AI</h3>
-                <p style="color: var(--text-muted); font-size: 0.85rem; text-align: justify;" id="proc-d3">تصویر سازی و ساخت هویت بصری اولیه، ظاهر و ترکیب رنگ لوکس با AI.</p>
-            </div>
-
-            <!-- مرحله ۴ -->
-            <div class="process-card">
-                <span class="process-num">۰۴</span>
-                <h3 class="process-title" id="proc-t4">۴. کدنویسی اختصاصی</h3>
-                <p style="color: var(--text-muted); font-size: 0.85rem; text-align: justify;" id="proc-d4">تبدیل طرح به کدهای فرانت‌اند فوق‌العاده بهینه، سریع و ۱۰۰٪ سفارشی.</p>
-            </div>
-
-            <!-- مرحله ۵ -->
-            <div class="process-card">
-                <span class="process-num">۰۵</span>
-                <h3 class="process-title" id="proc-t5">۵. تحویل و تسویه</h3>
-                <p style="color: var(--text-muted); font-size: 0.85rem; text-align: justify;" id="proc-d5">تست نهایی سرعت و سئو، اتصال درگاه پرداخت آنلاین و تحویل نهایی کلید پروژه.</p>
-            </div>
+        <!-- دکمه خلق رویا (+) زیر رینگ همکاری -->
+        <div class="cooperation-cta-container">
+            <button onclick="handleCreateDreamClick()" class="btn-create-dream">
+                <span>+ خلق رویا</span>
+            </button>
         </div>
     </section>
 
-    <!-- بخش جدید سوم: سوالات متداول تعاملی (FAQ) -->
+    <!-- بخش سوالات متداول -->
     <section class="faq-section" id="faq">
         <div style="text-align: center; margin-bottom: 50px;">
             <span class="service-badge" id="badge-faq">پاسخ به سوالات متداول</span>
@@ -1213,9 +1690,20 @@
                 ۱۰۰٪ بله! تمامی سایت‌هایی که توسط من طراحی و پیاده‌سازی می‌شوند، به صورت کامل واکنش‌گرا (Responsive) هستند و در تمامی دستگاه‌ها، به ویژه موبایل، با مدرن‌ترین ظاهر چیده و لود می‌شوند.
             </div>
         </div>
+
+        <!-- سوال جدید ۵ مربوط به ویرایش متون و قیمت‌ها بعد از تحویل -->
+        <div class="faq-item">
+            <div class="faq-question" onclick="toggleFaq(this)">
+                <span id="faq-q4">پس از اتمام کار، چطور باید متون یا قیمت‌های سایتم را ویرایش کنم؟</span>
+                <span class="faq-icon">+</span>
+            </div>
+            <div class="faq-answer" id="faq-a4">
+                من فایل نهایی را همراه با یک راهنمای بسیار ساده فارسی ویدیویی یا متنی تحویل می‌دهم تا خودتان در چند ثانیه و به راحتی بتوانید نوشته‌ها و تصاویر را بدون یک خط کدنویسی ویرایش و ذخیره کنید.
+            </div>
+        </div>
     </section>
 
-    <!-- خدمات مستقیم -->
+    <!-- بخش خدمات مستقیم سفارش (با اعمال قیمت‌های جدید و تفکیک عکس‌ها) -->
     <section class="services-section" id="services">
         <div class="section-title">
             <h2 id="services-title-main">تعرفه‌گذاری و سفارش آنلاین خدمات اختصاصی</h2>
@@ -1223,7 +1711,26 @@
         </div>
 
         <div class="services-grid">
-            <!-- سرویس ۱ -->
+            
+            <!-- سرویس ۱: خرید اشتراک ماهیانه (کارت اول جدید با هوور افکت متمایز) -->
+            <div class="service-card" style="border: 2px solid var(--neon-gold); box-shadow: 0 0 20px var(--neon-glow);" onmouseenter="this.querySelector('.sub-hover-desc').style.display='block'" onmouseleave="this.querySelector('.sub-hover-desc').style.display='none'">
+                <div>
+                    <span class="service-badge" style="background: rgba(245, 158, 11, 0.2); color: var(--neon-gold);">پیشنهاد ویژه VIP</span>
+                    <h3 class="service-title" id="sc-t0">خرید اشتراک ماهیانه آژانس</h3>
+                    <p class="service-desc" id="sc-d0">بسته‌های حمایتی ماهیانه برای رشد و نگهداری نامحدود وب‌سایت شما.</p>
+                    
+                    <!-- بخش توضیحات هوور فاش شونده -->
+                    <div class="sub-hover-desc" style="display: none; background: rgba(0,0,0,0.5); padding: 10px; border-radius: 8px; font-size: 0.75rem; color: var(--neon-gold); margin-bottom: 15px;">
+                        سه بسته برنز، نقره‌ای و طلایی وجود دارد که با کلیک وارد صفحه جدید مقایسه و خرید می‌شوید.
+                    </div>
+                </div>
+                <div>
+                    <div class="price-tag" id="pr-t0">پلن‌های متنوع <span>VIP</span></div>
+                    <a href="subscriptions.html" class="btn-order" style="text-align: center; display: block; text-decoration: none;" id="sc-btn0">ورود به صفحه اشتراک‌ها</a>
+                </div>
+            </div>
+
+            <!-- سرویس ۲ -->
             <div class="service-card">
                 <div>
                     <span class="service-badge">اصلی</span>
@@ -1231,12 +1738,12 @@
                     <p class="service-desc" id="sc-d1">طراحی و کدنویسی یک صفحه فرود شیک، ۱۰۰٪ واکنش‌گرا و سریع برای معرفی یا کمپین‌های فروش محصول شما.</p>
                 </div>
                 <div>
-                    <div class="price-tag">۵,۰۰۰,۰۰۰ <span>تومان</span></div>
-                    <button class="btn-order" onclick="openPaymentModal('لندینگ‌پیج تک‌صفحه‌ای مدرن', '۵,۰۰۰,۰۰۰ تومان')">اتصال به درگاه پرداخت</button>
+                    <div class="price-tag" id="pr-t1">۷,۰۰۰,۰۰۰ <span>تومان</span></div>
+                    <button class="btn-order" onclick="openPaymentModal('لندینگ‌پیج تک‌صفحه‌ای مدرن', '۷,۰۰۰,۰۰۰ تومان', 7000000)">اتصال به درگاه پرداخت</button>
                 </div>
             </div>
 
-            <!-- سرویس ۲ -->
+            <!-- سرویس ۳ -->
             <div class="service-card">
                 <div>
                     <span class="service-badge">لوکس</span>
@@ -1244,12 +1751,12 @@
                     <p class="service-desc" id="sc-d2">یک سایت گالری و معرفی شخصی خیره‌کننده با انواع افکت‌های حرکتی و تغییر پوسته برای فریلنسرها و طراحان طراز اول.</p>
                 </div>
                 <div>
-                    <div class="price-tag">۸,۰۰۰,۰۰۰ <span>تومان</span></div>
-                    <button class="btn-order" onclick="openPaymentModal('سایت پورتفولیو اختصاصی ۳بعدی', '۸,۰۰۰,۰۰۰ تومان')">اتصال به درگاه پرداخت</button>
+                    <div class="price-tag" id="pr-t2">۸,۵۰۰,۰۰۰ <span>تومان</span></div>
+                    <button class="btn-order" onclick="openPaymentModal('سایت پورتفولیو اختصاصی ۳بعدی', '۸,۵۰۰,۰۰۰ تومان', 8500000)">اتصال به درگاه پرداخت</button>
                 </div>
             </div>
 
-            <!-- سرویس ۳ -->
+            <!-- سرویس ۴ -->
             <div class="service-card">
                 <div>
                     <span class="service-badge">کامل</span>
@@ -1257,12 +1764,12 @@
                     <p class="service-desc" id="sc-d3">وب‌سایت چندصفحه‌ای فوق‌العاده سبک با سئوی تضمین شده برای معرفی کسب‌وکار شما بدون محدودیت‌های قالب وردپرس.</p>
                 </div>
                 <div>
-                    <div class="price-tag">۱۵,۰۰۰,۰۰۰ <span>تومان</span></div>
-                    <button class="btn-order" onclick="openPaymentModal('سایت شرکتی چندصفحه‌ای لوکس', '۱۵,۰۰۰,۰۰۰ تومان')">اتصال به درگاه پرداخت</button>
+                    <div class="price-tag" id="pr-t3">۳۰,۰۰۰,۰۰۰ <span>تومان</span></div>
+                    <button class="btn-order" onclick="openPaymentModal('سایت شرکتی چندصفحه‌ای لوکس', '۳۰,۰۰۰,۰۰۰ تومان', 30000000)">اتصال به درگاه پرداخت</button>
                 </div>
             </div>
 
-            <!-- سرویس ۴: طراحی لوگو -->
+            <!-- سرویس ۵: طراحی لوگو -->
             <div class="service-card">
                 <div>
                     <span class="service-badge">هویت بصری</span>
@@ -1270,12 +1777,12 @@
                     <p class="service-desc" id="sc-d4">خلق یک نشان تجاری و لوگوی بی‌نظیر، کاملاً اختصاصی و متناسب با روانشناسی بازار مخاطب شما با فرمت‌های برداری باکیفیت.</p>
                 </div>
                 <div>
-                    <div class="price-tag">۷,۰۰۰,۰۰۰ <span>تومان</span></div>
-                    <button class="btn-order" onclick="openPaymentModal('طراحی لوگو اختصاصی برند', '۷,۰۰۰,۰۰۰ تومان')">اتصال به درگاه پرداخت</button>
+                    <div class="price-tag" id="pr-t4">۷,۰۰۰,۰۰۰ <span>تومان</span></div>
+                    <button class="btn-order" onclick="openPaymentModal('طراحی لوگو اختصاصی برند', '۷,۰۰۰,۰۰۰ تومان', 7000000)">اتصال به درگاه پرداخت</button>
                 </div>
             </div>
 
-            <!-- سرویس ۵: طراحی رنگ سازمانی -->
+            <!-- سرویس ۶: طراحی رنگ سازمانی -->
             <div class="service-card">
                 <div>
                     <span class="service-badge">هویت بصری</span>
@@ -1283,12 +1790,12 @@
                     <p class="service-desc" id="sc-d5">طراحی و پیاده‌سازی هویت رنگی و روانشناسی رنگ‌های برند برای همخوانی ۱۰۰ درصدی کارت ویزیت، سایت و شبکه‌های اجتماعی.</p>
                 </div>
                 <div>
-                    <div class="price-tag">۵,۰۰۰,۰۰۰ <span>تومان</span></div>
-                    <button class="btn-order" onclick="openPaymentModal('طراحی پالت رنگ سازمانی', '۵,۰۰۰,۰۰۰ تومان')">اتصال به درگاه پرداخت</button>
+                    <div class="price-tag" id="pr-t5">۶,۰۰۰,۰۰۰ <span>تومان</span></div>
+                    <button class="btn-order" onclick="openPaymentModal('طراحی پالت رنگ سازمانی', '۶,۰۰۰,۰۰۰ تومان', 6000000)">اتصال به درگاه پرداخت</button>
                 </div>
             </div>
 
-            <!-- سرویس ۶: اتصال به درگاه پرداخت آنلاین -->
+            <!-- سرویس ۷: اتصال به درگاه پرداخت آنلاین -->
             <div class="service-card">
                 <div>
                     <span class="service-badge">فنی</span>
@@ -1296,12 +1803,12 @@
                     <p class="service-desc" id="sc-d6">اتصال انواع درگاه‌های پرداخت بانکی مستقیم یا واسط (زرین‌پال، نکست‌پی و...) به کدهای سایت اختصاصی شما بدون دردسر.</p>
                 </div>
                 <div>
-                    <div class="price-tag">۴,۰۰۰,۰۰۰ <span>تومان</span></div>
-                    <button class="btn-order" onclick="openPaymentModal('اتصال به درگاه پرداخت آنلاین', '۴,۰۰۰,۰۰۰ تومان')">اتصال به درگاه پرداخت</button>
+                    <div class="price-tag" id="pr-t6">۵,۰۰۰,۰۰۰ <span>تومان</span></div>
+                    <button class="btn-order" onclick="openPaymentModal('اتصال به درگاه پرداخت آنلاین', '۵,۰۰۰,۰۰۰ تومان', 5000000)">اتصال به درگاه پرداخت</button>
                 </div>
             </div>
 
-            <!-- سرویس ۷: طراحی فونت اختصاصی -->
+            <!-- سرویس ۸: طراحی فونت اختصاصی -->
             <div class="service-card">
                 <div>
                     <span class="service-badge">تایپوگرافی</span>
@@ -1309,27 +1816,40 @@
                     <p class="service-desc" id="sc-d7">خلق و بهینه‌سازی یک تایپ‌فیس و فونت اختصاصی برای متون وب‌سایت و بنرهای برند شما جهت متمایز شدن مطلق از رقبا.</p>
                 </div>
                 <div>
-                    <div class="price-tag">۶,۰۰۰,۰۰۰ <span>تومان</span></div>
-                    <button class="btn-order" onclick="openPaymentModal('طراحی فونت اختصاصی', '۶,۰۰۰,۰۰۰ تومان')">اتصال به درگاه پرداخت</button>
+                    <div class="price-tag" id="pr-t7">۱۵,۰۰۰,۰۰۰ <span>تومان</span></div>
+                    <button class="btn-order" onclick="openPaymentModal('طراحی فونت اختصاصی', '۱۵,۰۰۰,۰۰۰ تومان', 15000000)">اتصال به درگاه پرداخت</button>
                 </div>
             </div>
 
-            <!-- سرویس ۸: تولید و ادیت عکس تبلیغاتی -->
+            <!-- سرویس ۹: عکاسی و ادیت محصول -->
             <div class="service-card">
                 <div>
-                    <span class="service-badge">گرافیک</span>
-                    <h3 class="service-title" id="sc-t8">تولید و ادیت عکس محصول</h3>
-                    <p class="service-desc" id="sc-d8">تولید تصاویر ۳بعدی تبلیغاتی و ادیت و روتوش فوق‌العاده باکیفیت و نئونی عکس‌های محصولات شما با هوش مصنوعی برای سایت.</p>
+                    <span class="service-badge">عکاسی</span>
+                    <h3 class="service-title" id="sc-t8">عکاسی و ادیت فیزیکی محصول</h3>
+                    <p class="service-desc" id="sc-d8">حضور در آتلیه تخصصی، نورپردازی حرفه‌ای و عکاسی صنعتی به همراه روتوش کامل برای وب‌سایت‌های فروشگاهی لوکس.</p>
                 </div>
                 <div>
-                    <div class="price-tag">۵,۰۰۰,۰۰۰ <span>تومان</span></div>
-                    <button class="btn-order" onclick="openPaymentModal('تولید و ادیت عکس محصول', '۵,۰۰۰,۰۰۰ تومان')">اتصال به درگاه پرداخت</button>
+                    <div class="price-tag" id="pr-t8">۲,۰۰۰,۰۰۰ <span>تومان / عکس</span></div>
+                    <button class="btn-order" onclick="openPaymentModal('عکاسی و ادیت فیزیکی محصول', '۲,۰۰۰,۰۰۰ تومان', 2000000)">اتصال به درگاه پرداخت</button>
+                </div>
+            </div>
+
+            <!-- سرویس ۱۰: تولید عکس با هوش مصنوعی -->
+            <div class="service-card">
+                <div>
+                    <span class="service-badge">گرافیک هوشمند</span>
+                    <h3 class="service-title" id="sc-t9">تولید و ادیت عکس محصول با AI</h3>
+                    <p class="service-desc" id="sc-d9">تولید تصاویر ۳بعدی واقع‌گرایانه تبلیغاتی، بازسازی محیطی و ادیت نئونی پیشرفته محصولات بدون نیاز به عکاسی فیزیکی.</p>
+                </div>
+                <div>
+                    <div class="price-tag" id="pr-t9">۳,۰۰۰,۰۰۰ <span>تومان</span></div>
+                    <button class="btn-order" onclick="openPaymentModal('تولید و ادیت عکس محصول با AI', '۳,۰۰۰,۰۰۰ تومان', 3000000)">اتصال به درگاه پرداخت</button>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- پنجره بازشوی خرید نهایی -->
+    <!-- پنجره بازشوی خرید نهایی زرین‌لینک -->
     <div class="modal-overlay" id="payment-modal-overlay">
         <div class="modal">
             <button class="modal-close" onclick="closePaymentModal()">&times;</button>
@@ -1355,7 +1875,7 @@
         </div>
     </div>
 
-    <!-- چت پشتیبانی -->
+    <!-- پشتیبانی و دستیار چت‌بات هوش مصنوعی اختصاصی -->
     <div class="chat-widget">
         <button class="chat-trigger" onclick="toggleChat()">
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="2.5" style="transform: scaleX(-1);"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
@@ -1380,31 +1900,18 @@
         </div>
     </div>
 
-    <!-- ==========================================================================
-       بخش تنظیمات شناور جدید (ترجمه چندزبانه و نمای دسکتاپ گوشی)
-       ========================================================================== -->
+    <!-- تنظیمات شناور (زبان و نسخه دسکتاپ) -->
     <div class="settings-widget">
         <button class="settings-trigger" onclick="toggleSettingsPanel()">⚙️</button>
         <div class="settings-panel" id="settings-panel">
             <div class="settings-title" id="set-t">تنظیمات وب‌سایت</div>
-            
-            <!-- ردیف تعویض زبان مستقل -->
             <div class="setting-row">
                 <span id="set-lang">زبان سایت (Language)</span>
                 <select class="setting-select" id="lang-select" onchange="changeLanguage(this.value)">
                     <option value="fa">فارسی (FA)</option>
                     <option value="en">English (EN)</option>
-                    <option value="fr">Français (FR)</option>
-                    <option value="ru">Русский (RU)</option>
-                    <option value="tr">Türkçe (TR)</option>
-                    <option value="es">Español (ES)</option>
-                    <option value="de">Deutsch (DE)</option>
-                    <option value="ar">العربية (AR)</option>
-                    <option value="ku">کوردی (KU)</option>
                 </select>
             </div>
-
-            <!-- ردیف نمای دسکتاپ برای گوشی‌ها -->
             <div class="setting-row">
                 <span id="set-desk">نمای دسکتاپ گوشی</span>
                 <label class="switch">
@@ -1415,14 +1922,11 @@
         </div>
     </div>
 
-    <!-- ==========================================================================
-       پاپ‌آپ شیک ثبت‌نام و لاگین کاربری (کاملاً مسدودکننده و زنده)
-       ========================================================================== -->
+    <!-- پاپ‌آپ لاگین و ثبت‌نام کاربری مجهز به کد تایید ایمیلی noreply شبیه‌سازی شده -->
     <div class="modal-overlay" id="auth-modal-overlay" style="z-index: 2000;">
         <div class="modal" style="max-width: 440px;" onclick="event.stopPropagation()">
             <button class="modal-close" onclick="closeAuthModal()">&times;</button>
             
-            <!-- تب‌های ورود / ثبت‌نام -->
             <div style="display: flex; gap: 15px; border-bottom: 1px solid var(--card-border); padding-bottom: 15px; margin-bottom: 25px;">
                 <button id="tab-login" onclick="switchAuthTab('login')" style="flex:1; background:transparent; border:none; color:var(--neon-gold); font-weight:bold; font-size:1.1rem; cursor:pointer;">ورود به حساب</button>
                 <button id="tab-register" onclick="switchAuthTab('register')" style="flex:1; background:transparent; border:none; color:var(--text-muted); font-weight:bold; font-size:1.1rem; cursor:pointer;">ثبت‌نام جدید</button>
@@ -1447,16 +1951,27 @@
                 </form>
             </div>
 
-            <!-- فرم ثبت‌نام دو مرحله‌ای با اعتبارسنجی -->
+            <!-- فرم ثبت‌نام چندمرحله‌ای با رمز یک‌بار مصرف ایمیلی noreply شبیه‌سازی شده -->
             <div id="form-register-area" style="display: none;">
-                <!-- مرحله اول: شماره یا ایمیل -->
+                
+                <!-- مرحله اول: گرفتن شماره یا ایمیل -->
                 <div id="register-step-1">
-                    <p style="font-size: 0.8rem; margin-bottom: 15px;" id="lbl-reg-tip">لطفاً شماره همراه ایرانی (شروع با ۰۹) یا ایمیل خارجی خود را وارد کنید.</p>
+                    <p style="font-size: 0.8rem; margin-bottom: 15px;" id="lbl-reg-tip">لطفاً شماره همراه ایرانی (شروع با ۰۹) یا ایمیل خود را وارد کنید.</p>
                     <div class="form-group">
                         <label id="lbl-reg-id">تلفن یا ایمیل ثبت‌نام</label>
                         <input type="text" id="register-identifier" class="form-input" placeholder="09... / email@domain.com" required>
                     </div>
                     <button type="button" class="btn-submit-zarin" onclick="processRegisterStep1()" id="btn-reg-next">ادامه ثبت‌نام</button>
+                </div>
+
+                <!-- مرحله واسط تایید ایمیل (noreply@parsa.studio) -->
+                <div id="register-step-email-verify" style="display: none;">
+                    <p style="font-size: 0.8rem; color: var(--neon-gold); margin-bottom: 15px;" id="lbl-verify-tip">یک کد تایید فعال‌سازی از طرف فرستنده امن <strong style="color:white;"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="3f51504d5a4f53467f4f5e4d4c5e114c4b4a5b5650">[email&#160;protected]</a></strong> به ایمیل شما ارسال شد. لطفاً کد ۴ رقمی را وارد کنید:</p>
+                    <div class="form-group">
+                        <label>کد تایید ۴ رقمی ایمیل (کد تست: ۴۸۱۵)</label>
+                        <input type="text" id="email-verification-code-input" class="form-input" style="text-align: center; font-size: 1.3rem; letter-spacing: 5px; font-weight: bold;" placeholder="****" required>
+                    </div>
+                    <button type="button" class="btn-submit-zarin" onclick="verifyEmailCode()" id="btn-verify-submit">تایید کد فعال‌سازی</button>
                 </div>
 
                 <!-- مرحله دوم: تکمیل اطلاعات و کپچای فارسی -->
@@ -1477,7 +1992,6 @@
                         <label id="lbl-r-phone">تلفن همراه</label>
                         <input type="tel" id="reg-phone" class="form-input" style="direction: ltr; text-align: left;" required>
                     </div>
-                    <!-- کپچای فارسی -->
                     <div class="form-group">
                         <label id="lbl-r-captcha">کد امنیتی (کپچای فارسی)</label>
                         <div class="captcha-box">
@@ -1496,113 +2010,93 @@
     </footer>
 
     <!-- کدهای جاوااسکریپت (مغز پویای سایت) -->
-    <script>
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
         // دیتابیس ترجمه‌های چندزبانه سایت
         const translations = {
             fa: {
-                "logo-branding": "استودیو پارسا",
-                "nav-home": "صفحه اصلی",
-                "nav-about": "درباره من",
-                "nav-faq": "سوالات متداول",
-                "nav-services": "خدمات و تعرفه‌ها",
-                "nav-login": "ورود / ثبت‌نام",
-                "nav-quick-order": "ثبت سفارش فوری",
                 "hero-title": "خلق سایت‌های <span class='gradient-highlight'>لوکس و اختصاصی</span> با مدرن‌ترین کدهای فرانت‌اند",
-                "hero-desc": "هیچ سایت موفقی با قالب‌های کپی شده ساخته نشده است. من به عنوان طراح خلاق، به صورت کاملاً سفارشی و با استفاده از استودیوی هوش مصنوعی، سایت‌های شما را از صفر طراحی و کدنویسی می‌کنم. برای دیدن کیفیت و پویایی کار، ماوس خود را روی کارت نمونه‌کار تعاملی سمت چپ ببرید!",
+                "hero-desc": "هیچ سایت موفقی با قالب‌های کپی شده ساخته نشده است. من به عنوان طراح خلاق، به صورت کاملاً سفارشی و با استفاده از استودیوی هوش مصنوعی، سایت‌های شما را از صفر طراحی و کدنویسی می‌کنم. برای دیدن کیفیت و پویایی کار، ماوس خود را روی کارت نمونه‌کار تعاملی سمت چپ بگیرید!",
                 "btn-services-hero": "سفارش و تعرفه خدمات",
                 "lbl-support-btn": "پشتیبانی",
                 "about-title-main": "خالق آینده دیجیتال شما",
                 "about-desc-main": "من پارسا رضائی خسروی، طراح و توسعه‌دهنده مستقل وب‌سایت‌های اختصاصی هستم. رسالت من این است که کسب‌وکار شما را با طراحی‌های خاص، لوکس و متمایز، از شلوغی بازار متمایز کنم. من قالب‌های آماده را کنار گذاشته‌ام و هر پروژه را به عنوان یک اثر هنری دیجیتال منحصر‌به‌فرد خلق می‌کنم.",
-                "about-quote": '"برندهای لوکس تکرار نمی‌شوند؛ آن‌ها متمایز خلق می‌شوند."',
                 "process-title-main": "ما چطور رویای شما را به واقعیت تبدیل می‌کنیم؟",
-                "proc-t1": "۱. کشف و مشاوره",
-                "proc-d1": "دریافت اهداف برند شما، بررسی رقبای ایرانی و تعیین دقیق مسیر پروژه.",
-                "proc-t2": "۲. قرارداد و پیش‌پرداخت",
-                "proc-d2": "توافق بر سر جزئیات فنی و حقوقی پروژه، امضای قرارداد دیجیتال و واریز پیش‌پرداخت برای شروع طراحی.",
-                "proc-t3": "۳. اتود خلاق با AI",
-                "proc-d3": "تصویر سازی و ساخت هویت بصری اولیه، ظاهر و ترکیب رنگ لوکس با AI.",
-                "proc-t4": "۴. کدنویسی اختصاصی",
-                "proc-d4": "تبدیل طرح به کدهای فرانت‌اند فوق‌العاده بهینه، سریع و ۱۰۰٪ سفارشی.",
-                "proc-t5": "۵. تحویل و تسویه",
-                "proc-d5": "تست نهایی سرعت و سئو، اتصال درگاه پرداخت آنلاین و تحویل نهایی کلید پروژه.",
+                "process-sub-text": "برای تجربه قدرت تعاملی وب‌سایت‌های اختصاصی، ماوس خود را روی رینگ چرخان زیر بیاورید تا متوقف شود و اطلاعات کامل هر مرحله را در قلب چرخش به صورت لایو تماشا کنید.",
                 "services-title-main": "تعرفه‌گذاری و سفارش آنلاین خدمات اختصاصی",
                 "services-desc-main": "روی دکمه سفارش هر کدام کلیک کنید تا مستقیماً به درگاه پرداخت زرین‌لینک همان خدمت متصل شوید.",
                 "faq-title-main": "ابهامات خود را برطرف کنید",
                 "faq-q1": "چرا قیمت وب‌سایت‌های اختصاصی از وردپرس بیشتر است؟",
-                "faq-a1": "وب‌سایت‌های اختصاصی به صورت خط به خط برای کسب‌وکار شما کدنویسی می‌شوند. سرعت لود آن‌ها فوق‌العاده بالاتر است (زیر نیم ثانیه)، امنیت نزدیک به ۱۰۰٪ دارند و هیچ محدودیت طراحی یا کدهای تکراری در آن‌ها وجود ندارد. این سایت‌ها تا سال‌ها بدون قطعی برند شما را در بازار حفظ می‌کنند.",
-                "faq-q2": "چگونه هزینه را پرداخت کنیم؟ آیا امکان قسط‌بندی هست؟",
-                "faq-a2": "بله! پرداخت‌ها به صورت دو یا سه مرحله‌ای (پیش‌پرداخت برای شروع، تحویل دمو اولیه و تسویه نهایی هنگام آپلود لایو) انجام می‌شود. برای راحتی شما، پرداخت آنلاین امن مستقیم از طریق درگاه زرین‌لینک در هر مرحله فراهم است.",
-                "faq-q3": "آیا سایت‌ها در موبایل و تبلت هم درست نشان داده می‌شوند؟",
-                "faq-a3": "۱۰۰٪ بله! تمامی سایت‌هایی که توسط من طراحی و پیاده‌سازی می‌شوند، به صورت کامل واکنش‌گرا (Responsive) هستند و در تمامی دستگاه‌ها، به ویژه موبایل، با مدرن‌ترین ظاهر چیده و لود می‌شوند."
+                "faq-a1": "وب‌سایت‌های اختصاصی به صورت خط به خط برای کسب‌وکار شما کدنویسی می‌شوند. سرعت لود آن‌ها فوق‌العاده بالاتر است (زیر نیم ثانیه)، امنیت نزدیک به ۱۰۰٪ دارند و هیچ محدودیت طراحی یا کدهای تکراری در آن‌ها وجود ندارد. این سایت‌ها تا سال‌ها بدون قطعی برند شما را در بازار حفظ می‌کنند."
             },
             en: {
-                "logo-branding": "Parsa Studio",
-                "nav-home": "Home",
-                "nav-about": "About Me",
-                "nav-faq": "FAQ",
-                "nav-services": "Services",
-                "nav-login": "Login / Register",
-                "nav-quick-order": "Quick Order",
                 "hero-title": "Creating <span class='gradient-highlight'>Luxury & Custom</span> Websites with Modern Frontend Codes",
                 "hero-desc": "No successful website is built with copied templates. As a creative designer, I design and code your sites from scratch with custom styling using the AI Studio.",
                 "btn-services-hero": "View Services",
                 "lbl-support-btn": "Support",
                 "about-title-main": "Creator of Your Digital Future",
                 "about-desc-main": "I am Parsa Rezaei Khosravi, a custom web designer. My mission is to differentiate your business in the market with luxury and unique custom layouts.",
-                "about-quote": '"Luxury brands do not repeat; they are created uniquely."',
                 "process-title-main": "How Do We Turn Your Dream Into Reality?",
-                "proc-t1": "1. Discovery & Consultation",
-                "proc-d1": "Understanding goals, studying competitors, and planning the project.",
-                "proc-t2": "2. Contract & Prepayment",
-                "proc-d2": "Signing agreement and payment of initial deposit.",
-                "proc-t3": "3. Creative Mockup with AI",
-                "proc-d3": "Visual identity design and luxury color schema mockups using AI.",
-                "proc-t4": "4. Custom Web Development",
-                "proc-d4": "Coding optimized, lightweight, responsive and clean websites.",
-                "proc-t5": "5. Delivery & Settlement",
-                "proc-d5": "Speed optimization, SEO test, gateway connection, and project delivery.",
+                "process-sub-text": "Hover over the rotating ring to pause the animation and view details of each stage at the center of the orbit.",
                 "services-title-main": "Pricing & Online Ordering of Custom Services",
                 "services-desc-main": "Click order on any service to connect directly to ZarinPal payment gateway.",
                 "faq-title-main": "Frequently Asked Questions",
                 "faq-q1": "Why do custom websites cost more than WordPress?",
-                "faq-a1": "Custom websites are coded line by line. Load speeds are extremely fast (under 0.5s), security is solid, and there are no design limits.",
-                "faq-q2": "How is the payment processed? Is installment possible?",
-                "faq-a2": "Yes, payments are split into 2 or 3 steps. Online payment is securely available.",
-                "faq-q3": "Do websites work perfectly on mobile and tablet?",
-                "faq-a3": "100% Yes! All sites built are fully responsive and look modern on every screen."
+                "faq-a1": "Custom websites are coded line by line. Load speeds are extremely fast (under 0.5s), security is solid, and there are no design limits."
             }
         };
 
-        // زبان‌های شبیه‌سازی برای بقیه گزینه‌ها
-        const otherLangs = ['fr', 'ru', 'tr', 'es', 'de', 'ar', 'ku'];
-        otherLangs.forEach(lang => {
-            translations[lang] = JSON.parse(JSON.stringify(translations.en)); // کپی کردن ساختار انگلیسی با اسم زبان‌ها
-            translations[lang]["logo-branding"] = `Parsa Studio (${lang.toUpperCase()})`;
-        });
-
-        // تغییر زبان تعاملی کل صفحات وب‌سایت
+        // تغییر زبان تعاملی کل صفحات وب‌سایت به همراه تبدیل نرخ ارز و افزایش ۷۵ درصدی دلاری/بیت‌کوینی
         function changeLanguage(lang) {
             localStorage.setItem('site-lang', lang);
             
-            // اگر جهت عربی یا کردی بود راست‌چین شود، در غیر این‌صورت چپ‌چین
-            if (lang === 'fa' || lang === 'ar' || lang === 'ku') {
+            if (lang === 'fa') {
                 document.documentElement.dir = "rtl";
                 document.documentElement.lang = "fa";
+                
+                // برگرداندن قیمت‌ها به تومان اصلی
+                setPriceDisplay("pr-t1", "۷,۰۰۰,۰۰۰ تومان", "FA");
+                setPriceDisplay("pr-t2", "۸,۵۰۰,۰۰۰ تومان", "FA");
+                setPriceDisplay("pr-t3", "۳۰,۰۰۰,۰۰۰ تومان", "FA");
+                setPriceDisplay("pr-t4", "۷,۰۰۰,۰۰۰ تومان", "FA");
+                setPriceDisplay("pr-t5", "۶,۰۰۰,۰۰۰ تومان", "FA");
+                setPriceDisplay("pr-t6", "۵,۰۰۰,۰۰۰ تومان", "FA");
+                setPriceDisplay("pr-t7", "۱۵,۰۰۰,۰۰۰ تومان", "FA");
+                setPriceDisplay("pr-t8", "۲,۰۰۰,۰۰۰ تومان", "FA");
+                setPriceDisplay("pr-t9", "۳,۰۰۰,۰۰۰ تومان", "FA");
             } else {
                 document.documentElement.dir = "ltr";
                 document.documentElement.lang = "en";
+
+                // فرآیند محاسبات ارز: تبدیل تومان به دلار با ۷۵٪ افزایش قیمت و معادل رمزارز بیت کوین آن
+                setPriceDisplay("pr-t1", "$204 (0.0031 BTC)", "EN");
+                setPriceDisplay("pr-t2", "$248 (0.0038 BTC)", "EN");
+                setPriceDisplay("pr-t3", "$875 (0.0134 BTC)", "EN");
+                setPriceDisplay("pr-t4", "$204 (0.0031 BTC)", "EN");
+                setPriceDisplay("pr-t5", "$175 (0.0027 BTC)", "EN");
+                setPriceDisplay("pr-t6", "$146 (0.0022 BTC)", "EN");
+                setPriceDisplay("pr-t7", "$437 (0.0067 BTC)", "EN");
+                setPriceDisplay("pr-t8", "$58 (0.0009 BTC)", "EN");
+                setPriceDisplay("pr-t9", "$87 (0.0013 BTC)", "EN");
             }
 
             const data = translations[lang] || translations.fa;
             for (let key in data) {
                 const el = document.getElementById(key);
-                if (el) {
-                    el.innerHTML = data[key];
+                if (el) el.innerHTML = data[key];
+            }
+        }
+
+        function setPriceDisplay(id, text, lang) {
+            const el = document.getElementById(id);
+            if (el) {
+                if (lang === 'FA') {
+                    el.innerHTML = text + " <span>تومان</span>";
+                } else {
+                    el.innerHTML = text;
                 }
             }
         }
 
-        // بررسی لود زودهنگام زبان ذخیره شده در مرورگر
         const savedLang = localStorage.getItem('site-lang') || 'fa';
         document.getElementById('lang-select').value = savedLang;
         changeLanguage(savedLang);
@@ -1630,7 +2124,88 @@
 
 
         // ==========================================================================
-        // اسلایدر نمونه‌کارهای تعاملی
+        // جادوی چرخش دایره‌ای دور محور مرکزی روند همکاری با موشن گرافیک لوکس و مدرن
+        // ==========================================================================
+        const orbitStages = [
+            { 
+                num: "۰۱", 
+                title: "۱. کشف و مشاوره", 
+                desc: "دریافت اهداف برند شما، بررسی رقبای ایرانی و تعیین دقیق مسیر پروژه.",
+                icon: `<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>`
+            },
+            { 
+                num: "۰۲", 
+                title: "۲. قرارداد و پیش‌پرداخت", 
+                desc: "توافق بر سر جزئیات فنی و حقوقی پروژه، امضای قرارداد دیجیتال و واریز پیش‌پرداخت برای شروع طراحی.",
+                icon: `<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>`
+            },
+            { 
+                num: "۰۳", 
+                title: "۳. اتود خلاق با AI", 
+                desc: "تصویر سازی و ساخت هویت بصری اولیه، ظاهر و ترکیب رنگ لوکس با AI.",
+                icon: `<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z"/><path d="M12 8v8"/><path d="M8 12h8"/></svg>`
+            },
+            { 
+                num: "۰۴", 
+                title: "۴. کدنویسی اختصاصی", 
+                desc: "تبدیل طرح به کدهای فرانت‌اند فوق‌العاده بهینه، سریع و ۱۰۰٪ سفارشی.",
+                icon: `<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>`
+            },
+            { 
+                num: "۰۵", 
+                title: "۵. تحویل و تسویه", 
+                desc: "تست نهایی سرعت و سئو، اتصال درگاه پرداخت آنلاین و تحویل نهایی کلید پروژه.",
+                icon: `<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>`
+            }
+        ];
+
+        let orbitRotationAngle = 0;
+        let orbitInterval;
+
+        function startOrbitRotation() {
+            orbitInterval = setInterval(() => {
+                orbitRotationAngle += 72; 
+                const ring = document.getElementById('orbit-ring-container');
+                ring.style.transform = `rotate(${orbitRotationAngle}deg)`;
+                ring.style.transition = 'transform 1s cubic-bezier(0.16, 1, 0.3, 1)';
+                
+                const nodes = document.querySelectorAll('.orbit-node');
+                nodes.forEach(node => {
+                    node.style.transform = `rotate(${-orbitRotationAngle}deg)`;
+                    node.style.transition = 'transform 1s cubic-bezier(0.16, 1, 0.3, 1)';
+                });
+            }, 1000);
+        }
+
+        function stopOrbitRotation() {
+            clearInterval(orbitInterval);
+        }
+
+        function setOrbitActive(index) {
+            stopOrbitRotation();
+            document.getElementById('orbit-display-icon').innerHTML = orbitStages[index].icon;
+            document.getElementById('orbit-display-num').innerText = orbitStages[index].num;
+            document.getElementById('orbit-display-title').innerText = orbitStages[index].title;
+            document.getElementById('orbit-display-desc').innerText = orbitStages[index].desc;
+        }
+
+        const orbitArea = document.querySelector('.cooperation-orbit-area');
+        orbitArea.addEventListener('mouseenter', stopOrbitRotation);
+        orbitArea.addEventListener('mouseleave', startOrbitRotation);
+        startOrbitRotation();
+
+        function handleCreateDreamClick() {
+            const isLoggedIn = localStorage.getItem('is-logged-in') === 'true';
+            if (isLoggedIn) {
+                window.location.href = "#services";
+            } else {
+                openAuthModal(event);
+            }
+        }
+
+
+        // ==========================================================================
+        // اسلایدر تصاویر نمونه‌کار
         // ==========================================================================
         const slidesData = [
             {
@@ -1657,7 +2232,6 @@
         function showSlide(index) {
             slides.forEach(slide => slide.classList.remove('active'));
             slides[index].classList.add('active');
-
             document.getElementById('slider-tag').innerText = slidesData[index].tag;
             document.getElementById('slider-title').innerText = slidesData[index].title;
             document.getElementById('slider-desc').innerText = slidesData[index].desc;
@@ -1677,9 +2251,7 @@
         }
 
         function startAutoSlider() {
-            sliderTimer = setInterval(() => {
-                nextSlide();
-            }, 5000);
+            sliderTimer = setInterval(() => nextSlide(), 5000);
         }
 
         function stopAutoSlider() {
@@ -1693,7 +2265,7 @@
 
 
         // ==========================================================================
-        // مدیریت سیستم ثبت نام و لاگین کاربری اختصاصی
+        // سیستم پیشرفته احراز هویت با تاییدیه ایمیل noreply شبیه‌سازی شده
         // ==========================================================================
         let isUserLoggedIn = false;
         let cartCount = 0;
@@ -1719,11 +2291,11 @@
                 document.getElementById('form-login-area').style.display = 'none';
                 document.getElementById('form-register-area').style.display = 'block';
                 document.getElementById('register-step-1').style.display = 'block';
+                document.getElementById('register-step-email-verify').style.display = 'none';
                 document.getElementById('register-step-2').style.display = 'none';
             }
         }
 
-        // بررسی کپچا و ثبت‌نام دو مرحله‌ای
         function processRegisterStep1() {
             const id = document.getElementById('register-identifier').value.trim();
             if (id === '') {
@@ -1731,22 +2303,31 @@
                 return;
             }
 
-            // اعتبارسنجی تلفن همراه داخل ایران (حتماً با ۰۹ شروع شود) یا ایمیل خارجی
             const isEmail = id.includes('@');
-            if (!isEmail && !id.startsWith('09')) {
-                alert('شماره تلفن وارد شده باید معتبر و مربوط به پیش‌شماره‌های فعال داخل ایران (09) باشد.');
-                return;
-            }
-
-            // ورود به مرحله دوم
-            document.getElementById('register-step-1').style.display = 'none';
-            document.getElementById('register-step-2').style.display = 'block';
-            
-            // کپی شماره/ایمیل به فرم دوم
             if (isEmail) {
-                document.getElementById('reg-email').value = id;
+                document.getElementById('register-step-1').style.display = 'none';
+                document.getElementById('register-step-email-verify').style.display = 'block';
+                alert('کد تایید ۴ رقمی از طرف فرستنده امن noreply@parsa.studio به صندوق ورودی ایمیل شما ارسال شد. (برای تست از کد ۴۸۱۵ استفاده کنید)');
             } else {
+                if (!id.startsWith('09')) {
+                    alert('شماره تلفن همراه وارد شده نامعتبر است. شماره باید با پیش‌شماره‌های معتبر داخل ایران (09) شروع شود.');
+                    return;
+                }
+                document.getElementById('register-step-1').style.display = 'none';
+                document.getElementById('register-step-2').style.display = 'block';
                 document.getElementById('reg-phone').value = id;
+            }
+        }
+
+        function verifyEmailCode() {
+            const code = document.getElementById('email-verification-code-input').value.trim();
+            if (code === '4815') {
+                alert('ایمیل شما با موفقیت احراز هویت شد! حالا اطلاعات تکمیلی خود را برای ایجاد حساب کاربری وارد کنید.');
+                document.getElementById('register-step-email-verify').style.display = 'none';
+                document.getElementById('register-step-2').style.display = 'block';
+                document.getElementById('reg-email').value = document.getElementById('register-identifier').value.trim();
+            } else {
+                alert('کد وارد شده نادرست است. لطفاً کد ۴۸۱۵ را برای تست وارد کنید.');
             }
         }
 
@@ -1767,7 +2348,6 @@
                 return;
             }
 
-            // ذخیره مشخصات به عنوان پروفایل لایو کاربر
             const userProfile = { name, lname, email, phone };
             localStorage.setItem('user-profile', JSON.stringify(userProfile));
             isUserLoggedIn = true;
@@ -1782,11 +2362,9 @@
             event.preventDefault();
             const id = document.getElementById('login-identifier').value.trim();
             const userProfile = { name: "کاربر گرامی", lname: "", email: id.includes('@') ? id : "test@parsastudio.com", phone: !id.includes('@') ? id : "09123456789" };
-            
             localStorage.setItem('user-profile', JSON.stringify(userProfile));
             isUserLoggedIn = true;
             localStorage.setItem('is-logged-in', 'true');
-            
             alert('ورود شما موفقیت‌آمیز بود!');
             closeAuthModal();
             loadUserProfile();
@@ -1825,7 +2403,6 @@
                 document.getElementById('profile-display-email').innerText = profile.email || '-';
                 document.getElementById('profile-display-phone').innerText = profile.phone || '-';
                 
-                // لود تعداد فاکتورهای پرداخت نشده
                 const pendingCount = parseInt(localStorage.getItem('cart-items') || '0');
                 if (pendingCount > 0) {
                     document.getElementById('profile-cart-container').style.display = 'block';
@@ -1841,7 +2418,7 @@
 
 
         // ==========================================================================
-        // سبد خرید و نشان دایره‌ای خدمات
+        // سبد خرید و خدمات
         // ==========================================================================
         function updateCartBadge() {
             const count = parseInt(localStorage.getItem('cart-items') || '0');
@@ -1849,7 +2426,6 @@
             if (count > 0) {
                 badge.innerText = count;
                 badge.style.display = 'flex';
-                // نمایش در پروفایل
                 const pending = document.getElementById('profile-cart-container');
                 if (pending) {
                     pending.style.display = 'block';
@@ -1862,10 +2438,6 @@
 
         updateCartBadge();
 
-
-        // ==========================================================================
-        // خدمات و سفارش‌دهی با اتصال به زرین‌لینک
-        // ==========================================================================
         function openPaymentModal(serviceName, priceText) {
             document.getElementById('service-name-hidden').value = serviceName;
             document.getElementById('service-price-hidden').value = priceText;
@@ -1873,7 +2445,6 @@
             document.getElementById('modal-desc').innerText = 'مبلغ پرداختی این خدمت: ' + priceText;
             document.getElementById('payment-modal-overlay').classList.add('active');
             
-            // افزودن به سبد خرید موقت جهت نمایش روی دایره عددی هدر
             let currentCart = parseInt(localStorage.getItem('cart-items') || '0');
             localStorage.setItem('cart-items', currentCart + 1);
             updateCartBadge();
@@ -1892,7 +2463,6 @@
 
             alert(`پرداخت آنلاین فعال شد!\n\nخریدار: ${name}\nسرویس انتخابی: ${service}\nمبلغ: ${price}\nشماره همراه شما: ${phone}\n\nشما اکنون به درگاه مستقیم پرداخت زرین‌لینک هدایت می‌شوید تا وجه را امن کارت بکشید.`);
             
-            // کسر از سبد پس از پرداخت شبیه‌سازی شده
             let currentCart = parseInt(localStorage.getItem('cart-items') || '1');
             localStorage.setItem('cart-items', Math.max(0, currentCart - 1));
             updateCartBadge();
@@ -1941,7 +2511,7 @@
                 botMsgDiv.className = 'msg-bot';
                 
                 if (messageText.includes('قیمت') || messageText.includes('تعرفه')) {
-                    botMsgDiv.innerText = "تعرفه خدمات ما از لندینگ‌پیج ۵ میلیونی تا وب‌سایت‌های ۱۵ میلیونی متغیر است. همچنین خدمات پالت رنگ، لوگو، فونت و CRM نیز به صورت کاملاً حرفه‌ای انجام می‌شود.";
+                    botMsgDiv.innerText = "تعرفه خدمات ما از لندینگ‌پیج ۵ میلیونی تا وب‌سایت‌های ۱۵ میلیونی متغیر است. همچنین خدمات پالت رنگ, لوگو، فونت و CRM نیز به صورت کاملاً حرفه‌ای انجام می‌شود.";
                 } else if (messageText.includes('لوگو') || messageText.includes('لوگو اختصاصی')) {
                     botMsgDiv.innerText = "طراحی لوگوی اختصاصی برند با قیمت ۷,۰۰۰,۰۰۰ تومان قابل سفارش است. این طراحی کاملاً اختصاصی و برداری است و مرزهای هویت بصری شما را متمایز می‌کند.";
                 } else {
@@ -1951,6 +2521,11 @@
                 chatMessages.appendChild(botMsgDiv);
                 chatMessages.scrollTop = chatMessages.scrollHeight;
             }, 1000);
+        }
+
+        const urlParams = new URLSearchParams(window.location.search);
+        if (urlParams.get('triggerAuth') === 'true') {
+            openAuthModal(event);
         }
     </script>
 </body>
@@ -1965,7 +2540,7 @@
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;700;900&display=swap');
 
-        /* تم رنگی مشابه صفحه اصلی */
+        /* تنظیمات تم رنگی جدید (فضا را کمی روشن‌تر و لوکس‌تر کرده‌ایم) */
         :root {
             --bg: #0F172A;                        
             --card-bg: rgba(30, 41, 59, 0.6);     
@@ -1990,7 +2565,69 @@
             overflow-x: hidden;
             position: relative;
             line-height: 1.8;
-            padding: 60px 8%;
+            padding: 0;
+        }
+
+        /* هدر ناوبری */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 8%;
+            background: rgba(15, 23, 42, 0.85);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border-bottom: 1px solid var(--card-border);
+            position: sticky;
+            top: 0;
+            z-index: 99;
+        }
+
+        /* لوگوی الهام گرفته شده از تصویر آپلود شده کاربر */
+        .logo {
+            font-size: 1.4rem;
+            font-weight: 900;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .logo-icon {
+            width: 42px;
+            height: 42px;
+            background: linear-gradient(135deg, var(--neon-orange), var(--neon-gold));
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 0 20px rgba(255, 122, 0, 0.45);
+        }
+
+        /* متن برندینگ بسیار واضح‌تر و درخشان‌تر متناسب با خواسته‌ی شما */
+        .logo-text {
+            color: #FFFFFF !important;
+            font-size: 1.5rem;
+            font-weight: 900;
+            text-shadow: 0 0 15px rgba(255, 255, 255, 0.5), 0 0 5px var(--neon-orange);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 0.95rem;
+            font-weight: bold;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--text-main);
         }
 
         /* هاله‌های نورانی پس‌زمینه */
@@ -2003,7 +2640,7 @@
             opacity: 0.45;
         }
         .orb-1 {
-            top: 10%;
+            top: 20%;
             left: 10%;
             width: 500px;
             height: 500px;
@@ -2020,7 +2657,7 @@
         /* باکس شیشه‌ای اصلی محتوا */
         .about-container {
             max-width: 900px;
-            margin: 0 auto;
+            margin: 40px auto;
             background: var(--card-bg);
             border: 1px solid var(--card-border);
             border-radius: 30px;
@@ -2048,11 +2685,6 @@
             font-size: 1.05rem;
             margin-bottom: 25px;
             text-align: justify;
-        }
-
-        .highlight-text {
-            color: var(--neon-gold);
-            font-weight: bold;
         }
 
         /* دکمه‌های پایینی */
@@ -2101,9 +2733,7 @@
             box-shadow: 0 0 15px rgba(245, 158, 11, 0.3);
         }
 
-        /* ==========================================================================
-           بخش تخصص‌ها و سلاح‌های من (دو ستون ۴ تایی با استایل نئونی و کادرهای منظم)
-           ========================================================================== */
+        /* بخش تخصص‌ها و سلاح‌های من (دو ستون ۴ تایی منظم) */
         .skills-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
@@ -2209,7 +2839,7 @@
             color: var(--text-muted);
         }
 
-        /* تنظیمات شناور (زبان و نسخه دسکتاپ گوشی) */
+        /* تنظیمات شناور */
         .settings-widget {
             position: fixed;
             bottom: 30px;
@@ -2328,33 +2958,56 @@
     <div class="orb orb-1"></div>
     <div class="orb orb-2"></div>
 
+    <!-- ناوبری بالایی سایت (استودیو پارسا) -->
+    <nav>
+        <div class="logo">
+            <!-- لوگوی لوکس و فوق‌العاده مدرن بر مبنای عکس آپلود شده‌ی کاربر -->
+            <div class="logo-icon">
+                <svg width="24" height="24" viewBox="0 0 100 90" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <!-- شکل بالا سمت چپ با گوشه منحنی بالا چپ -->
+                    <path d="M 10 40 A 30 30 0 0 1 40 10 H 48 V 40 Z" fill="white" />
+                    <!-- شکل بالا سمت راست با گوشه منحنی پایین راست -->
+                    <path d="M 52 10 H 90 V 20 A 20 20 0 0 1 70 40 H 52 Z" fill="white" />
+                    <!-- شکل سرتاسری پایین با گوشه منحنی پایین چپ -->
+                    <path d="M 10 80 A 30 30 0 0 1 40 50 H 90 V 80 Z" fill="white" />
+                </svg>
+            </div>
+            <span class="logo-text">استودیو پارسا</span>
+        </div>
+        <ul class="nav-links">
+            <li><a href="index.html">صفحه اصلی</a></li>
+            <li><a href="about.html">درباره من</a></li>
+            <li><a href="index.html#faq">سوالات متداول</a></li>
+            <li><a href="index.html#services">خدمات و تعرفه‌ها</a></li>
+        </ul>
+        <a href="index.html#services" class="btn-premium">ثبت سفارش فوری</a>
+    </nav>
+
     <div class="about-container">
         <h1>
             <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="url(#gold-grad)" stroke-width="2.5"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/><defs><linearGradient id="gold-grad" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="%23FF7A00"/><stop offset="100%" stop-color="%23F59E0B"/></linearGradient></defs></svg>
-            درباره من | پارسا رضائی خسروی
+            <span id="about-main-header">درباره من | پارسا رضائی خسروی</span>
         </h1>
 
-        <p>
-            سلام! من <span class="highlight-text">پارسا رضائی خسروی</span> هستم؛ طراح و توسعه‌دهنده مستقل وب‌سایت‌های اختصاصی لوکس. از زمانی که وارد دنیای بی‌کران کدنویسی فرانت‌اند شدم، تصمیم گرفتم استانداردهای مرسوم را جابه‌جا کنم. من بر این باورم که دنیای اینترنت پر از سایت‌های تکراری وردپرسی شده است و برندهای بزرگ و خاص، لایق کدهای اختصاصی، سرعت فضایی و طراحی‌های ۱٠٠٪ متمایز هستند.
+        <!-- متن توصیف درباره من (کلمات اضافی حذف و نام شما به صورت سفید ساده نوشته شده است) -->
+        <p id="about-p1">
+            سلام! من <strong style="color: white;">پارسا رضائی خسروی</strong> هستم؛ طراح و توسعه‌دهنده مستقل وب‌سایت‌های اختصاصی لوکس. از زمانی که وارد دنیای بی‌کران کدنویسی فرانت‌اند شدم، تصمیم گرفتم استانداردهای مرسوم را جابه‌جا کنم. من بر این باورم که دنیای اینترنت پر از سایت‌های تکراری وردپرسی شده است و برندهای بزرگ و خاص، لایق کدهای اختصاصی، سرعت فضایی و طراحی‌های ۱٠٠٪ متمایز هستند.
         </p>
 
-        <p>
+        <p id="about-p2">
             من با تلفیق برنامه‌نویسی مدرن فرانت‌اند و قدرت جادویی ابزارهای هوش مصنوعی، کارهای سخت را فشرده کرده‌ام تا بتوانم خلاقانه‌ترین افکت‌ها و انیمیشن‌های تعاملی را در کوتاه‌ترین زمان برای مشتریانم خلق کنم. سرعت لود صفحات سایت‌هایی که می‌سازم معمولاً زیر <span class="highlight-text">۰.۴ ثانیه</span> است که در بازار ایران یک شاهکار فنی به حساب می‌آید.
         </p>
 
-        <!-- ==========================================================================
-           بخش مهارت‌ها و سلاح‌ها (۲ ستون ۴ تایی منظم و تراز شده)
-           ========================================================================== -->
-        <h2 style="font-size: 1.5rem; font-weight: 900; margin-top: 40px; border-top: 1px solid rgba(255,255,255,0.08); padding-top: 35px; color: var(--neon-gold);">تخصص‌ها و سلاح‌های من</h2>
+        <!-- بخش تخصص‌ها و سلاح‌ها (دو ستون ۴ تایی منظم) -->
+        <h2 style="font-size: 1.5rem; font-weight: 900; margin-top: 40px; border-top: 1px solid rgba(255,255,255,0.08); padding-top: 35px; color: var(--neon-gold);" id="about-skills-header">تخصص‌ها و سلاح‌های من</h2>
         
         <div class="skills-grid">
             
             <!-- ستون اول (۴ تخصص اول) -->
             <div class="skills-column">
-                <!-- مهارت ۱ -->
                 <div class="skill-item">
                     <div class="skill-info">
-                        <span>طراحی رابط کاربری اختصاصی (UI/UX)</span>
+                        <span id="sk-1-title">طراحی رابط کاربری اختصاصی (UI/UX)</span>
                         <span style="color: var(--neon-gold);">۸۵٪</span>
                     </div>
                     <div class="skill-bar">
@@ -2362,10 +3015,9 @@
                     </div>
                 </div>
 
-                <!-- مهارت ۲ -->
                 <div class="skill-item">
                     <div class="skill-info">
-                        <span>کدنویسی خلاق فرانت‌اند (HTML5, CSS3, JS)</span>
+                        <span id="sk-2-title">کدنویسی خلاق فرانت‌اند</span>
                         <span style="color: var(--neon-gold);">۷۰٪</span>
                     </div>
                     <div class="skill-bar">
@@ -2373,10 +3025,9 @@
                     </div>
                 </div>
 
-                <!-- مهارت ۳ -->
                 <div class="skill-item">
                     <div class="skill-info">
-                        <span>مهندسی پرامپت دستیار هوش مصنوعی</span>
+                        <span id="sk-3-title">مهندسی پرامپت دستیار هوش مصنوعی</span>
                         <span style="color: var(--neon-gold);">۸۵٪</span>
                     </div>
                     <div class="skill-bar">
@@ -2384,10 +3035,9 @@
                     </div>
                 </div>
 
-                <!-- مهارت ۴ -->
                 <div class="skill-item">
                     <div class="skill-info">
-                        <span>طراحی CRM</span>
+                        <span id="sk-4-title">طراحی CRM</span>
                         <span style="color: var(--neon-gold);">۵۰٪</span>
                     </div>
                     <div class="skill-bar">
@@ -2398,10 +3048,9 @@
 
             <!-- ستون دوم (۴ تخصص دوم) -->
             <div class="skills-column">
-                <!-- مهارت ۵ -->
                 <div class="skill-item">
                     <div class="skill-info">
-                        <span>سیستم‌سازی سازمانی</span>
+                        <span id="sk-5-title">سیستم‌سازی سازمانی</span>
                         <span style="color: var(--neon-gold);">۵۰٪</span>
                     </div>
                     <div class="skill-bar">
@@ -2409,10 +3058,9 @@
                     </div>
                 </div>
 
-                <!-- مهارت ۶ -->
                 <div class="skill-item">
                     <div class="skill-info">
-                        <span>تولید محتوا و ادیت عکس</span>
+                        <span id="sk-6-title">تولید محتوا و ادیت عکس</span>
                         <span style="color: var(--neon-gold);">۸۰٪</span>
                     </div>
                     <div class="skill-bar">
@@ -2420,10 +3068,9 @@
                     </div>
                 </div>
 
-                <!-- مهارت ۷ -->
                 <div class="skill-item">
                     <div class="skill-info">
-                        <span>طراحی فونت</span>
+                        <span id="sk-7-title">طراحی فونت</span>
                         <span style="color: var(--neon-gold);">۱۰۰٪</span>
                     </div>
                     <div class="skill-bar">
@@ -2431,10 +3078,9 @@
                     </div>
                 </div>
 
-                <!-- مهارت ۸ -->
                 <div class="skill-item">
                     <div class="skill-info">
-                        <span>طراحی لوگو</span>
+                        <span id="sk-8-title">طراحی لوگو</span>
                         <span style="color: var(--neon-gold);">۹۰٪</span>
                     </div>
                     <div class="skill-bar">
@@ -2447,62 +3093,62 @@
 
         <!-- بخش گواهینامه‌ها -->
         <div class="certificates-section">
-            <h2 class="certificates-title">مدارک و گواهینامه‌های من</h2>
+            <h2 class="certificates-title" id="cert-title-header">مدارک و گواهینامه‌های من</h2>
             
             <div class="certificates-grid">
                 <div class="cert-card">
                     <div class="cert-badge">
                         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
                     </div>
-                    <h3 class="cert-name">گواهینامه طراحی وب مدرن</h3>
-                    <p class="cert-issuer">آکادمی بین‌المللی توسعه فرانت‌اند</p>
+                    <h3 class="cert-name" id="cert-n1">گواهینامه طراحی وب مدرن</h3>
+                    <p class="cert-issuer" id="cert-i1">آکادمی بین‌المللی توسعه فرانت‌اند</p>
                 </div>
 
                 <div class="cert-card">
                     <div class="cert-badge">
                         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="7"/><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"/></svg>
                     </div>
-                    <h3 class="cert-name">مدرک مهندسی پرامپت وب</h3>
-                    <p class="cert-issuer">دوره پیشرفته ابزارهای هوش مصنوعی (AI)</p>
+                    <h3 class="cert-name" id="cert-n2">مدرک مهندسی پرامپت وب</h3>
+                    <p class="cert-issuer" id="cert-i2">دوره پیشرفته ابزارهای هوش مصنوعی (AI)</p>
                 </div>
 
                 <div class="cert-card">
                     <div class="cert-badge">
                         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg>
                     </div>
-                    <h3 class="cert-name">بهینه‌سازی سرعت و سئوی فنی</h3>
-                    <p class="cert-issuer">پلتفرم رشد و توسعه فرانت‌اند ایران</p>
+                    <h3 class="cert-name" id="cert-n3">بهینه‌سازی سرعت و سئوی فنی</h3>
+                    <p class="cert-issuer" id="cert-i3">پلتفرم رشد و توسعه فرانت‌اند ایران</p>
                 </div>
             </div>
         </div>
 
         <div class="buttons-group">
-            <a href="index.html" class="btn-action btn-orange">
+            <a href="index.html" class="btn-action btn-orange" id="btn-back-home">
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="transform: scaleX(-1);"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 19 12 12 5"/></svg>
                 بازگشت به صفحه اصلی
             </a>
 
-            <a href="CV-File.pdf" target="_blank" class="btn-action btn-cv">
+            <a href="CV-File.pdf" target="_blank" class="btn-action btn-cv" id="btn-cv-download">
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
                 مشاهده و دانلود رزومه (CV)
             </a>
         </div>
     </div>
 
-    <!-- بخش تنظیمات شناور (یکپارچه‌سازی متغیرهای سراسری) -->
+    <!-- تنظیمات شناور (یکپارچه‌سازی متغیرهای سراسری) -->
     <div class="settings-widget">
         <button class="settings-trigger" onclick="toggleSettingsPanel()">⚙️</button>
         <div class="settings-panel" id="settings-panel">
-            <div class="settings-title">تنظیمات وب‌سایت</div>
+            <div class="settings-title" id="lbl-settings-t">تنظیمات وب‌سایت</div>
             <div class="setting-row">
-                <span>زبان سایت (Language)</span>
+                <span id="lbl-lang-t">زبان سایت (Language)</span>
                 <select class="setting-select" id="lang-select" onchange="changeLanguage(this.value)">
                     <option value="fa">فارسی (FA)</option>
                     <option value="en">English (EN)</option>
                 </select>
             </div>
             <div class="setting-row">
-                <span>نمای دسکتاپ گوشی</span>
+                <span id="lbl-desk-t">نمای دسکتاپ گوشی</span>
                 <label class="switch">
                     <input type="checkbox" id="desktop-view-toggle" onchange="toggleDesktopView(this.checked)">
                     <span class="slider"></span>
@@ -2512,6 +3158,62 @@
     </div>
 
     <script>
+        // دیتابیس ترجمه‌های کامل صفحه درباره من برای حل مشکل عدم پویایی ترجمه
+        const aboutTranslations = {
+            fa: {
+                "about-main-header": "درباره من | پارسا رضائی خسروی",
+                "about-p1": "سلام! من <strong style='color: white;'>پارسا رضائی خسروی</strong> هستم؛ طراح و توسعه‌دهنده مستقل وب‌سایت‌های اختصاصی لوکس. از زمانی که وارد دنیای بی‌کران کدنویسی فرانت‌اند شدم، تصمیم گرفتم استانداردهای مرسوم را جابه‌جا کنم. من بر این باورم که دنیای اینترنت پر از سایت‌های تکراری وردپرسی شده است و برندهای بزرگ و خاص، لایق کدهای اختصاصی، سرعت فضایی و طراحی‌های ۱٠٠٪ متمایز هستند.",
+                "about-p2": "من با تلفیق برنامه‌نویسی مدرن فرانت‌اند و قدرت جادویی ابزارهای هوش مصنوعی، کارهای سخت را فشرده کرده‌ام تا بتوانم خلاقانه‌ترین افکت‌ها و انیمیشن‌های تعاملی را در کوتاه‌ترین زمان برای مشتریانم خلق کنم. سرعت لود صفحات سایت‌هایی که می‌سازم معمولاً زیر <span class='highlight-text'>۰.۴ ثانیه</span> است که در بازار ایران یک شاهکار فنی به حساب می‌آید.",
+                "about-skills-header": "تخصص‌ها و سلاح‌های من",
+                "sk-1-title": "طراحی رابط کاربری اختصاصی (UI/UX)",
+                "sk-2-title": "کدنویسی خلاق فرانت‌اند",
+                "sk-3-title": "مهندسی پرامپت دستیار هوش مصنوعی",
+                "sk-4-title": "طراحی CRM",
+                "sk-5-title": "سیستم‌سازی سازمانی",
+                "sk-6-title": "تولید محتوا و ادیت عکس",
+                "sk-7-title": "طراحی فونت",
+                "sk-8-title": "طراحی لوگو",
+                "cert-title-header": "مدارک و گواهینامه‌های من",
+                "cert-n1": "گواهینامه طراحی وب مدرن",
+                "cert-i1": "آکادمی بین‌المللی توسعه فرانت‌اند",
+                "cert-n2": "مدرک مهندسی پرامپت وب",
+                "cert-i2": "دوره پیشرفته ابزارهای هوش مصنوعی (AI)",
+                "cert-n3": "بهینه‌سازی سرعت و سئوی فنی",
+                "cert-i3": "پلتفرم رشد و توسعه فرانت‌اند ایران",
+                "btn-back-home": "بازگشت به صفحه اصلی",
+                "btn-cv-download": "مشاهده و دانلود رزومه (CV)",
+                "lbl-settings-t": "تنظیمات وب‌سایت",
+                "lbl-lang-t": "زبان سایت (Language)",
+                "lbl-desk-t": "نمای دسکتاپ گوشی"
+            },
+            en: {
+                "about-main-header": "About Me | Parsa Rezaei Khosravi",
+                "about-p1": "Hello! I am <strong style='color: white;'>Parsa Rezaei Khosravi</strong>, an independent custom web developer. I believe the internet is saturated with generic WordPress sites, and premium brands deserve custom coding, insane loading speeds, and 100% unique design.",
+                "about-p2": "By merging modern frontend coding with AI assistance, I compress complex workflows to create custom web interfaces with speeds consistently under 0.4 seconds.",
+                "about-skills-header": "My Specialties & Weapons",
+                "sk-1-title": "Custom UI/UX Design",
+                "sk-2-title": "Creative Frontend Coding",
+                "sk-3-title": "Prompt Engineering & AI Assistant",
+                "sk-4-title": "CRM Systems Design",
+                "sk-5-title": "Corporate System Building",
+                "sk-6-title": "Content Creation & Photo Editing",
+                "sk-7-title": "Custom Typography / Font Design",
+                "sk-8-title": "Custom Logo Design",
+                "cert-title-header": "My Certificates & Credentials",
+                "cert-n1": "Modern Web Design Certificate",
+                "cert-i1": "International Academy of Frontend Dev",
+                "cert-n2": "Advanced Web Prompt Engineering Credential",
+                "cert-i2": "Advanced AI Tools Institute",
+                "cert-n3": "Technical SEO & Speed Optimization",
+                "cert-i3": "Iran Frontend Developers Network",
+                "btn-back-home": "Back to Home Page",
+                "btn-cv-download": "View & Download CV (Resume)",
+                "lbl-settings-t": "Website Settings",
+                "lbl-lang-t": "Site Language (Language)",
+                "lbl-desk-t": "Mobile Desktop View"
+            }
+        };
+
         function toggleSettingsPanel() {
             document.getElementById('settings-panel').classList.toggle('active');
         }
@@ -2520,10 +3222,17 @@
             localStorage.setItem('site-lang', lang);
             if (lang === 'fa') {
                 document.documentElement.dir = "rtl";
+                document.documentElement.lang = "fa";
             } else {
                 document.documentElement.dir = "ltr";
+                document.documentElement.lang = "en";
             }
-            location.reload(); // برای اعمال زبان در این دمو ساده صفحه بازخوانی می‌شود
+            
+            const data = aboutTranslations[lang] || aboutTranslations.fa;
+            for (let key in data) {
+                const el = document.getElementById(key);
+                if (el) el.innerHTML = data[key];
+            }
         }
 
         function toggleDesktopView(isEnabled) {
@@ -2542,11 +3251,7 @@
 
         const savedLang = localStorage.getItem('site-lang') || 'fa';
         document.getElementById('lang-select').value = savedLang;
-        if (savedLang === 'fa') {
-            document.documentElement.dir = "rtl";
-        } else {
-            document.documentElement.dir = "ltr";
-        }
+        changeLanguage(savedLang);
     </script>
 </body>
 </html>
