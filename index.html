@@ -3,6 +3,298 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>درباره من | پارسا رضائی خسروی</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;700;900&display=swap');
+
+        /* ==========================================================================
+           تنظیمات تم رنگی جدید (فضا را کمی روشن‌تر و لوکس‌تر کرده‌ایم)
+           ========================================================================== */
+        :root {
+            --bg: #0F172A;                        /* رنگ پس‌زمینه جدید: سرمه‌ای تیره و روشن‌تر از قبل */
+            --card-bg: rgba(30, 41, 59, 0.6);     /* شیشه روشن‌تر و شفاف‌تر */
+            --card-border: rgba(255, 255, 255, 0.12); /* مرزهای مشخص‌تر و درخشان‌تر */
+            --neon-orange: #FF7A00;               
+            --neon-gold: #F59E0B;                 
+            --neon-glow: rgba(255, 122, 0, 0.25);  /* سایه نوری قوی‌تر برای روشنایی بیشتر */
+            --text-main: #F9FAFB;                 
+            --text-muted: #CBD5E1;                /* رنگ متن ثانویه را روشن‌تر کردیم */
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Vazirmatn', 'Tahoma', sans-serif;
+        }
+
+        body {
+            background-color: var(--bg);
+            color: var(--text-main);
+            overflow-x: hidden;
+            position: relative;
+            line-height: 1.8;
+            padding: 60px 8%;
+        }
+
+        /* هاله‌های نورانی پس‌زمینه قوی‌تر برای ایجاد روشنایی محیطی جذاب */
+        .orb {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(140px);
+            z-index: -1;
+            pointer-events: none;
+            opacity: 0.45;
+        }
+        .orb-1 {
+            top: 10%;
+            left: 10%;
+            width: 500px;
+            height: 500px;
+            background: var(--neon-orange);
+        }
+        .orb-2 {
+            bottom: 10%;
+            right: 10%;
+            width: 500px;
+            height: 500px;
+            background: var(--neon-gold);
+        }
+
+        /* باکس شیشه‌ای اصلی محتوا */
+        .about-container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 30px;
+            padding: 50px;
+            backdrop-filter: blur(25px);
+            -webkit-backdrop-filter: blur(25px);
+            box-shadow: 0 30px 60px rgba(0,0,0,0.3);
+            position: relative;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            font-weight: 900;
+            margin-bottom: 30px;
+            background: linear-gradient(to left, #FFFFFF, var(--neon-gold));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        p {
+            color: var(--text-muted);
+            font-size: 1.05rem;
+            margin-bottom: 25px;
+            text-align: justify;
+        }
+
+        .highlight-text {
+            color: var(--neon-gold);
+            font-weight: bold;
+        }
+
+        /* دکمه‌های پایینی */
+        .buttons-group {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+            margin-top: 40px;
+        }
+
+        .btn-action {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            color: white;
+            border: none;
+            padding: 14px 30px;
+            border-radius: 50px;
+            font-weight: bold;
+            font-size: 0.95rem;
+            cursor: pointer;
+            text-decoration: none;
+            transition: transform 0.2s, box-shadow 0.2s, background 0.2s;
+        }
+
+        /* دکمه نارنجی بازگشت */
+        .btn-orange {
+            background: linear-gradient(135deg, var(--neon-orange) 0%, #D97706 100%);
+            box-shadow: 0 0 20px var(--neon-glow);
+        }
+
+        .btn-orange:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 0 25px rgba(255, 122, 0, 0.6);
+        }
+
+        /* دکمه گلس‌مورفیسم دانلود رزومه */
+        .btn-cv {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--card-border);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        .btn-cv:hover {
+            background: rgba(255, 255, 255, 0.1);
+            transform: translateY(-2px);
+            border-color: var(--neon-gold);
+            box-shadow: 0 0 15px rgba(245, 158, 11, 0.3);
+        }
+
+        /* ==========================================================================
+           بخش مدارک و گواهینامه‌ها (Certificates Grid)
+           ========================================================================== */
+        .certificates-section {
+            margin-top: 45px;
+            border-top: 1px solid rgba(255,255,255,0.08);
+            padding-top: 35px;
+        }
+
+        .certificates-title {
+            font-size: 1.5rem;
+            font-weight: 900;
+            margin-bottom: 25px;
+            color: var(--neon-gold);
+        }
+
+        .certificates-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 20px;
+        }
+
+        .cert-card {
+            background: rgba(0, 0, 0, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 20px;
+            padding: 20px;
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cert-card:hover {
+            border-color: var(--neon-orange);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(255, 122, 0, 0.1);
+        }
+
+        .cert-badge {
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 122, 0, 0.1);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 15px;
+            color: var(--neon-orange);
+        }
+
+        .cert-name {
+            font-size: 1rem;
+            font-weight: bold;
+            margin-bottom: 8px;
+        }
+
+        .cert-issuer {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+        }
+    </style>
+</head>
+<body>
+
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
+
+    <div class="about-container">
+        <h1>
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="url(#gold-grad)" stroke-width="2.5"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/><defs><linearGradient id="gold-grad" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="%23FF7A00"/><stop offset="100%" stop-color="%23F59E0B"/></linearGradient></defs></svg>
+            درباره من | پارسا رضائی خسروی
+        </h1>
+
+        <p>
+            سلام! من <span class="highlight-text">پارسا رضائی خسروی</span> هستم؛ طراح و توسعه‌دهنده مستقل وب‌سایت‌های اختصاصی لوکس. از زمانی که وارد دنیای بی‌کران کدنویسی فرانت‌اند شدم، تصمیم گرفتم استانداردهای مرسوم را جابه‌جا کنم. من بر این باورم که دنیای اینترنت پر از سایت‌های تکراری وردپرسی شده است و برندهای بزرگ و خاص، لایق کدهای اختصاصی، سرعت فضایی و طراحی‌های ۱٠٠٪ متمایز هستند.
+        </p>
+
+        <p>
+            من با تلفیق برنامه‌نویسی مدرن فرانت‌اند و قدرت جادویی ابزارهای هوش مصنوعی، کارهای سخت را فشرده کرده‌ام تا بتوانم خلاقانه‌ترین افکت‌ها و انیمیشن‌های تعاملی را در کوتاه‌ترین زمان برای مشتریانم خلق کنم. سرعت لود صفحات سایت‌هایی که می‌سازم معمولاً زیر <span class="highlight-text">۰.۴ ثانیه</span> است که در بازار ایران یک شاهکار فنی به حساب می‌آید.
+        </p>
+
+        <!-- ==========================================================================
+           بخش گواهینامه‌ها و مدارک (جایگزین گام‌های قبلی شده است)
+           ========================================================================== -->
+        <div class="certificates-section">
+            <h2 class="certificates-title">مدارک و گواهینامه‌های من</h2>
+            
+            <div class="certificates-grid">
+                <!-- مدرک ۱ -->
+                <div class="cert-card">
+                    <div class="cert-badge">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                    </div>
+                    <h3 class="cert-name">گواهینامه طراحی وب مدرن</h3>
+                    <p class="cert-issuer">آکادمی بین‌المللی توسعه فرانت‌اند</p>
+                </div>
+
+                <!-- مدرک ۲ -->
+                <div class="cert-card">
+                    <div class="cert-badge">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="7"/><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"/></svg>
+                    </div>
+                    <h3 class="cert-name">مدرک مهندسی پرامپت وب</h3>
+                    <p class="cert-issuer">دوره پیشرفته ابزارهای هوش مصنوعی (AI)</p>
+                </div>
+
+                <!-- مدرک ۳ -->
+                <div class="cert-card">
+                    <div class="cert-badge">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg>
+                    </div>
+                    <h3 class="cert-name">بهینه‌سازی سرعت و سئوی فنی</h3>
+                    <p class="cert-issuer">پلتفرم رشد و توسعه فرانت‌اند ایران</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- دکمه‌های پایینی سایت -->
+        <div class="buttons-group">
+            
+            <!-- دکمه بازگشت به صفحه اصلی -->
+            <a href="index.html" class="btn-action btn-orange">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="transform: scaleX(-1);"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 19 12 12 5"/></svg>
+                بازگشت به صفحه اصلی
+            </a>
+
+            <!-- ==========================================================================
+               دکمه دانلود رزومه (CV)
+               آموزش تغییر آدرس رزومه:
+               در خط زیر، به جای عبارت "CV-File.pdf" آدرس فایل رزومه واقعی خودت را قرار بده.
+               مثلاً اگر فایل رزومه‌ات را در گیت‌هاب آپلود کردی، آدرس لینک آن را اینجا پیست کن.
+               ========================================================================== -->
+            <a href="CV-File.pdf" target="_blank" class="btn-action btn-cv">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                مشاهده و دانلود رزومه (CV)
+            </a>
+
+        </div>
+    </div>
+
+</body>
+</html>
+
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>پورتفولیو اختصاصی شما | طراح مستقل و خلاق</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;700;900&display=swap');
@@ -722,8 +1014,8 @@
             <span class="logo-text">استودیو خلاق کُدپرو</span>
         </div>
         <ul class="nav-links">
-            <li><a href="#">صفحه اصلی</a></li>
-            <li><a href="#about">درباره من</a></li>
+            <li><a href="index.html">صفحه اصلی</a></li>
+            <li><a href="about.html">درباره من</a></li>
             <li><a href="#faq">سوالات متداول</a></li>
             <li><a href="#services">خدمات و تعرفه‌ها</a></li>
             <li><a href="keywords.md" target="_blank">واژه‌نامه AI</a></li>
