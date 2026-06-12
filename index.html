@@ -2,300 +2,9 @@
 <html lang="fa" dir="rtl">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>درباره من | پارسا رضائی خسروی</title>
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;700;900&display=swap');
-
-        /* ==========================================================================
-           تنظیمات تم رنگی جدید (فضا را کمی روشن‌تر و لوکس‌تر کرده‌ایم)
-           ========================================================================== */
-        :root {
-            --bg: #0F172A;                        /* رنگ پس‌زمینه جدید: سرمه‌ای تیره و روشن‌تر از قبل */
-            --card-bg: rgba(30, 41, 59, 0.6);     /* شیشه روشن‌تر و شفاف‌تر */
-            --card-border: rgba(255, 255, 255, 0.12); /* مرزهای مشخص‌تر و درخشان‌تر */
-            --neon-orange: #FF7A00;               
-            --neon-gold: #F59E0B;                 
-            --neon-glow: rgba(255, 122, 0, 0.25);  /* سایه نوری قوی‌تر برای روشنایی بیشتر */
-            --text-main: #F9FAFB;                 
-            --text-muted: #CBD5E1;                /* رنگ متن ثانویه را روشن‌تر کردیم */
-        }
-
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-            font-family: 'Vazirmatn', 'Tahoma', sans-serif;
-        }
-
-        body {
-            background-color: var(--bg);
-            color: var(--text-main);
-            overflow-x: hidden;
-            position: relative;
-            line-height: 1.8;
-            padding: 60px 8%;
-        }
-
-        /* هاله‌های نورانی پس‌زمینه قوی‌تر برای ایجاد روشنایی محیطی جذاب */
-        .orb {
-            position: absolute;
-            border-radius: 50%;
-            filter: blur(140px);
-            z-index: -1;
-            pointer-events: none;
-            opacity: 0.45;
-        }
-        .orb-1 {
-            top: 10%;
-            left: 10%;
-            width: 500px;
-            height: 500px;
-            background: var(--neon-orange);
-        }
-        .orb-2 {
-            bottom: 10%;
-            right: 10%;
-            width: 500px;
-            height: 500px;
-            background: var(--neon-gold);
-        }
-
-        /* باکس شیشه‌ای اصلی محتوا */
-        .about-container {
-            max-width: 900px;
-            margin: 0 auto;
-            background: var(--card-bg);
-            border: 1px solid var(--card-border);
-            border-radius: 30px;
-            padding: 50px;
-            backdrop-filter: blur(25px);
-            -webkit-backdrop-filter: blur(25px);
-            box-shadow: 0 30px 60px rgba(0,0,0,0.3);
-            position: relative;
-        }
-
-        h1 {
-            font-size: 2.5rem;
-            font-weight: 900;
-            margin-bottom: 30px;
-            background: linear-gradient(to left, #FFFFFF, var(--neon-gold));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            display: flex;
-            align-items: center;
-            gap: 15px;
-        }
-
-        p {
-            color: var(--text-muted);
-            font-size: 1.05rem;
-            margin-bottom: 25px;
-            text-align: justify;
-        }
-
-        .highlight-text {
-            color: var(--neon-gold);
-            font-weight: bold;
-        }
-
-        /* دکمه‌های پایینی */
-        .buttons-group {
-            display: flex;
-            gap: 15px;
-            flex-wrap: wrap;
-            margin-top: 40px;
-        }
-
-        .btn-action {
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            color: white;
-            border: none;
-            padding: 14px 30px;
-            border-radius: 50px;
-            font-weight: bold;
-            font-size: 0.95rem;
-            cursor: pointer;
-            text-decoration: none;
-            transition: transform 0.2s, box-shadow 0.2s, background 0.2s;
-        }
-
-        /* دکمه نارنجی بازگشت */
-        .btn-orange {
-            background: linear-gradient(135deg, var(--neon-orange) 0%, #D97706 100%);
-            box-shadow: 0 0 20px var(--neon-glow);
-        }
-
-        .btn-orange:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 0 25px rgba(255, 122, 0, 0.6);
-        }
-
-        /* دکمه گلس‌مورفیسم دانلود رزومه */
-        .btn-cv {
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid var(--card-border);
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-        }
-
-        .btn-cv:hover {
-            background: rgba(255, 255, 255, 0.1);
-            transform: translateY(-2px);
-            border-color: var(--neon-gold);
-            box-shadow: 0 0 15px rgba(245, 158, 11, 0.3);
-        }
-
-        /* ==========================================================================
-           بخش مدارک و گواهینامه‌ها (Certificates Grid)
-           ========================================================================== */
-        .certificates-section {
-            margin-top: 45px;
-            border-top: 1px solid rgba(255,255,255,0.08);
-            padding-top: 35px;
-        }
-
-        .certificates-title {
-            font-size: 1.5rem;
-            font-weight: 900;
-            margin-bottom: 25px;
-            color: var(--neon-gold);
-        }
-
-        .certificates-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-            gap: 20px;
-        }
-
-        .cert-card {
-            background: rgba(0, 0, 0, 0.2);
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            border-radius: 20px;
-            padding: 20px;
-            transition: all 0.3s;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .cert-card:hover {
-            border-color: var(--neon-orange);
-            transform: translateY(-3px);
-            box-shadow: 0 10px 20px rgba(255, 122, 0, 0.1);
-        }
-
-        .cert-badge {
-            width: 40px;
-            height: 40px;
-            background: rgba(255, 122, 0, 0.1);
-            border-radius: 10px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-bottom: 15px;
-            color: var(--neon-orange);
-        }
-
-        .cert-name {
-            font-size: 1rem;
-            font-weight: bold;
-            margin-bottom: 8px;
-        }
-
-        .cert-issuer {
-            font-size: 0.8rem;
-            color: var(--text-muted);
-        }
-    </style>
-</head>
-<body>
-
-    <div class="orb orb-1"></div>
-    <div class="orb orb-2"></div>
-
-    <div class="about-container">
-        <h1>
-            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="url(#gold-grad)" stroke-width="2.5"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/><defs><linearGradient id="gold-grad" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="%23FF7A00"/><stop offset="100%" stop-color="%23F59E0B"/></linearGradient></defs></svg>
-            درباره من | پارسا رضائی خسروی
-        </h1>
-
-        <p>
-            سلام! من <span class="highlight-text">پارسا رضائی خسروی</span> هستم؛ طراح و توسعه‌دهنده مستقل وب‌سایت‌های اختصاصی لوکس. از زمانی که وارد دنیای بی‌کران کدنویسی فرانت‌اند شدم، تصمیم گرفتم استانداردهای مرسوم را جابه‌جا کنم. من بر این باورم که دنیای اینترنت پر از سایت‌های تکراری وردپرسی شده است و برندهای بزرگ و خاص، لایق کدهای اختصاصی، سرعت فضایی و طراحی‌های ۱٠٠٪ متمایز هستند.
-        </p>
-
-        <p>
-            من با تلفیق برنامه‌نویسی مدرن فرانت‌اند و قدرت جادویی ابزارهای هوش مصنوعی، کارهای سخت را فشرده کرده‌ام تا بتوانم خلاقانه‌ترین افکت‌ها و انیمیشن‌های تعاملی را در کوتاه‌ترین زمان برای مشتریانم خلق کنم. سرعت لود صفحات سایت‌هایی که می‌سازم معمولاً زیر <span class="highlight-text">۰.۴ ثانیه</span> است که در بازار ایران یک شاهکار فنی به حساب می‌آید.
-        </p>
-
-        <!-- ==========================================================================
-           بخش گواهینامه‌ها و مدارک (جایگزین گام‌های قبلی شده است)
-           ========================================================================== -->
-        <div class="certificates-section">
-            <h2 class="certificates-title">مدارک و گواهینامه‌های من</h2>
-            
-            <div class="certificates-grid">
-                <!-- مدرک ۱ -->
-                <div class="cert-card">
-                    <div class="cert-badge">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-                    </div>
-                    <h3 class="cert-name">گواهینامه طراحی وب مدرن</h3>
-                    <p class="cert-issuer">آکادمی بین‌المللی توسعه فرانت‌اند</p>
-                </div>
-
-                <!-- مدرک ۲ -->
-                <div class="cert-card">
-                    <div class="cert-badge">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="7"/><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"/></svg>
-                    </div>
-                    <h3 class="cert-name">مدرک مهندسی پرامپت وب</h3>
-                    <p class="cert-issuer">دوره پیشرفته ابزارهای هوش مصنوعی (AI)</p>
-                </div>
-
-                <!-- مدرک ۳ -->
-                <div class="cert-card">
-                    <div class="cert-badge">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg>
-                    </div>
-                    <h3 class="cert-name">بهینه‌سازی سرعت و سئوی فنی</h3>
-                    <p class="cert-issuer">پلتفرم رشد و توسعه فرانت‌اند ایران</p>
-                </div>
-            </div>
-        </div>
-
-        <!-- دکمه‌های پایینی سایت -->
-        <div class="buttons-group">
-            
-            <!-- دکمه بازگشت به صفحه اصلی -->
-            <a href="index.html" class="btn-action btn-orange">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="transform: scaleX(-1);"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 19 12 12 5"/></svg>
-                بازگشت به صفحه اصلی
-            </a>
-
-            <!-- ==========================================================================
-               دکمه دانلود رزومه (CV)
-               آموزش تغییر آدرس رزومه:
-               در خط زیر، به جای عبارت "CV-File.pdf" آدرس فایل رزومه واقعی خودت را قرار بده.
-               مثلاً اگر فایل رزومه‌ات را در گیت‌هاب آپلود کردی، آدرس لینک آن را اینجا پیست کن.
-               ========================================================================== -->
-            <a href="CV-File.pdf" target="_blank" class="btn-action btn-cv">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-                مشاهده و دانلود رزومه (CV)
-            </a>
-
-        </div>
-    </div>
-
-</body>
-</html>
-
-<!DOCTYPE html>
-<html lang="fa" dir="rtl">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>پورتفولیو اختصاصی شما | طراح مستقل و خلاق</title>
+    <!-- شناسه viewport پیش‌فرض که قابلیت تغییر دینامیک برای نمای دسکتاپ دارد -->
+    <meta id="viewport-meta" name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>استودیو پارسا | پورتفولیو و خدمات وب لوکس</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;700;900&display=swap');
 
@@ -303,16 +12,16 @@
            بخش متغیرهای رنگی (CSS Variables) - تم طلایی و نارنجی لوکس
            ========================================================================== */
         :root {
-            --bg: #030712;                        
-            --card-bg: rgba(17, 24, 39, 0.45);    
-            --card-border: rgba(255, 255, 255, 0.08); 
+            --bg: #0F172A;                        
+            --card-bg: rgba(30, 41, 59, 0.6);     
+            --card-border: rgba(255, 255, 255, 0.12); 
             
             --neon-orange: #FF7A00;               
             --neon-gold: #F59E0B;                 
-            --neon-glow: rgba(255, 122, 0, 0.15);  
+            --neon-glow: rgba(255, 122, 0, 0.25);  
             
             --text-main: #F9FAFB;                 
-            --text-muted: #9CA3AF;                
+            --text-muted: #CBD5E1;                
         }
 
         * {
@@ -329,16 +38,17 @@
             overflow-x: hidden;
             position: relative;
             line-height: 1.7;
+            transition: background 0.3s, color 0.3s;
         }
 
-        /* هاله‌های نورانی پس‌زمینه */
+        /* هاله‌های نورانی پس‌زمینه قوی‌تر برای روشنایی محیطی لوکس */
         .orb {
             position: absolute;
             border-radius: 50%;
             filter: blur(140px);
             z-index: -1;
             pointer-events: none;
-            opacity: 0.35;
+            opacity: 0.45;
         }
         .orb-1 {
             top: -100px;
@@ -361,7 +71,7 @@
             justify-content: space-between;
             align-items: center;
             padding: 20px 8%;
-            background: rgba(3, 7, 18, 0.7);
+            background: rgba(15, 23, 42, 0.85);
             backdrop-filter: blur(16px);
             -webkit-backdrop-filter: blur(16px);
             border-bottom: 1px solid var(--card-border);
@@ -399,6 +109,7 @@
             display: flex;
             list-style: none;
             gap: 30px;
+            align-items: center;
         }
 
         .nav-links a {
@@ -407,10 +118,34 @@
             font-size: 0.95rem;
             font-weight: bold;
             transition: color 0.3s;
+            position: relative;
         }
 
         .nav-links a:hover {
             color: var(--text-main);
+        }
+
+        /* سبد خرید با نشان دایره‌ای در گوشه بالا چپ */
+        .cart-link-container {
+            position: relative;
+        }
+
+        .cart-badge {
+            position: absolute;
+            top: -12px;
+            left: -18px;
+            background: linear-gradient(135deg, var(--neon-orange), var(--neon-gold));
+            color: #000;
+            font-weight: 900;
+            font-size: 0.75rem;
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 0 10px var(--neon-orange);
+            display: none; /* در صورت نبود آیتم مخفی است */
         }
 
         .btn-premium {
@@ -430,6 +165,95 @@
         .btn-premium:hover {
             transform: translateY(-2px);
             box-shadow: 0 0 25px rgba(255, 122, 0, 0.5);
+        }
+
+        /* استایل منوی کشویی پروفایل کاربری */
+        .profile-container {
+            position: relative;
+            display: none; /* فقط بعد از لاگین نمایش داده می‌شود */
+        }
+
+        .profile-trigger {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--card-border);
+            color: var(--text-main);
+            padding: 8px 16px;
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 0.85rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.3s;
+        }
+
+        .profile-trigger:hover {
+            border-color: var(--neon-gold);
+            box-shadow: 0 0 10px rgba(245, 158, 11, 0.2);
+        }
+
+        .profile-dropdown {
+            position: absolute;
+            top: 45px;
+            left: 0;
+            width: 250px;
+            background: rgba(15, 23, 42, 0.98);
+            border: 1px solid var(--card-border);
+            border-radius: 16px;
+            padding: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            display: none;
+            flex-direction: column;
+            gap: 12px;
+            z-index: 200;
+        }
+
+        .profile-dropdown.active {
+            display: flex;
+        }
+
+        .profile-info-item {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+            padding-bottom: 8px;
+        }
+
+        .profile-info-item strong {
+            color: var(--text-main);
+            display: block;
+            font-size: 0.9rem;
+            margin-bottom: 2px;
+        }
+
+        .profile-btn {
+            background: transparent;
+            border: 1px solid var(--card-border);
+            color: var(--text-main);
+            padding: 8px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 0.8rem;
+            font-weight: bold;
+            text-align: center;
+            transition: all 0.2s;
+        }
+
+        .profile-btn:hover {
+            background: rgba(255,255,255,0.05);
+            border-color: var(--neon-orange);
+        }
+
+        .profile-btn-logout {
+            background: rgba(239, 68, 110, 0.1);
+            border-color: rgba(239, 68, 110, 0.2);
+            color: #EF4444;
+        }
+
+        .profile-btn-logout:hover {
+            background: #EF4444;
+            color: white;
         }
 
         /* بخش معرفی اصلی (Hero Section) */
@@ -474,7 +298,7 @@
             text-align: justify;
         }
 
-        /* کارت نمونه کار تعاملی با افکت هاور */
+        /* کارت نمونه کار تعاملی */
         .portfolio-card {
             background: var(--card-bg);
             border: 1px solid var(--card-border);
@@ -595,20 +419,56 @@
             max-width: 1400px;
             margin: 0 auto;
             display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 50px;
-            align-items: center;
+            grid-template-columns: 1fr;
+            gap: 30px;
             border-top: 1px solid var(--card-border);
         }
 
-        @media (max-width: 768px) {
-            .about-section {
-                grid-template-columns: 1fr;
-                gap: 30px;
-            }
+        /* روند همکاری (تنظیم مجدد تعداد مراحل و شماره‌بندی‌ها) */
+        .process-section {
+            padding: 80px 8%;
+            max-width: 1400px;
+            margin: 0 auto;
+            border-top: 1px solid var(--card-border);
         }
 
-        /* بخش سوالات متداول (FAQ Accordion) */
+        .process-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 25px;
+        }
+
+        .process-card {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid var(--card-border);
+            border-radius: 20px;
+            padding: 30px;
+            position: relative;
+            transition: border-color 0.3s;
+        }
+
+        .process-card:hover {
+            border-color: var(--neon-orange);
+        }
+
+        .process-num {
+            font-size: 3rem;
+            font-weight: 900;
+            color: rgba(255, 122, 0, 0.1);
+            position: absolute;
+            top: 10px;
+            left: 20px;
+        }
+
+        .process-title {
+            font-size: 1.15rem;
+            font-weight: bold;
+            margin-bottom: 15px;
+            color: var(--neon-orange);
+            margin-top: 15px;
+        }
+
+        /* سوالات متداول */
         .faq-section {
             padding: 80px 8%;
             max-width: 1000px;
@@ -652,7 +512,7 @@
 
         .faq-item.active .faq-answer {
             padding: 10px 25px 25px 25px;
-            max-height: 200px; /* حداکثر ارتفاع باز شدن کشویی */
+            max-height: 200px; 
         }
 
         .faq-icon {
@@ -757,7 +617,7 @@
             box-shadow: 0 0 15px rgba(255, 255, 255, 0.15);
         }
 
-        /* چت پشتیبانی */
+        /* پشتیبانی شناور */
         .chat-widget {
             position: fixed;
             bottom: 30px;
@@ -886,7 +746,121 @@
             font-weight: bold;
         }
 
-        /* پاپ‌آپ خرید */
+        /* تنظیمات شناور (زبان و نسخه دسکتاپ) */
+        .settings-widget {
+            position: fixed;
+            bottom: 30px;
+            left: 30px;
+            z-index: 1000;
+        }
+
+        .settings-trigger {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: rgba(30, 41, 59, 0.9);
+            border: 1px solid var(--card-border);
+            color: white;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+            transition: transform 0.3s;
+        }
+
+        .settings-trigger:hover {
+            transform: rotate(45deg);
+            border-color: var(--neon-gold);
+        }
+
+        .settings-panel {
+            position: absolute;
+            bottom: 60px;
+            left: 0;
+            width: 260px;
+            background: rgba(15, 23, 42, 0.98);
+            border: 1px solid var(--card-border);
+            border-radius: 20px;
+            padding: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            display: none;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .settings-panel.active {
+            display: flex;
+        }
+
+        .settings-title {
+            font-size: 0.95rem;
+            font-weight: bold;
+            color: var(--neon-gold);
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+            padding-bottom: 8px;
+        }
+
+        .setting-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.8rem;
+        }
+
+        .setting-select {
+            background: #0F172A;
+            border: 1px solid var(--card-border);
+            color: white;
+            padding: 5px 10px;
+            border-radius: 8px;
+            outline: none;
+            font-size: 0.8rem;
+            cursor: pointer;
+        }
+
+        /* سوییچ تعویض دسکتاپ */
+        .switch {
+            position: relative;
+            display: inline-block;
+            width: 44px;
+            height: 22px;
+        }
+
+        .switch input { 
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+
+        .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background-color: #334155;
+            transition: .3s;
+            border-radius: 34px;
+        }
+
+        .slider:before {
+            position: absolute;
+            content: "";
+            height: 16px; width: 16px;
+            left: 3px; bottom: 3px;
+            background-color: white;
+            transition: .3s;
+            border-radius: 50%;
+        }
+
+        input:checked + .slider {
+            background-color: var(--neon-orange);
+        }
+
+        input:checked + .slider:before {
+            transform: translateX(22px);
+        }
+
+        /* پنجره‌های بازشوی لاگین و ثبت‌نام */
         .modal-overlay {
             position: fixed;
             top: 0; left: 0; right: 0; bottom: 0;
@@ -991,6 +965,50 @@
             box-shadow: 0 0 20px rgba(255, 122, 0, 0.5);
         }
 
+        /* استایل کلیدهای ورود شبکه اجتماعی */
+        .social-login-group {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .social-btn {
+            flex: 1;
+            padding: 10px;
+            border-radius: 10px;
+            border: 1px solid var(--card-border);
+            background: rgba(255,255,255,0.02);
+            color: white;
+            font-size: 0.8rem;
+            font-weight: bold;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            transition: all 0.2s;
+        }
+
+        .social-btn:hover {
+            background: rgba(255,255,255,0.05);
+            border-color: var(--neon-gold);
+        }
+
+        /* کپچای فارسی شیک */
+        .captcha-box {
+            background: rgba(0,0,0,0.3);
+            border: 1px solid var(--card-border);
+            padding: 10px 15px;
+            border-radius: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: bold;
+            font-size: 1rem;
+            color: var(--neon-gold);
+            user-select: none;
+        }
+
         footer {
             border-top: 1px solid var(--card-border);
             padding: 40px 8%;
@@ -1005,41 +1023,75 @@
     <div class="orb orb-1"></div>
     <div class="orb orb-2"></div>
 
-    <!-- ناوبری بالایی سایت -->
+    <!-- ناوبری بالایی سایت (استودیو پارسا) -->
     <nav>
         <div class="logo">
             <div class="logo-icon">
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" style="color: white;"><polygon points="12 2 2 7 12 12 22 7 12 2"/></svg>
             </div>
-            <span class="logo-text">استودیو خلاق کُدپرو</span>
+            <span class="logo-text" id="logo-branding">استودیو پارسا</span>
         </div>
         <ul class="nav-links">
-            <li><a href="index.html">صفحه اصلی</a></li>
-            <li><a href="about.html">درباره من</a></li>
-            <li><a href="#faq">سوالات متداول</a></li>
-            <li><a href="#services">خدمات و تعرفه‌ها</a></li>
-            <li><a href="keywords.md" target="_blank">واژه‌نامه AI</a></li>
+            <li><a href="#" id="nav-home">صفحه اصلی</a></li>
+            <li><a href="about.html" id="nav-about">درباره من</a></li>
+            <li><a href="#faq" id="nav-faq">سوالات متداول</a></li>
+            <li class="cart-link-container">
+                <a href="#services" id="nav-services">خدمات و تعرفه‌ها</a>
+                <span class="cart-badge" id="cart-counter">0</span>
+            </li>
+            <!-- منوی ورود / ثبت نام جدید به جای واژه نامه -->
+            <li id="auth-nav-item">
+                <a href="#" onclick="openAuthModal(event)" id="nav-login">ورود / ثبت‌نام</a>
+            </li>
+            <!-- منوی اطلاعات پروفایل کاربری بعد از لاگین -->
+            <li class="profile-container" id="user-profile-menu">
+                <button class="profile-trigger" onclick="toggleProfileDropdown()" id="profile-btn-username">حساب کاربری</button>
+                <div class="profile-dropdown" id="profile-dropdown-menu">
+                    <div class="profile-info-item">
+                        <span id="profile-lbl-name">نام و نشان:</span>
+                        <strong id="profile-display-name">کاربر مهمان</strong>
+                    </div>
+                    <div class="profile-info-item">
+                        <span id="profile-lbl-email">ایمیل ثبت‌شده:</span>
+                        <strong id="profile-display-email">-</strong>
+                    </div>
+                    <div class="profile-info-item">
+                        <span id="profile-lbl-phone">تلفن همراه:</span>
+                        <strong id="profile-display-phone">-</strong>
+                    </div>
+                    <!-- سبد خرید درون پروفایل کاربری -->
+                    <div class="profile-info-item" id="profile-cart-container" style="display: none; border-bottom: none; padding-bottom: 0;">
+                        <span id="profile-lbl-pending">در انتظار پرداخت:</span>
+                        <strong id="profile-display-pending" style="color: var(--neon-gold);">0 مورد</strong>
+                    </div>
+                    <button class="profile-btn" onclick="alert('به زودی سیستم ویرایش اطلاعات لایو می‌شود!')" id="profile-btn-edit">ویرایش مشخصات</button>
+                    <button class="profile-btn profile-btn-logout" onclick="logoutUser()" id="profile-btn-logout">خروج از حساب</button>
+                </div>
+            </li>
         </ul>
-        <a href="#services" class="btn-premium">ثبت سفارش فوری</a>
+        <a href="#services" class="btn-premium" id="nav-quick-order">ثبت سفارش فوری</a>
     </nav>
 
     <!-- بخش معرفی اصلی (Hero Section) -->
     <section class="hero">
         <div class="hero-left">
-            <h1>خلق سایت‌های <span class="gradient-highlight">فوق‌العاده لوکس و اختصاصی</span> با مدرن‌ترین کدهای فرانت‌اند</h1>
-            <p>
-                هیچ سایت موفقی با قالب‌های کپی شده ساخته نشده است. من به عنوان طراح خلاق، به صورت کاملاً سفارشی و با استفاده از قدرت هوش مصنوعی، سایت‌های شما را از صفر طراحی و کدنویسی می‌کنم. برای دیدن کیفیت و پویایی کار، ماوس خود را روی کارت نمونه‌کار تعاملی سمت چپ ببرید!
+            <h1 id="hero-title">خلق سایت‌های <span class="gradient-highlight">لوکس و اختصاصی</span> با مدرن‌ترین کدهای فرانت‌اند</h1>
+            <p id="hero-desc">
+                هیچ سایت موفقی با قالب‌های کپی شده ساخته نشده است. من به عنوان طراح خلاق، به صورت کاملاً سفارشی و با استفاده از استودیوی هوش مصنوعی، سایت‌های شما را از صفر طراحی و کدنویسی می‌کنم. برای دیدن کیفیت و پویایی کار، ماوس خود را روی کارت نمونه‌کار تعاملی سمت چپ ببرید!
             </p>
             <div style="display: flex; gap: 15px; flex-wrap: wrap;">
-                <a href="#services" class="btn-premium" style="padding: 14px 35px; font-size: 1rem;">سفارش و تعرفه خدمات</a>
-                <button onclick="toggleChat()" style="color: white; border: 1px solid rgba(255,255,255,0.1); padding: 14px 35px; border-radius: 50px; cursor: pointer; font-weight: bold; background: rgba(255,255,255,0.02);">گفتگو با دستیار هوشمند</button>
+                <a href="#services" class="btn-premium" id="btn-services-hero">سفارش و تعرفه خدمات</a>
+                <button onclick="toggleChat()" class="btn-premium" style="background: rgba(255, 255, 255, 0.05); border: 1px solid var(--card-border); display: flex; align-items: center; gap: 8px; box-shadow: none;" id="btn-support-hero">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+                    <span id="lbl-support-btn">پشتیبانی</span>
+                </button>
             </div>
         </div>
 
         <div class="hero-right">
             <div class="portfolio-card" id="interactive-card">
                 <div class="card-sidebar-text">
-                    <h4>درباره پروژه</h4>
+                    <h4 id="portfolio-title-about">درباره پروژه</h4>
                     <p id="slider-desc">یک رابط کاربری لوکس برای صرافی دیجیتال و کیف پول ارزهای رمزنگاری شده با کدهای مدرن.</p>
                 </div>
 
@@ -1063,151 +1115,111 @@
         </div>
     </section>
 
-    <!-- ==========================================================================
-       بخش درباره من و مهارت‌ها
-       ========================================================================== -->
+    <!-- بخش درباره من خلاصه -->
     <section class="about-section" id="about">
         <div>
-            <span class="service-badge">درباره من</span>
-            <h2 style="font-size: 2.3rem; font-weight: 900; margin-bottom: 20px;">معمار آینده دیجیتال شما</h2>
-            <p style="color: var(--text-muted); text-align: justify; margin-bottom: 25px;">
-                من پارسا، طراح و توسعه‌دهنده مستقل وب‌سایت‌های اختصاصی هستم. رسالت من این است که کسب‌وکار شما را با طراحی‌های خاص، لوکس و متمایز، از شلوغی بازار متمایز کنم. من قالب‌های آماده را کنار گذاشته‌ام و هر پروژه را به عنوان یک اثر هنری دیجیتال منحصر‌به‌فرد خلق می‌کنم.
+            <span class="service-badge" id="badge-about-me">درباره من</span>
+            <h2 style="font-size: 2.3rem; font-weight: 900; margin-bottom: 20px;" id="about-title-main">خالق آینده دیجیتال شما</h2>
+            <p style="color: var(--text-muted); text-align: justify; margin-bottom: 25px;" id="about-desc-main">
+                من پارسا رضائی خسروی، طراح و توسعه‌دهنده مستقل وب‌سایت‌های اختصاصی هستم. رسالت من این است که کسب‌وکار شما را با طراحی‌های خاص، لوکس و متمایز، از شلوغی بازار متمایز کنم. من قالب‌های آماده را کنار گذاشته‌ام و هر پروژه را به عنوان یک اثر هنری دیجیتال منحصر‌به‌فرد خلق می‌کنم.
             </p>
-            <div style="background: rgba(255, 122, 0, 0.05); border-right: 4px solid var(--neon-orange); padding: 15px 20px; border-radius: 8px; color: var(--text-main); font-weight: bold;">
+            <div style="background: rgba(255, 122, 0, 0.05); border-right: 4px solid var(--neon-orange); padding: 15px 20px; border-radius: 8px; color: var(--text-main); font-weight: bold;" id="about-quote">
                 "برندهای لوکس تکرار نمی‌شوند؛ آن‌ها متمایز خلق می‌شوند."
             </div>
-        </div>
-        
-        <div style="background: var(--card-bg); border: 1px solid var(--card-border); border-radius: 24px; padding: 35px; backdrop-filter: blur(10px);">
-            <h3 style="font-size: 1.3rem; font-weight: bold; margin-bottom: 25px; color: var(--neon-gold);">تخصص‌ها و سلاح‌های من:</h3>
-            
-            <div style="margin-bottom: 20px;">
-                <div style="display: flex; justify-content: space-between; font-size: 0.85rem; margin-bottom: 8px;">
-                    <span>طراحی رابط کاربری اختصاصی (UI/UX)</span>
-                    <span style="color: var(--neon-gold);">۹۵٪</span>
-                </div>
-                <div style="height: 6px; background: rgba(255,255,255,0.05); border-radius: 10px; overflow: hidden;">
-                    <div style="width: 95%; height: 100%; background: linear-gradient(to left, var(--neon-orange), var(--neon-gold)); border-radius: 10px;"></div>
-                </div>
-            </div>
-
-            <div style="margin-bottom: 20px;">
-                <div style="display: flex; justify-content: space-between; font-size: 0.85rem; margin-bottom: 8px;">
-                    <span>کدنویسی خلاق فرانت‌اند (HTML5, CSS3, JS)</span>
-                    <span style="color: var(--neon-gold);">۹۰٪</span>
-                </div>
-                <div style="height: 6px; background: rgba(255,255,255,0.05); border-radius: 10px; overflow: hidden;">
-                    <div style="width: 90%; height: 100%; background: linear-gradient(to left, var(--neon-orange), var(--neon-gold)); border-radius: 10px;"></div>
-                </div>
-            </div>
-
-            <div style="margin-bottom: 20px;">
-                <div style="display: flex; justify-content: space-between; font-size: 0.85rem; margin-bottom: 8px;">
-                    <span>مهندسی پرامپت و ابزارهای هوش مصنوعی</span>
-                    <span style="color: var(--neon-gold);">۱۰۰٪</span>
-                </div>
-                <div style="height: 6px; background: rgba(255,255,255,0.05); border-radius: 10px; overflow: hidden;">
-                    <div style="width: 100%; height: 100%; background: linear-gradient(to left, var(--neon-orange), var(--neon-gold)); border-radius: 10px;"></div>
-                </div>
+            <div style="margin-top: 15px; font-weight: 900; font-size: 1.15rem; color: var(--neon-gold);" id="about-signature">
+                پارسا رضائی خسروی
             </div>
         </div>
     </section>
 
-    <!-- ==========================================================================
-       بخش روند همکاری و مراحل کار
-       ========================================================================== -->
-    <section class="process-section" style="padding: 80px 8%; max-width: 1400px; margin: 0 auto; border-top: 1px solid var(--card-border);">
+    <!-- روند همکاری (۵ مرحله با اضافه شدن مرحله قرارداد) -->
+    <section class="process-section" id="process">
         <div style="text-align: center; margin-bottom: 50px;">
-            <span class="service-badge">روند همکاری</span>
-            <h2 style="font-size: 2.3rem; font-weight: 900; margin-top: 10px;">ما چطور رویای شما را می‌سازیم؟</h2>
+            <span class="service-badge" id="badge-cooperation">روند همکاری</span>
+            <h2 style="font-size: 2.3rem; font-weight: 900; margin-top: 10px;" id="process-title-main">ما چطور رویای شما را به واقعیت تبدیل می‌کنیم؟</h2>
         </div>
 
-        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 25px;">
-            <div style="background: rgba(255, 255, 255, 0.02); border: 1px solid var(--card-border); border-radius: 20px; padding: 30px; position: relative;">
-                <span style="font-size: 3rem; font-weight: 900; color: rgba(255, 122, 0, 0.1); position: absolute; top: 10px; left: 20px;">۰۱</span>
-                <h3 style="font-size: 1.15rem; font-weight: bold; margin-bottom: 15px; color: var(--neon-orange); margin-top: 15px;">۱. کشف و مشاوره</h3>
-                <p style="color: var(--text-muted); font-size: 0.85rem; text-align: justify;">دریافت اهداف برند شما، بررسی رقبای ایرانی و تعیین دقیق مسیر پروژه.</p>
+        <div class="process-grid">
+            <!-- مرحله ۱ -->
+            <div class="process-card">
+                <span class="process-num">۰۱</span>
+                <h3 class="process-title" id="proc-t1">۱. کشف و مشاوره</h3>
+                <p style="color: var(--text-muted); font-size: 0.85rem; text-align: justify;" id="proc-d1">دریافت اهداف برند شما، بررسی رقبای ایرانی و تعیین دقیق مسیر پروژه.</p>
             </div>
 
-            <div style="background: rgba(255, 255, 255, 0.02); border: 1px solid var(--card-border); border-radius: 20px; padding: 30px; position: relative;">
-                <span style="font-size: 3rem; font-weight: 900; color: rgba(255, 122, 0, 0.1); position: absolute; top: 10px; left: 20px;">۰۲</span>
-                <h3 style="font-size: 1.15rem; font-weight: bold; margin-bottom: 15px; color: var(--neon-orange); margin-top: 15px;">۲. اتود خلاق با AI</h3>
-                <p style="color: var(--text-muted); font-size: 0.85rem; text-align: justify;">طراحی و تصویرسازی اولیه ظاهر و ترکیب رنگ لوکس با هوش مصنوعی.</p>
+            <!-- مرحله ۲ (جدید) -->
+            <div class="process-card">
+                <span class="process-num">۰۲</span>
+                <h3 class="process-title" id="proc-t2" style="color: var(--neon-gold);">۲. قرارداد و پیش‌پرداخت</h3>
+                <p style="color: var(--text-muted); font-size: 0.85rem; text-align: justify;" id="proc-d2">توافق بر سر جزئیات فنی و حقوقی پروژه، امضای قرارداد دیجیتال و واریز پیش‌پرداخت برای شروع طراحی.</p>
             </div>
 
-            <div style="background: rgba(255, 255, 255, 0.02); border: 1px solid var(--card-border); border-radius: 20px; padding: 30px; position: relative;">
-                <span style="font-size: 3rem; font-weight: 900; color: rgba(255, 122, 0, 0.1); position: absolute; top: 10px; left: 20px;">۰۳</span>
-                <h3 style="font-size: 1.15rem; font-weight: bold; margin-bottom: 15px; color: var(--neon-orange); margin-top: 15px;">۳. کدنویسی اختصاصی</h3>
-                <p style="color: var(--text-muted); font-size: 0.85rem; text-align: justify;">تبدیل طرح به کدهای فرانت‌اند فوق‌العاده بهینه، سریع و ۱۰۰٪ سفارشی.</p>
+            <!-- مرحله ۳ -->
+            <div class="process-card">
+                <span class="process-num">۰۳</span>
+                <h3 class="process-title" id="proc-t3">۳. اتود خلاق با AI</h3>
+                <p style="color: var(--text-muted); font-size: 0.85rem; text-align: justify;" id="proc-d3">تصویر سازی و ساخت هویت بصری اولیه، ظاهر و ترکیب رنگ لوکس با AI.</p>
             </div>
 
-            <div style="background: rgba(255, 255, 255, 0.02); border: 1px solid var(--card-border); border-radius: 20px; padding: 30px; position: relative;">
-                <span style="font-size: 3rem; font-weight: 900; color: rgba(255, 122, 0, 0.1); position: absolute; top: 10px; left: 20px;">۰۴</span>
-                <h3 style="font-size: 1.15rem; font-weight: bold; margin-bottom: 15px; color: var(--neon-orange); margin-top: 15px;">۴. تحویل و پرداخت</h3>
-                <p style="color: var(--text-muted); font-size: 0.85rem; text-align: justify;">تست نهایی سرعت و سئو، اتصال درگاه پرداخت آنلاین و تحویل نهایی کلید پروژه.</p>
+            <!-- مرحله ۴ -->
+            <div class="process-card">
+                <span class="process-num">۰۴</span>
+                <h3 class="process-title" id="proc-t4">۴. کدنویسی اختصاصی</h3>
+                <p style="color: var(--text-muted); font-size: 0.85rem; text-align: justify;" id="proc-d4">تبدیل طرح به کدهای فرانت‌اند فوق‌العاده بهینه، سریع و ۱۰۰٪ سفارشی.</p>
+            </div>
+
+            <!-- مرحله ۵ -->
+            <div class="process-card">
+                <span class="process-num">۰۵</span>
+                <h3 class="process-title" id="proc-t5">۵. تحویل و تسویه</h3>
+                <p style="color: var(--text-muted); font-size: 0.85rem; text-align: justify;" id="proc-d5">تست نهایی سرعت و سئو، اتصال درگاه پرداخت آنلاین و تحویل نهایی کلید پروژه.</p>
             </div>
         </div>
     </section>
 
-    <!-- ==========================================================================
-       بخش جدید سوم: سوالات متداول تعاملی (FAQ) با افکت کشویی شیک
-       ========================================================================== -->
+    <!-- بخش جدید سوم: سوالات متداول تعاملی (FAQ) -->
     <section class="faq-section" id="faq">
         <div style="text-align: center; margin-bottom: 50px;">
-            <span class="service-badge">پاسخ به سوالات شما</span>
-            <h2 style="font-size: 2.3rem; font-weight: 900; margin-top: 10px;">ابهامات خود را برطرف کنید</h2>
+            <span class="service-badge" id="badge-faq">پاسخ به سوالات متداول</span>
+            <h2 style="font-size: 2.3rem; font-weight: 900; margin-top: 10px;" id="faq-title-main">ابهامات خود را برطرف کنید</h2>
         </div>
 
-        <!-- سوال ۱ -->
         <div class="faq-item">
             <div class="faq-question" onclick="toggleFaq(this)">
-                <span>چرا قیمت وب‌سایت‌های اختصاصی از وردپرس بیشتر است؟</span>
+                <span id="faq-q1">چرا قیمت وب‌سایت‌های اختصاصی از وردپرس بیشتر است؟</span>
                 <span class="faq-icon">+</span>
             </div>
-            <div class="faq-answer">
-                وب‌سایت‌های اختصاصی به صورت خط به خط برای کسب‌وکار شما کدنویسی می‌شوند. سرعت لود آن‌ها فوق‌العاده بالاتر است (زیر نیم ثانیه)، امنیت نزدیک به ۱۰۰٪ دارند و هیچ محدودیت طراحی یا کدهای تکراری در آن‌ها وجود ندارد. این سایت‌ها تا سال‌ها بدون قطعی و باکلاس‌ترین وجهه برند شما را حفظ می‌کنند.
+            <div class="faq-answer" id="faq-a1">
+                وب‌سایت‌های اختصاصی به صورت خط به خط برای کسب‌وکار شما کدنویسی می‌شوند. سرعت لود آن‌ها فوق‌العاده بالاتر است (زیر نیم ثانیه)، امنیت نزدیک به ۱۰۰٪ دارند و هیچ محدودیت طراحی یا کدهای تکراری در آن‌ها وجود ندارد. این سایت‌ها تا سال‌ها بدون قطعی برند شما را در بازار حفظ می‌کنند.
             </div>
         </div>
 
-        <!-- سوال ۲ -->
         <div class="faq-item">
             <div class="faq-question" onclick="toggleFaq(this)">
-                <span>چگونه هزینه را پرداخت کنیم؟ آیا امکان قسط‌بندی هست؟</span>
+                <span id="faq-q2">چگونه هزینه را پرداخت کنیم؟ آیا امکان قسط‌بندی هست؟</span>
                 <span class="faq-icon">+</span>
             </div>
-            <div class="faq-answer">
+            <div class="faq-answer" id="faq-a2">
                 بله! پرداخت‌ها به صورت دو یا سه مرحله‌ای (پیش‌پرداخت برای شروع، تحویل دمو اولیه و تسویه نهایی هنگام آپلود لایو) انجام می‌شود. برای راحتی شما، پرداخت آنلاین امن مستقیم از طریق درگاه زرین‌لینک در هر مرحله فراهم است.
             </div>
         </div>
 
-        <!-- سوال ۳ -->
         <div class="faq-item">
             <div class="faq-question" onclick="toggleFaq(this)">
-                <span>آیا سایت‌ها در موبایل و تبلت هم درست نشان داده می‌شوند؟</span>
+                <span id="faq-q3">آیا سایت‌ها در موبایل و تبلت هم درست نشان داده می‌شوند؟</span>
                 <span class="faq-icon">+</span>
             </div>
-            <div class="faq-answer">
+            <div class="faq-answer" id="faq-a3">
                 ۱۰۰٪ بله! تمامی سایت‌هایی که توسط من طراحی و پیاده‌سازی می‌شوند، به صورت کامل واکنش‌گرا (Responsive) هستند و در تمامی دستگاه‌ها، به ویژه موبایل، با مدرن‌ترین ظاهر چیده و لود می‌شوند.
-            </div>
-        </div>
-
-        <!-- سوال ۴ -->
-        <div class="faq-item">
-            <div class="faq-question" onclick="toggleFaq(this)">
-                <span>پس از اتمام کار، چطور باید متون یا قیمت‌های سایتم را ویرایش کنم؟</span>
-                <span class="faq-icon">+</span>
-            </div>
-            <div class="faq-answer">
-                من فایل نهایی را همراه با یک راهنمای بسیار ساده فارسی ویدیویی یا متنی (دقیقاً مثل راهنمای ۱۰۰ واژه AI در سایت) تحویل می‌دهم تا خودتان در ۱ ثانیه و به راحتی بتوانید نوشته‌ها و تصاویر را بدون یک خط کدنویسی ویرایش و ذخیره کنید.
             </div>
         </div>
     </section>
 
-    <!-- بخش خدمات مستقیم سفارش (۸ سرویسی که درخواست کردی) -->
+    <!-- خدمات مستقیم -->
     <section class="services-section" id="services">
         <div class="section-title">
-            <h2>تعرفه‌گذاری و سفارش آنلاین خدمات اختصاصی</h2>
-            <p>روی دکمه سفارش هر کدام کلیک کنید تا مستقیماً به درگاه پرداخت زرین‌لینک همان خدمت متصل شوید.</p>
+            <h2 id="services-title-main">تعرفه‌گذاری و سفارش آنلاین خدمات اختصاصی</h2>
+            <p id="services-desc-main">روی دکمه سفارش هر کدام کلیک کنید تا مستقیماً به درگاه پرداخت زرین‌لینک همان خدمت متصل شوید.</p>
         </div>
 
         <div class="services-grid">
@@ -1215,8 +1227,8 @@
             <div class="service-card">
                 <div>
                     <span class="service-badge">اصلی</span>
-                    <h3 class="service-title">لندینگ‌پیج تک‌صفحه‌ای مدرن</h3>
-                    <p class="service-desc">طراحی و کدنویسی یک صفحه فرود شیک، ۱۰۰٪ واکنش‌گرا و سریع برای معرفی یا کمپین‌های فروش محصول شما.</p>
+                    <h3 class="service-title" id="sc-t1">لندینگ‌پیج تک‌صفحه‌ای مدرن</h3>
+                    <p class="service-desc" id="sc-d1">طراحی و کدنویسی یک صفحه فرود شیک، ۱۰۰٪ واکنش‌گرا و سریع برای معرفی یا کمپین‌های فروش محصول شما.</p>
                 </div>
                 <div>
                     <div class="price-tag">۵,۰۰۰,۰۰۰ <span>تومان</span></div>
@@ -1228,8 +1240,8 @@
             <div class="service-card">
                 <div>
                     <span class="service-badge">لوکس</span>
-                    <h3 class="service-title">سایت پورتفولیو اختصاصی ۲بعدی/۳بعدی</h3>
-                    <p class="service-desc">یک سایت گالری و معرفی شخصی خیره‌کننده با انواع افکت‌های حرکتی و تغییر پوسته برای فریلنسرها و طراحان طراز اول.</p>
+                    <h3 class="service-title" id="sc-t2">سایت پورتفولیو اختصاصی ۲بعدی/۳بعدی</h3>
+                    <p class="service-desc" id="sc-d2">یک سایت گالری و معرفی شخصی خیره‌کننده با انواع افکت‌های حرکتی و تغییر پوسته برای فریلنسرها و طراحان طراز اول.</p>
                 </div>
                 <div>
                     <div class="price-tag">۸,۰۰۰,۰۰۰ <span>تومان</span></div>
@@ -1241,8 +1253,8 @@
             <div class="service-card">
                 <div>
                     <span class="service-badge">کامل</span>
-                    <h3 class="service-title">سایت شرکتی و معرفی خدمات خلاق</h3>
-                    <p class="service-desc">وب‌سایت چندصفحه‌ای فوق‌العاده سبک با سئوی تضمین شده برای معرفی کسب‌وکار شما بدون محدودیت‌های قالب وردپرس.</p>
+                    <h3 class="service-title" id="sc-t3">سایت شرکتی و معرفی خدمات خلاق</h3>
+                    <p class="service-desc" id="sc-d3">وب‌سایت چندصفحه‌ای فوق‌العاده سبک با سئوی تضمین شده برای معرفی کسب‌وکار شما بدون محدودیت‌های قالب وردپرس.</p>
                 </div>
                 <div>
                     <div class="price-tag">۱۵,۰۰۰,۰۰۰ <span>تومان</span></div>
@@ -1254,8 +1266,8 @@
             <div class="service-card">
                 <div>
                     <span class="service-badge">هویت بصری</span>
-                    <h3 class="service-title">طراحی لوگو اختصاصی برند</h3>
-                    <p class="service-desc">خلق یک نشان تجاری و لوگوی بی‌نظیر، کاملاً اختصاصی و متناسب با روانشناسی بازار مخاطب شما با فرمت‌های برداری باکیفیت.</p>
+                    <h3 class="service-title" id="sc-t4">طراحی لوگو اختصاصی برند</h3>
+                    <p class="service-desc" id="sc-d4">خلق یک نشان تجاری و لوگوی بی‌نظیر، کاملاً اختصاصی و متناسب با روانشناسی بازار مخاطب شما با فرمت‌های برداری باکیفیت.</p>
                 </div>
                 <div>
                     <div class="price-tag">۷,۰۰۰,۰۰۰ <span>تومان</span></div>
@@ -1267,8 +1279,8 @@
             <div class="service-card">
                 <div>
                     <span class="service-badge">هویت بصری</span>
-                    <h3 class="service-title">طراحی پالت رنگ سازمانی</h3>
-                    <p class="service-desc">طراحی و پیاده‌سازی هویت رنگی و روانشناسی رنگ‌های برند برای همخوانی ۱۰۰ درصدی کارت ویزیت، سایت و شبکه‌های اجتماعی.</p>
+                    <h3 class="service-title" id="sc-t5">طراحی پالت رنگ سازمانی</h3>
+                    <p class="service-desc" id="sc-d5">طراحی و پیاده‌سازی هویت رنگی و روانشناسی رنگ‌های برند برای همخوانی ۱۰۰ درصدی کارت ویزیت، سایت و شبکه‌های اجتماعی.</p>
                 </div>
                 <div>
                     <div class="price-tag">۵,۰۰۰,۰۰۰ <span>تومان</span></div>
@@ -1280,8 +1292,8 @@
             <div class="service-card">
                 <div>
                     <span class="service-badge">فنی</span>
-                    <h3 class="service-title">اتصال به درگاه پرداخت آنلاین</h3>
-                    <p class="service-desc">اتصال انواع درگاه‌های پرداخت بانکی مستقیم یا واسط (زرین‌پال، نکست‌پی و...) به کدهای سایت اختصاصی شما بدون دردسر.</p>
+                    <h3 class="service-title" id="sc-t6">اتصال به درگاه پرداخت آنلاین</h3>
+                    <p class="service-desc" id="sc-d6">اتصال انواع درگاه‌های پرداخت بانکی مستقیم یا واسط (زرین‌پال، نکست‌پی و...) به کدهای سایت اختصاصی شما بدون دردسر.</p>
                 </div>
                 <div>
                     <div class="price-tag">۴,۰۰۰,۰۰۰ <span>تومان</span></div>
@@ -1293,8 +1305,8 @@
             <div class="service-card">
                 <div>
                     <span class="service-badge">تایپوگرافی</span>
-                    <h3 class="service-title">طراحی فونت اختصاصی</h3>
-                    <p class="service-desc">خلق و بهینه‌سازی یک تایپ‌فیس و فونت اختصاصی برای متون وب‌سایت و بنرهای برند شما جهت متمایز شدن مطلق از رقبا.</p>
+                    <h3 class="service-title" id="sc-t7">طراحی فونت اختصاصی</h3>
+                    <p class="service-desc" id="sc-d7">خلق و بهینه‌سازی یک تایپ‌فیس و فونت اختصاصی برای متون وب‌سایت و بنرهای برند شما جهت متمایز شدن مطلق از رقبا.</p>
                 </div>
                 <div>
                     <div class="price-tag">۶,۰۰۰,۰۰۰ <span>تومان</span></div>
@@ -1306,8 +1318,8 @@
             <div class="service-card">
                 <div>
                     <span class="service-badge">گرافیک</span>
-                    <h3 class="service-title">تولید و ادیت عکس محصول</h3>
-                    <p class="service-desc">تولید تصاویر ۳بعدی تبلیغاتی و ادیت و روتوش فوق‌العاده باکیفیت و نئونی عکس‌های محصولات شما با هوش مصنوعی برای سایت.</p>
+                    <h3 class="service-title" id="sc-t8">تولید و ادیت عکس محصول</h3>
+                    <p class="service-desc" id="sc-d8">تولید تصاویر ۳بعدی تبلیغاتی و ادیت و روتوش فوق‌العاده باکیفیت و نئونی عکس‌های محصولات شما با هوش مصنوعی برای سایت.</p>
                 </div>
                 <div>
                     <div class="price-tag">۵,۰۰۰,۰۰۰ <span>تومان</span></div>
@@ -1338,16 +1350,12 @@
                     <input type="tel" id="payer-phone" class="form-input" style="direction: ltr; text-align: left;" placeholder="09123456789" required>
                 </div>
 
-                <div style="margin-top: 10px; font-size: 0.75rem; color: var(--text-muted); margin-bottom: 20px;">
-                    * پس از تایید اطلاعات، مستقیماً به صفحه پرداخت آنلاین زرین‌پال این سرویس هدایت خواهید شد.
-                </div>
-
                 <button type="submit" class="btn-submit-zarin">تایید و انتقال به درگاه پرداخت امن زرین‌پال</button>
             </form>
         </div>
     </div>
 
-    <!-- پشتیبانی و دستیار چت‌بات هوش مصنوعی اختصاصی -->
+    <!-- چت پشتیبانی -->
     <div class="chat-widget">
         <button class="chat-trigger" onclick="toggleChat()">
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="2.5" style="transform: scaleX(-1);"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
@@ -1355,13 +1363,13 @@
 
         <div class="chat-box" id="chat-box">
             <div class="chat-header">
-                <h4>دستیار هوشمند کُدپرو</h4>
+                <h4>پشتیبانی استودیو پارسا</h4>
                 <button class="chat-close" onclick="toggleChat()">&times;</button>
             </div>
             
             <div class="chat-messages" id="chat-messages">
                 <div class="msg-bot">
-                    سلام! من دستیار هوشمند شما هستم. چطور می‌توانم در انتخاب خدمات یا طراحی وب‌سایت اختصاصی به شما کمک کنم؟
+                    سلام! چطور می‌توانم در مورد طراحی وب‌سایت اختصاصی، لوگو و سیستم‌سازی شما را راهنمایی کنم؟
                 </div>
             </div>
 
@@ -1372,13 +1380,258 @@
         </div>
     </div>
 
+    <!-- ==========================================================================
+       بخش تنظیمات شناور جدید (ترجمه چندزبانه و نمای دسکتاپ گوشی)
+       ========================================================================== -->
+    <div class="settings-widget">
+        <button class="settings-trigger" onclick="toggleSettingsPanel()">⚙️</button>
+        <div class="settings-panel" id="settings-panel">
+            <div class="settings-title" id="set-t">تنظیمات وب‌سایت</div>
+            
+            <!-- ردیف تعویض زبان مستقل -->
+            <div class="setting-row">
+                <span id="set-lang">زبان سایت (Language)</span>
+                <select class="setting-select" id="lang-select" onchange="changeLanguage(this.value)">
+                    <option value="fa">فارسی (FA)</option>
+                    <option value="en">English (EN)</option>
+                    <option value="fr">Français (FR)</option>
+                    <option value="ru">Русский (RU)</option>
+                    <option value="tr">Türkçe (TR)</option>
+                    <option value="es">Español (ES)</option>
+                    <option value="de">Deutsch (DE)</option>
+                    <option value="ar">العربية (AR)</option>
+                    <option value="ku">کوردی (KU)</option>
+                </select>
+            </div>
+
+            <!-- ردیف نمای دسکتاپ برای گوشی‌ها -->
+            <div class="setting-row">
+                <span id="set-desk">نمای دسکتاپ گوشی</span>
+                <label class="switch">
+                    <input type="checkbox" id="desktop-view-toggle" onchange="toggleDesktopView(this.checked)">
+                    <span class="slider"></span>
+                </label>
+            </div>
+        </div>
+    </div>
+
+    <!-- ==========================================================================
+       پاپ‌آپ شیک ثبت‌نام و لاگین کاربری (کاملاً مسدودکننده و زنده)
+       ========================================================================== -->
+    <div class="modal-overlay" id="auth-modal-overlay" style="z-index: 2000;">
+        <div class="modal" style="max-width: 440px;" onclick="event.stopPropagation()">
+            <button class="modal-close" onclick="closeAuthModal()">&times;</button>
+            
+            <!-- تب‌های ورود / ثبت‌نام -->
+            <div style="display: flex; gap: 15px; border-bottom: 1px solid var(--card-border); padding-bottom: 15px; margin-bottom: 25px;">
+                <button id="tab-login" onclick="switchAuthTab('login')" style="flex:1; background:transparent; border:none; color:var(--neon-gold); font-weight:bold; font-size:1.1rem; cursor:pointer;">ورود به حساب</button>
+                <button id="tab-register" onclick="switchAuthTab('register')" style="flex:1; background:transparent; border:none; color:var(--text-muted); font-weight:bold; font-size:1.1rem; cursor:pointer;">ثبت‌نام جدید</button>
+            </div>
+
+            <!-- فرم لاگین -->
+            <div id="form-login-area">
+                <div class="social-login-group">
+                    <button class="social-btn" onclick="socialLoginSim('Google')">🌐 ورود با گوگل</button>
+                    <button class="social-btn" onclick="socialLoginSim('Apple')">🍏 ورود با اپل</button>
+                </div>
+                <form onsubmit="handleLoginSubmit(event)">
+                    <div class="form-group">
+                        <label id="lbl-login-user">تلفن همراه یا ایمیل</label>
+                        <input type="text" id="login-identifier" class="form-input" required>
+                    </div>
+                    <div class="form-group">
+                        <label id="lbl-login-pass">رمز عبور</label>
+                        <input type="password" id="login-password" class="form-input" required>
+                    </div>
+                    <button type="submit" class="btn-submit-zarin" id="btn-login-submit">ورود به پنل کاربری</button>
+                </form>
+            </div>
+
+            <!-- فرم ثبت‌نام دو مرحله‌ای با اعتبارسنجی -->
+            <div id="form-register-area" style="display: none;">
+                <!-- مرحله اول: شماره یا ایمیل -->
+                <div id="register-step-1">
+                    <p style="font-size: 0.8rem; margin-bottom: 15px;" id="lbl-reg-tip">لطفاً شماره همراه ایرانی (شروع با ۰۹) یا ایمیل خارجی خود را وارد کنید.</p>
+                    <div class="form-group">
+                        <label id="lbl-reg-id">تلفن یا ایمیل ثبت‌نام</label>
+                        <input type="text" id="register-identifier" class="form-input" placeholder="09... / email@domain.com" required>
+                    </div>
+                    <button type="button" class="btn-submit-zarin" onclick="processRegisterStep1()" id="btn-reg-next">ادامه ثبت‌نام</button>
+                </div>
+
+                <!-- مرحله دوم: تکمیل اطلاعات و کپچای فارسی -->
+                <div id="register-step-2" style="display: none;">
+                    <div class="form-group">
+                        <label id="lbl-r-name">نام</label>
+                        <input type="text" id="reg-name" class="form-input" required>
+                    </div>
+                    <div class="form-group">
+                        <label id="lbl-r-lname">نام خانوادگی</label>
+                        <input type="text" id="reg-lname" class="form-input" required>
+                    </div>
+                    <div class="form-group">
+                        <label id="lbl-r-email">آدرس ایمیل</label>
+                        <input type="email" id="reg-email" class="form-input" required>
+                    </div>
+                    <div class="form-group">
+                        <label id="lbl-r-phone">تلفن همراه</label>
+                        <input type="tel" id="reg-phone" class="form-input" style="direction: ltr; text-align: left;" required>
+                    </div>
+                    <!-- کپچای فارسی -->
+                    <div class="form-group">
+                        <label id="lbl-r-captcha">کد امنیتی (کپچای فارسی)</label>
+                        <div class="captcha-box">
+                            <span id="captcha-question">۴ + ۵ = ؟</span>
+                            <input type="text" id="reg-captcha-input" class="form-input" style="width: 80px; text-align: center; font-weight: bold;" required>
+                        </div>
+                    </div>
+                    <button type="button" class="btn-submit-zarin" onclick="processRegisterStep2()" id="btn-reg-finish">ایجاد حساب کاربری</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <footer>
-        <p>استودیو طراحی خلاق شما • با قدرت کدهای اختصاصی و هوش مصنوعی مستقل • ۲۰۲۶</p>
+        <p>استودیو طراحی خلاق پارسا ، با قدرت کدهای اختصاصی امن و دستیار AI ، 2026</p>
     </footer>
 
-    <!-- کدهای جاوااسکریپت (مغز و حرکات وب‌سایت) -->
+    <!-- کدهای جاوااسکریپت (مغز پویای سایت) -->
     <script>
-        // اطلاعات اسلایدرهای نمونه کار تعاملی
+        // دیتابیس ترجمه‌های چندزبانه سایت
+        const translations = {
+            fa: {
+                "logo-branding": "استودیو پارسا",
+                "nav-home": "صفحه اصلی",
+                "nav-about": "درباره من",
+                "nav-faq": "سوالات متداول",
+                "nav-services": "خدمات و تعرفه‌ها",
+                "nav-login": "ورود / ثبت‌نام",
+                "nav-quick-order": "ثبت سفارش فوری",
+                "hero-title": "خلق سایت‌های <span class='gradient-highlight'>لوکس و اختصاصی</span> با مدرن‌ترین کدهای فرانت‌اند",
+                "hero-desc": "هیچ سایت موفقی با قالب‌های کپی شده ساخته نشده است. من به عنوان طراح خلاق، به صورت کاملاً سفارشی و با استفاده از استودیوی هوش مصنوعی، سایت‌های شما را از صفر طراحی و کدنویسی می‌کنم. برای دیدن کیفیت و پویایی کار، ماوس خود را روی کارت نمونه‌کار تعاملی سمت چپ ببرید!",
+                "btn-services-hero": "سفارش و تعرفه خدمات",
+                "lbl-support-btn": "پشتیبانی",
+                "about-title-main": "خالق آینده دیجیتال شما",
+                "about-desc-main": "من پارسا رضائی خسروی، طراح و توسعه‌دهنده مستقل وب‌سایت‌های اختصاصی هستم. رسالت من این است که کسب‌وکار شما را با طراحی‌های خاص، لوکس و متمایز، از شلوغی بازار متمایز کنم. من قالب‌های آماده را کنار گذاشته‌ام و هر پروژه را به عنوان یک اثر هنری دیجیتال منحصر‌به‌فرد خلق می‌کنم.",
+                "about-quote": '"برندهای لوکس تکرار نمی‌شوند؛ آن‌ها متمایز خلق می‌شوند."',
+                "process-title-main": "ما چطور رویای شما را به واقعیت تبدیل می‌کنیم؟",
+                "proc-t1": "۱. کشف و مشاوره",
+                "proc-d1": "دریافت اهداف برند شما، بررسی رقبای ایرانی و تعیین دقیق مسیر پروژه.",
+                "proc-t2": "۲. قرارداد و پیش‌پرداخت",
+                "proc-d2": "توافق بر سر جزئیات فنی و حقوقی پروژه، امضای قرارداد دیجیتال و واریز پیش‌پرداخت برای شروع طراحی.",
+                "proc-t3": "۳. اتود خلاق با AI",
+                "proc-d3": "تصویر سازی و ساخت هویت بصری اولیه، ظاهر و ترکیب رنگ لوکس با AI.",
+                "proc-t4": "۴. کدنویسی اختصاصی",
+                "proc-d4": "تبدیل طرح به کدهای فرانت‌اند فوق‌العاده بهینه، سریع و ۱۰۰٪ سفارشی.",
+                "proc-t5": "۵. تحویل و تسویه",
+                "proc-d5": "تست نهایی سرعت و سئو، اتصال درگاه پرداخت آنلاین و تحویل نهایی کلید پروژه.",
+                "services-title-main": "تعرفه‌گذاری و سفارش آنلاین خدمات اختصاصی",
+                "services-desc-main": "روی دکمه سفارش هر کدام کلیک کنید تا مستقیماً به درگاه پرداخت زرین‌لینک همان خدمت متصل شوید.",
+                "faq-title-main": "ابهامات خود را برطرف کنید",
+                "faq-q1": "چرا قیمت وب‌سایت‌های اختصاصی از وردپرس بیشتر است؟",
+                "faq-a1": "وب‌سایت‌های اختصاصی به صورت خط به خط برای کسب‌وکار شما کدنویسی می‌شوند. سرعت لود آن‌ها فوق‌العاده بالاتر است (زیر نیم ثانیه)، امنیت نزدیک به ۱۰۰٪ دارند و هیچ محدودیت طراحی یا کدهای تکراری در آن‌ها وجود ندارد. این سایت‌ها تا سال‌ها بدون قطعی برند شما را در بازار حفظ می‌کنند.",
+                "faq-q2": "چگونه هزینه را پرداخت کنیم؟ آیا امکان قسط‌بندی هست؟",
+                "faq-a2": "بله! پرداخت‌ها به صورت دو یا سه مرحله‌ای (پیش‌پرداخت برای شروع، تحویل دمو اولیه و تسویه نهایی هنگام آپلود لایو) انجام می‌شود. برای راحتی شما، پرداخت آنلاین امن مستقیم از طریق درگاه زرین‌لینک در هر مرحله فراهم است.",
+                "faq-q3": "آیا سایت‌ها در موبایل و تبلت هم درست نشان داده می‌شوند؟",
+                "faq-a3": "۱۰۰٪ بله! تمامی سایت‌هایی که توسط من طراحی و پیاده‌سازی می‌شوند، به صورت کامل واکنش‌گرا (Responsive) هستند و در تمامی دستگاه‌ها، به ویژه موبایل، با مدرن‌ترین ظاهر چیده و لود می‌شوند."
+            },
+            en: {
+                "logo-branding": "Parsa Studio",
+                "nav-home": "Home",
+                "nav-about": "About Me",
+                "nav-faq": "FAQ",
+                "nav-services": "Services",
+                "nav-login": "Login / Register",
+                "nav-quick-order": "Quick Order",
+                "hero-title": "Creating <span class='gradient-highlight'>Luxury & Custom</span> Websites with Modern Frontend Codes",
+                "hero-desc": "No successful website is built with copied templates. As a creative designer, I design and code your sites from scratch with custom styling using the AI Studio.",
+                "btn-services-hero": "View Services",
+                "lbl-support-btn": "Support",
+                "about-title-main": "Creator of Your Digital Future",
+                "about-desc-main": "I am Parsa Rezaei Khosravi, a custom web designer. My mission is to differentiate your business in the market with luxury and unique custom layouts.",
+                "about-quote": '"Luxury brands do not repeat; they are created uniquely."',
+                "process-title-main": "How Do We Turn Your Dream Into Reality?",
+                "proc-t1": "1. Discovery & Consultation",
+                "proc-d1": "Understanding goals, studying competitors, and planning the project.",
+                "proc-t2": "2. Contract & Prepayment",
+                "proc-d2": "Signing agreement and payment of initial deposit.",
+                "proc-t3": "3. Creative Mockup with AI",
+                "proc-d3": "Visual identity design and luxury color schema mockups using AI.",
+                "proc-t4": "4. Custom Web Development",
+                "proc-d4": "Coding optimized, lightweight, responsive and clean websites.",
+                "proc-t5": "5. Delivery & Settlement",
+                "proc-d5": "Speed optimization, SEO test, gateway connection, and project delivery.",
+                "services-title-main": "Pricing & Online Ordering of Custom Services",
+                "services-desc-main": "Click order on any service to connect directly to ZarinPal payment gateway.",
+                "faq-title-main": "Frequently Asked Questions",
+                "faq-q1": "Why do custom websites cost more than WordPress?",
+                "faq-a1": "Custom websites are coded line by line. Load speeds are extremely fast (under 0.5s), security is solid, and there are no design limits.",
+                "faq-q2": "How is the payment processed? Is installment possible?",
+                "faq-a2": "Yes, payments are split into 2 or 3 steps. Online payment is securely available.",
+                "faq-q3": "Do websites work perfectly on mobile and tablet?",
+                "faq-a3": "100% Yes! All sites built are fully responsive and look modern on every screen."
+            }
+        };
+
+        // زبان‌های شبیه‌سازی برای بقیه گزینه‌ها
+        const otherLangs = ['fr', 'ru', 'tr', 'es', 'de', 'ar', 'ku'];
+        otherLangs.forEach(lang => {
+            translations[lang] = JSON.parse(JSON.stringify(translations.en)); // کپی کردن ساختار انگلیسی با اسم زبان‌ها
+            translations[lang]["logo-branding"] = `Parsa Studio (${lang.toUpperCase()})`;
+        });
+
+        // تغییر زبان تعاملی کل صفحات وب‌سایت
+        function changeLanguage(lang) {
+            localStorage.setItem('site-lang', lang);
+            
+            // اگر جهت عربی یا کردی بود راست‌چین شود، در غیر این‌صورت چپ‌چین
+            if (lang === 'fa' || lang === 'ar' || lang === 'ku') {
+                document.documentElement.dir = "rtl";
+                document.documentElement.lang = "fa";
+            } else {
+                document.documentElement.dir = "ltr";
+                document.documentElement.lang = "en";
+            }
+
+            const data = translations[lang] || translations.fa;
+            for (let key in data) {
+                const el = document.getElementById(key);
+                if (el) {
+                    el.innerHTML = data[key];
+                }
+            }
+        }
+
+        // بررسی لود زودهنگام زبان ذخیره شده در مرورگر
+        const savedLang = localStorage.getItem('site-lang') || 'fa';
+        document.getElementById('lang-select').value = savedLang;
+        changeLanguage(savedLang);
+
+        // ==========================================================================
+        // پیاده‌سازی جادوی نمای دسکتاپ (Desktop View) روی انواع گوشی و تبلت
+        // ==========================================================================
+        function toggleDesktopView(isEnabled) {
+            localStorage.setItem('desktop-view', isEnabled ? 'true' : 'false');
+            const meta = document.getElementById('viewport-meta');
+            if (isEnabled) {
+                meta.setAttribute('content', 'width=1200, initial-scale=0.3, shrink-to-fit=no');
+            } else {
+                meta.setAttribute('content', 'width=device-width, initial-scale=1.0');
+            }
+        }
+
+        const savedDesktop = localStorage.getItem('desktop-view') === 'true';
+        document.getElementById('desktop-view-toggle').checked = savedDesktop;
+        toggleDesktopView(savedDesktop);
+
+        function toggleSettingsPanel() {
+            document.getElementById('settings-panel').classList.toggle('active');
+        }
+
+
+        // ==========================================================================
+        // اسلایدر نمونه‌کارهای تعاملی
+        // ==========================================================================
         const slidesData = [
             {
                 tag: "تم وب۳ و ارز دیجیتال",
@@ -1401,7 +1654,6 @@
         const slides = document.querySelectorAll('.slide-img');
         let sliderTimer;
 
-        // تابع تعویض عکس و اطلاعات متنی اسلایدر
         function showSlide(index) {
             slides.forEach(slide => slide.classList.remove('active'));
             slides[index].classList.add('active');
@@ -1437,33 +1689,194 @@
         const card = document.getElementById('interactive-card');
         card.addEventListener('mouseenter', stopAutoSlider);
         card.addEventListener('mouseleave', startAutoSlider);
-
         startAutoSlider();
 
-        // مدیریت باز و بسته شدن سوالات متداول (FAQ Accordion)
-        function toggleFaq(element) {
-            const item = element.parentElement;
-            const isActive = item.classList.contains('active');
-            
-            // بستن تمام سوالات قبلی باز شده
-            const activeItems = document.querySelectorAll('.faq-item.active');
-            activeItems.forEach(activeItem => {
-                activeItem.classList.remove('active');
-            });
 
-            // باز کردن سوال کلیک شده (اگر در حال حاضر بسته بود)
-            if (!isActive) {
-                item.classList.add('active');
+        // ==========================================================================
+        // مدیریت سیستم ثبت نام و لاگین کاربری اختصاصی
+        // ==========================================================================
+        let isUserLoggedIn = false;
+        let cartCount = 0;
+
+        function openAuthModal(event) {
+            event.preventDefault();
+            document.getElementById('auth-modal-overlay').classList.add('active');
+        }
+
+        function closeAuthModal() {
+            document.getElementById('auth-modal-overlay').classList.remove('active');
+        }
+
+        function switchAuthTab(tab) {
+            if (tab === 'login') {
+                document.getElementById('tab-login').style.color = 'var(--neon-gold)';
+                document.getElementById('tab-register').style.color = 'var(--text-muted)';
+                document.getElementById('form-login-area').style.display = 'block';
+                document.getElementById('form-register-area').style.display = 'none';
+            } else {
+                document.getElementById('tab-login').style.color = 'var(--text-muted)';
+                document.getElementById('tab-register').style.color = 'var(--neon-gold)';
+                document.getElementById('form-login-area').style.display = 'none';
+                document.getElementById('form-register-area').style.display = 'block';
+                document.getElementById('register-step-1').style.display = 'block';
+                document.getElementById('register-step-2').style.display = 'none';
             }
         }
 
-        // مدیریت پنجره خرید نهایی
+        // بررسی کپچا و ثبت‌نام دو مرحله‌ای
+        function processRegisterStep1() {
+            const id = document.getElementById('register-identifier').value.trim();
+            if (id === '') {
+                alert('لطفاً شماره تلفن یا ایمیل معتبر وارد کنید.');
+                return;
+            }
+
+            // اعتبارسنجی تلفن همراه داخل ایران (حتماً با ۰۹ شروع شود) یا ایمیل خارجی
+            const isEmail = id.includes('@');
+            if (!isEmail && !id.startsWith('09')) {
+                alert('شماره تلفن وارد شده باید معتبر و مربوط به پیش‌شماره‌های فعال داخل ایران (09) باشد.');
+                return;
+            }
+
+            // ورود به مرحله دوم
+            document.getElementById('register-step-1').style.display = 'none';
+            document.getElementById('register-step-2').style.display = 'block';
+            
+            // کپی شماره/ایمیل به فرم دوم
+            if (isEmail) {
+                document.getElementById('reg-email').value = id;
+            } else {
+                document.getElementById('reg-phone').value = id;
+            }
+        }
+
+        function processRegisterStep2() {
+            const name = document.getElementById('reg-name').value.trim();
+            const lname = document.getElementById('reg-lname').value.trim();
+            const email = document.getElementById('reg-email').value.trim();
+            const phone = document.getElementById('reg-phone').value.trim();
+            const captcha = document.getElementById('reg-captcha-input').value.trim();
+
+            if (name === '' || lname === '' || email === '' || phone === '') {
+                alert('تکمیل تمامی فیلدهای نام، نام خانوادگی، ایمیل و تلفن همراه الزامی است.');
+                return;
+            }
+
+            if (captcha !== '9') {
+                alert('پاسخ کپچای امنیتی نادرست است. لطفاً عدد ۹ را وارد کنید.');
+                return;
+            }
+
+            // ذخیره مشخصات به عنوان پروفایل لایو کاربر
+            const userProfile = { name, lname, email, phone };
+            localStorage.setItem('user-profile', JSON.stringify(userProfile));
+            isUserLoggedIn = true;
+            localStorage.setItem('is-logged-in', 'true');
+
+            alert(`ثبت‌نام شما با موفقیت انجام شد!\nبه حساب کاربری خود خوش آمدید.`);
+            closeAuthModal();
+            loadUserProfile();
+        }
+
+        function handleLoginSubmit(event) {
+            event.preventDefault();
+            const id = document.getElementById('login-identifier').value.trim();
+            const userProfile = { name: "کاربر گرامی", lname: "", email: id.includes('@') ? id : "test@parsastudio.com", phone: !id.includes('@') ? id : "09123456789" };
+            
+            localStorage.setItem('user-profile', JSON.stringify(userProfile));
+            isUserLoggedIn = true;
+            localStorage.setItem('is-logged-in', 'true');
+            
+            alert('ورود شما موفقیت‌آمیز بود!');
+            closeAuthModal();
+            loadUserProfile();
+        }
+
+        function socialLoginSim(platform) {
+            const userProfile = { name: `کاربر ${platform}`, lname: "", email: `user@${platform.toLowerCase()}.com`, phone: "09120000000" };
+            localStorage.setItem('user-profile', JSON.stringify(userProfile));
+            isUserLoggedIn = true;
+            localStorage.setItem('is-logged-in', 'true');
+            alert(`ورود موفق از طریق حساب ${platform} انجام شد.`);
+            closeAuthModal();
+            loadUserProfile();
+        }
+
+        function toggleProfileDropdown() {
+            document.getElementById('profile-dropdown-menu').classList.toggle('active');
+        }
+
+        function logoutUser() {
+            localStorage.removeItem('is-logged-in');
+            localStorage.removeItem('user-profile');
+            localStorage.removeItem('cart-items');
+            isUserLoggedIn = false;
+            location.reload();
+        }
+
+        function loadUserProfile() {
+            const loggedIn = localStorage.getItem('is-logged-in') === 'true';
+            if (loggedIn) {
+                const profile = JSON.parse(localStorage.getItem('user-profile'));
+                document.getElementById('auth-nav-item').style.display = 'none';
+                document.getElementById('user-profile-menu').style.display = 'block';
+                document.getElementById('profile-btn-username').innerText = profile.name;
+                document.getElementById('profile-display-name').innerText = `${profile.name} ${profile.lname || ''}`;
+                document.getElementById('profile-display-email').innerText = profile.email || '-';
+                document.getElementById('profile-display-phone').innerText = profile.phone || '-';
+                
+                // لود تعداد فاکتورهای پرداخت نشده
+                const pendingCount = parseInt(localStorage.getItem('cart-items') || '0');
+                if (pendingCount > 0) {
+                    document.getElementById('profile-cart-container').style.display = 'block';
+                    document.getElementById('profile-display-pending').innerText = `${pendingCount} مورد پرداخت نشده`;
+                }
+            } else {
+                document.getElementById('auth-nav-item').style.display = 'block';
+                document.getElementById('user-profile-menu').style.display = 'none';
+            }
+        }
+
+        loadUserProfile();
+
+
+        // ==========================================================================
+        // سبد خرید و نشان دایره‌ای خدمات
+        // ==========================================================================
+        function updateCartBadge() {
+            const count = parseInt(localStorage.getItem('cart-items') || '0');
+            const badge = document.getElementById('cart-counter');
+            if (count > 0) {
+                badge.innerText = count;
+                badge.style.display = 'flex';
+                // نمایش در پروفایل
+                const pending = document.getElementById('profile-cart-container');
+                if (pending) {
+                    pending.style.display = 'block';
+                    document.getElementById('profile-display-pending').innerText = `${count} مورد پرداخت نشده`;
+                }
+            } else {
+                badge.style.display = 'none';
+            }
+        }
+
+        updateCartBadge();
+
+
+        // ==========================================================================
+        // خدمات و سفارش‌دهی با اتصال به زرین‌لینک
+        // ==========================================================================
         function openPaymentModal(serviceName, priceText) {
             document.getElementById('service-name-hidden').value = serviceName;
             document.getElementById('service-price-hidden').value = priceText;
             document.getElementById('modal-title').innerText = 'خرید آنلاین ' + serviceName;
             document.getElementById('modal-desc').innerText = 'مبلغ پرداختی این خدمت: ' + priceText;
             document.getElementById('payment-modal-overlay').classList.add('active');
+            
+            // افزودن به سبد خرید موقت جهت نمایش روی دایره عددی هدر
+            let currentCart = parseInt(localStorage.getItem('cart-items') || '0');
+            localStorage.setItem('cart-items', currentCart + 1);
+            updateCartBadge();
         }
 
         function closePaymentModal() {
@@ -1479,19 +1892,33 @@
 
             alert(`پرداخت آنلاین فعال شد!\n\nخریدار: ${name}\nسرویس انتخابی: ${service}\nمبلغ: ${price}\nشماره همراه شما: ${phone}\n\nشما اکنون به درگاه مستقیم پرداخت زرین‌لینک هدایت می‌شوید تا وجه را امن کارت بکشید.`);
             
+            // کسر از سبد پس از پرداخت شبیه‌سازی شده
+            let currentCart = parseInt(localStorage.getItem('cart-items') || '1');
+            localStorage.setItem('cart-items', Math.max(0, currentCart - 1));
+            updateCartBadge();
+
             window.open('https://zarinp.al', '_blank'); 
             closePaymentModal();
         }
 
-        // چت پشتیبانی هوش مصنوعی
+
+        // ==========================================================================
+        // چت پشتیبانی و سوالات متداول
+        // ==========================================================================
+        function toggleFaq(element) {
+            const item = element.parentElement;
+            const isActive = item.classList.contains('active');
+            const activeItems = document.querySelectorAll('.faq-item.active');
+            activeItems.forEach(activeItem => activeItem.classList.remove('active'));
+            if (!isActive) item.classList.add('active');
+        }
+
         function toggleChat() {
             document.getElementById('chat-box').classList.toggle('active');
         }
 
         function handleChatEnter(event) {
-            if (event.key === 'Enter') {
-                sendChatMessage();
-            }
+            if (event.key === 'Enter') sendChatMessage();
         }
 
         function sendChatMessage() {
@@ -1514,16 +1941,611 @@
                 botMsgDiv.className = 'msg-bot';
                 
                 if (messageText.includes('قیمت') || messageText.includes('تعرفه')) {
-                    botMsgDiv.innerText = "لیست تعرفه تمام خدمات ما در صفحه موجود است. ما ۸ خدمت پرمیوم از لندینگ‌پیج تا عکس‌برداری تبلیغاتی با هوش مصنوعی داریم که همگی به درگاه پرداخت آنلاین زرین‌پال مجهز هستند.";
+                    botMsgDiv.innerText = "تعرفه خدمات ما از لندینگ‌پیج ۵ میلیونی تا وب‌سایت‌های ۱۵ میلیونی متغیر است. همچنین خدمات پالت رنگ، لوگو، فونت و CRM نیز به صورت کاملاً حرفه‌ای انجام می‌شود.";
                 } else if (messageText.includes('لوگو') || messageText.includes('لوگو اختصاصی')) {
                     botMsgDiv.innerText = "طراحی لوگوی اختصاصی برند با قیمت ۷,۰۰۰,۰۰۰ تومان قابل سفارش است. این طراحی کاملاً اختصاصی و برداری است و مرزهای هویت بصری شما را متمایز می‌کند.";
                 } else {
-                    botMsgDiv.innerText = "پیام شما دریافت شد! در حال حاضر من یک دستیار هوش مصنوعی در حال تست هستم. شما بعداً می‌توانید این کادر چت را به یک چت‌بات واقعی متصل کنید تا به صورت زنده کارهای جذب مشتری شما را انجام دهد.";
+                    botMsgDiv.innerText = "پیام شما در سرور استودیو پارسا ثبت شد. در کوتاه‌ترین زمان جهت هماهنگی تماس خواهیم گرفت.";
                 }
 
                 chatMessages.appendChild(botMsgDiv);
                 chatMessages.scrollTop = chatMessages.scrollHeight;
             }, 1000);
+        }
+    </script>
+</body>
+</html>
+
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta id="viewport-meta" name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>درباره من | پارسا رضائی خسروی</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;700;900&display=swap');
+
+        /* تم رنگی مشابه صفحه اصلی */
+        :root {
+            --bg: #0F172A;                        
+            --card-bg: rgba(30, 41, 59, 0.6);     
+            --card-border: rgba(255, 255, 255, 0.12); 
+            --neon-orange: #FF7A00;               
+            --neon-gold: #F59E0B;                 
+            --neon-glow: rgba(255, 122, 0, 0.25);  
+            --text-main: #F9FAFB;                 
+            --text-muted: #CBD5E1;                
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Vazirmatn', 'Tahoma', sans-serif;
+        }
+
+        body {
+            background-color: var(--bg);
+            color: var(--text-main);
+            overflow-x: hidden;
+            position: relative;
+            line-height: 1.8;
+            padding: 60px 8%;
+        }
+
+        /* هاله‌های نورانی پس‌زمینه */
+        .orb {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(140px);
+            z-index: -1;
+            pointer-events: none;
+            opacity: 0.45;
+        }
+        .orb-1 {
+            top: 10%;
+            left: 10%;
+            width: 500px;
+            height: 500px;
+            background: var(--neon-orange);
+        }
+        .orb-2 {
+            bottom: 10%;
+            right: 10%;
+            width: 500px;
+            height: 500px;
+            background: var(--neon-gold);
+        }
+
+        /* باکس شیشه‌ای اصلی محتوا */
+        .about-container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 30px;
+            padding: 50px;
+            backdrop-filter: blur(25px);
+            -webkit-backdrop-filter: blur(25px);
+            box-shadow: 0 30px 60px rgba(0,0,0,0.3);
+            position: relative;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            font-weight: 900;
+            margin-bottom: 30px;
+            background: linear-gradient(to left, #FFFFFF, var(--neon-gold));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        p {
+            color: var(--text-muted);
+            font-size: 1.05rem;
+            margin-bottom: 25px;
+            text-align: justify;
+        }
+
+        .highlight-text {
+            color: var(--neon-gold);
+            font-weight: bold;
+        }
+
+        /* دکمه‌های پایینی */
+        .buttons-group {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+            margin-top: 40px;
+        }
+
+        .btn-action {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            color: white;
+            border: none;
+            padding: 14px 30px;
+            border-radius: 50px;
+            font-weight: bold;
+            font-size: 0.95rem;
+            cursor: pointer;
+            text-decoration: none;
+            transition: transform 0.2s, box-shadow 0.2s, background 0.2s;
+        }
+
+        .btn-orange {
+            background: linear-gradient(135deg, var(--neon-orange) 0%, #D97706 100%);
+            box-shadow: 0 0 20px var(--neon-glow);
+        }
+
+        .btn-orange:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 0 25px rgba(255, 122, 0, 0.6);
+        }
+
+        .btn-cv {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--card-border);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        .btn-cv:hover {
+            background: rgba(255, 255, 255, 0.1);
+            transform: translateY(-2px);
+            border-color: var(--neon-gold);
+            box-shadow: 0 0 15px rgba(245, 158, 11, 0.3);
+        }
+
+        /* ==========================================================================
+           بخش تخصص‌ها و سلاح‌های من (دو ستون ۴ تایی با استایل نئونی و کادرهای منظم)
+           ========================================================================== */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 25px;
+            margin-top: 40px;
+            border-top: 1px solid rgba(255,255,255,0.08);
+            padding-top: 35px;
+        }
+
+        .skills-column {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .skill-item {
+            background: rgba(0,0,0,0.15);
+            padding: 15px 20px;
+            border-radius: 12px;
+            border: 1px solid rgba(255,255,255,0.03);
+            transition: border-color 0.3s;
+        }
+
+        .skill-item:hover {
+            border-color: var(--neon-orange);
+        }
+
+        .skill-info {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.85rem;
+            margin-bottom: 8px;
+            font-weight: bold;
+        }
+
+        .skill-bar {
+            height: 6px;
+            background: rgba(255,255,255,0.05);
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .skill-fill {
+            height: 100%;
+            background: linear-gradient(to left, var(--neon-orange), var(--neon-gold));
+            border-radius: 10px;
+        }
+
+        /* بخش گواهینامه‌ها */
+        .certificates-section {
+            margin-top: 45px;
+            border-top: 1px solid rgba(255,255,255,0.08);
+            padding-top: 35px;
+        }
+
+        .certificates-title {
+            font-size: 1.5rem;
+            font-weight: 900;
+            margin-bottom: 25px;
+            color: var(--neon-gold);
+        }
+
+        .certificates-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 20px;
+        }
+
+        .cert-card {
+            background: rgba(0, 0, 0, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 20px;
+            padding: 20px;
+            transition: all 0.3s;
+        }
+
+        .cert-card:hover {
+            border-color: var(--neon-orange);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(255, 122, 0, 0.1);
+        }
+
+        .cert-badge {
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 122, 0, 0.1);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 15px;
+            color: var(--neon-orange);
+        }
+
+        .cert-name {
+            font-size: 1rem;
+            font-weight: bold;
+            margin-bottom: 8px;
+        }
+
+        .cert-issuer {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+        }
+
+        /* تنظیمات شناور (زبان و نسخه دسکتاپ گوشی) */
+        .settings-widget {
+            position: fixed;
+            bottom: 30px;
+            left: 30px;
+            z-index: 1000;
+        }
+
+        .settings-trigger {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: rgba(30, 41, 59, 0.9);
+            border: 1px solid var(--card-border);
+            color: white;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+            transition: transform 0.3s;
+        }
+
+        .settings-trigger:hover {
+            transform: rotate(45deg);
+            border-color: var(--neon-gold);
+        }
+
+        .settings-panel {
+            position: absolute;
+            bottom: 60px;
+            left: 0;
+            width: 260px;
+            background: rgba(15, 23, 42, 0.98);
+            border: 1px solid var(--card-border);
+            border-radius: 20px;
+            padding: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            display: none;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .settings-panel.active {
+            display: flex;
+        }
+
+        .settings-title {
+            font-size: 0.95rem;
+            font-weight: bold;
+            color: var(--neon-gold);
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+            padding-bottom: 8px;
+        }
+
+        .setting-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.8rem;
+        }
+
+        .setting-select {
+            background: #0F172A;
+            border: 1px solid var(--card-border);
+            color: white;
+            padding: 5px 10px;
+            border-radius: 8px;
+            outline: none;
+            font-size: 0.8rem;
+            cursor: pointer;
+        }
+
+        .switch {
+            position: relative;
+            display: inline-block;
+            width: 44px;
+            height: 22px;
+        }
+
+        .switch input { 
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+
+        .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background-color: #334155;
+            transition: .3s;
+            border-radius: 34px;
+        }
+
+        .slider:before {
+            position: absolute;
+            content: "";
+            height: 16px; width: 16px;
+            left: 3px; bottom: 3px;
+            background-color: white;
+            transition: .3s;
+            border-radius: 50%;
+        }
+
+        input:checked + .slider {
+            background-color: var(--neon-orange);
+        }
+
+        input:checked + .slider:before {
+            transform: translateX(22px);
+        }
+    </style>
+</head>
+<body>
+
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
+
+    <div class="about-container">
+        <h1>
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="url(#gold-grad)" stroke-width="2.5"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/><defs><linearGradient id="gold-grad" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="%23FF7A00"/><stop offset="100%" stop-color="%23F59E0B"/></linearGradient></defs></svg>
+            درباره من | پارسا رضائی خسروی
+        </h1>
+
+        <p>
+            سلام! من <span class="highlight-text">پارسا رضائی خسروی</span> هستم؛ طراح و توسعه‌دهنده مستقل وب‌سایت‌های اختصاصی لوکس. از زمانی که وارد دنیای بی‌کران کدنویسی فرانت‌اند شدم، تصمیم گرفتم استانداردهای مرسوم را جابه‌جا کنم. من بر این باورم که دنیای اینترنت پر از سایت‌های تکراری وردپرسی شده است و برندهای بزرگ و خاص، لایق کدهای اختصاصی، سرعت فضایی و طراحی‌های ۱٠٠٪ متمایز هستند.
+        </p>
+
+        <p>
+            من با تلفیق برنامه‌نویسی مدرن فرانت‌اند و قدرت جادویی ابزارهای هوش مصنوعی، کارهای سخت را فشرده کرده‌ام تا بتوانم خلاقانه‌ترین افکت‌ها و انیمیشن‌های تعاملی را در کوتاه‌ترین زمان برای مشتریانم خلق کنم. سرعت لود صفحات سایت‌هایی که می‌سازم معمولاً زیر <span class="highlight-text">۰.۴ ثانیه</span> است که در بازار ایران یک شاهکار فنی به حساب می‌آید.
+        </p>
+
+        <!-- ==========================================================================
+           بخش مهارت‌ها و سلاح‌ها (۲ ستون ۴ تایی منظم و تراز شده)
+           ========================================================================== -->
+        <h2 style="font-size: 1.5rem; font-weight: 900; margin-top: 40px; border-top: 1px solid rgba(255,255,255,0.08); padding-top: 35px; color: var(--neon-gold);">تخصص‌ها و سلاح‌های من</h2>
+        
+        <div class="skills-grid">
+            
+            <!-- ستون اول (۴ تخصص اول) -->
+            <div class="skills-column">
+                <!-- مهارت ۱ -->
+                <div class="skill-item">
+                    <div class="skill-info">
+                        <span>طراحی رابط کاربری اختصاصی (UI/UX)</span>
+                        <span style="color: var(--neon-gold);">۸۵٪</span>
+                    </div>
+                    <div class="skill-bar">
+                        <div class="skill-fill" style="width: 85%;"></div>
+                    </div>
+                </div>
+
+                <!-- مهارت ۲ -->
+                <div class="skill-item">
+                    <div class="skill-info">
+                        <span>کدنویسی خلاق فرانت‌اند (HTML5, CSS3, JS)</span>
+                        <span style="color: var(--neon-gold);">۷۰٪</span>
+                    </div>
+                    <div class="skill-bar">
+                        <div class="skill-fill" style="width: 70%;"></div>
+                    </div>
+                </div>
+
+                <!-- مهارت ۳ -->
+                <div class="skill-item">
+                    <div class="skill-info">
+                        <span>مهندسی پرامپت دستیار هوش مصنوعی</span>
+                        <span style="color: var(--neon-gold);">۸۵٪</span>
+                    </div>
+                    <div class="skill-bar">
+                        <div class="skill-fill" style="width: 85%;"></div>
+                    </div>
+                </div>
+
+                <!-- مهارت ۴ -->
+                <div class="skill-item">
+                    <div class="skill-info">
+                        <span>طراحی CRM</span>
+                        <span style="color: var(--neon-gold);">۵۰٪</span>
+                    </div>
+                    <div class="skill-bar">
+                        <div class="skill-fill" style="width: 50%;"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ستون دوم (۴ تخصص دوم) -->
+            <div class="skills-column">
+                <!-- مهارت ۵ -->
+                <div class="skill-item">
+                    <div class="skill-info">
+                        <span>سیستم‌سازی سازمانی</span>
+                        <span style="color: var(--neon-gold);">۵۰٪</span>
+                    </div>
+                    <div class="skill-bar">
+                        <div class="skill-fill" style="width: 50%;"></div>
+                    </div>
+                </div>
+
+                <!-- مهارت ۶ -->
+                <div class="skill-item">
+                    <div class="skill-info">
+                        <span>تولید محتوا و ادیت عکس</span>
+                        <span style="color: var(--neon-gold);">۸۰٪</span>
+                    </div>
+                    <div class="skill-bar">
+                        <div class="skill-fill" style="width: 80%;"></div>
+                    </div>
+                </div>
+
+                <!-- مهارت ۷ -->
+                <div class="skill-item">
+                    <div class="skill-info">
+                        <span>طراحی فونت</span>
+                        <span style="color: var(--neon-gold);">۱۰۰٪</span>
+                    </div>
+                    <div class="skill-bar">
+                        <div class="skill-fill" style="width: 100%;"></div>
+                    </div>
+                </div>
+
+                <!-- مهارت ۸ -->
+                <div class="skill-item">
+                    <div class="skill-info">
+                        <span>طراحی لوگو</span>
+                        <span style="color: var(--neon-gold);">۹۰٪</span>
+                    </div>
+                    <div class="skill-bar">
+                        <div class="skill-fill" style="width: 90%;"></div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- بخش گواهینامه‌ها -->
+        <div class="certificates-section">
+            <h2 class="certificates-title">مدارک و گواهینامه‌های من</h2>
+            
+            <div class="certificates-grid">
+                <div class="cert-card">
+                    <div class="cert-badge">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                    </div>
+                    <h3 class="cert-name">گواهینامه طراحی وب مدرن</h3>
+                    <p class="cert-issuer">آکادمی بین‌المللی توسعه فرانت‌اند</p>
+                </div>
+
+                <div class="cert-card">
+                    <div class="cert-badge">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="7"/><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"/></svg>
+                    </div>
+                    <h3 class="cert-name">مدرک مهندسی پرامپت وب</h3>
+                    <p class="cert-issuer">دوره پیشرفته ابزارهای هوش مصنوعی (AI)</p>
+                </div>
+
+                <div class="cert-card">
+                    <div class="cert-badge">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg>
+                    </div>
+                    <h3 class="cert-name">بهینه‌سازی سرعت و سئوی فنی</h3>
+                    <p class="cert-issuer">پلتفرم رشد و توسعه فرانت‌اند ایران</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="buttons-group">
+            <a href="index.html" class="btn-action btn-orange">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="transform: scaleX(-1);"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 19 12 12 5"/></svg>
+                بازگشت به صفحه اصلی
+            </a>
+
+            <a href="CV-File.pdf" target="_blank" class="btn-action btn-cv">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                مشاهده و دانلود رزومه (CV)
+            </a>
+        </div>
+    </div>
+
+    <!-- بخش تنظیمات شناور (یکپارچه‌سازی متغیرهای سراسری) -->
+    <div class="settings-widget">
+        <button class="settings-trigger" onclick="toggleSettingsPanel()">⚙️</button>
+        <div class="settings-panel" id="settings-panel">
+            <div class="settings-title">تنظیمات وب‌سایت</div>
+            <div class="setting-row">
+                <span>زبان سایت (Language)</span>
+                <select class="setting-select" id="lang-select" onchange="changeLanguage(this.value)">
+                    <option value="fa">فارسی (FA)</option>
+                    <option value="en">English (EN)</option>
+                </select>
+            </div>
+            <div class="setting-row">
+                <span>نمای دسکتاپ گوشی</span>
+                <label class="switch">
+                    <input type="checkbox" id="desktop-view-toggle" onchange="toggleDesktopView(this.checked)">
+                    <span class="slider"></span>
+                </label>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function toggleSettingsPanel() {
+            document.getElementById('settings-panel').classList.toggle('active');
+        }
+
+        function changeLanguage(lang) {
+            localStorage.setItem('site-lang', lang);
+            if (lang === 'fa') {
+                document.documentElement.dir = "rtl";
+            } else {
+                document.documentElement.dir = "ltr";
+            }
+            location.reload(); // برای اعمال زبان در این دمو ساده صفحه بازخوانی می‌شود
+        }
+
+        function toggleDesktopView(isEnabled) {
+            localStorage.setItem('desktop-view', isEnabled ? 'true' : 'false');
+            const meta = document.getElementById('viewport-meta');
+            if (isEnabled) {
+                meta.setAttribute('content', 'width=1200, initial-scale=0.3, shrink-to-fit=no');
+            } else {
+                meta.setAttribute('content', 'width=device-width, initial-scale=1.0');
+            }
+        }
+
+        const savedDesktop = localStorage.getItem('desktop-view') === 'true';
+        document.getElementById('desktop-view-toggle').checked = savedDesktop;
+        toggleDesktopView(savedDesktop);
+
+        const savedLang = localStorage.getItem('site-lang') || 'fa';
+        document.getElementById('lang-select').value = savedLang;
+        if (savedLang === 'fa') {
+            document.documentElement.dir = "rtl";
+        } else {
+            document.documentElement.dir = "ltr";
         }
     </script>
 </body>
