@@ -628,7 +628,7 @@
             text-align: justify;
         }
 
-        /* کارت نمونه کار تعاملی با افکت ۳بعدی */
+        /* کارت نمونه کار تعاملی */
         .portfolio-card {
             background: var(--card-bg);
             border: 1px solid var(--card-border);
@@ -743,19 +743,8 @@
             border-color: var(--neon-orange);
         }
 
-        /* درباره من (نام شما بدون هایلایت زرد رنگ طبق خواسته شما نوشته شده است) */
-        .about-section {
-            padding: 80px 8%;
-            max-width: 1400px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 30px;
-            border-top: 1px solid var(--card-border);
-        }
-
         /* ==========================================================================
-           شاهکار جادویی: روند همکاری هولوگرافیک با انیمیشن چرخش دایره‌ای دور محور مرکزی
+           روند همکاری با افکت موشن گرافیک چرخش دایره‌ای دور محور مرکزی
            ========================================================================== */
         .process-section {
             padding: 100px 8%;
@@ -1588,26 +1577,7 @@
         </div>
     </section>
 
-    <!-- بخش درباره من خلاصه (رنگ زرد از روی نام شما حذف شد) -->
-    <section class="about-section" id="about">
-        <div>
-            <span class="service-badge" id="badge-about-me">درباره من</span>
-            <h2 style="font-size: 2.3rem; font-weight: 900; margin-bottom: 20px;" id="about-title-main">خالق آینده دیجیتال شما</h2>
-            <p style="color: var(--text-muted); text-align: justify; margin-bottom: 25px;" id="about-desc-main">
-                من پارسا رضائی خسروی، طراح و توسعه‌دهنده مستقل وب‌سایت‌های اختصاصی هستم. رسالت من این است که کسب‌وکار شما را با طراحی‌های خاص، لوکس و متمایز، از شلوغی بازار متمایز کنم. من قالب‌های آماده را کنار گذاشته‌ام و هر پروژه را به عنوان یک اثر هنری دیجیتال منحصر‌به‌فرد خلق می‌کنم.
-            </p>
-            <div style="background: rgba(255, 122, 0, 0.05); border-right: 4px solid var(--neon-orange); padding: 15px 20px; border-radius: 8px; color: var(--text-main); font-weight: bold;" id="about-quote">
-                "برندهای لوکس تکرار نمی‌شوند؛ آن‌ها متمایز خلق می‌شوند."
-            </div>
-            <div style="margin-top: 15px; font-weight: 900; font-size: 1.15rem; color: var(--text-main);" id="about-signature">
-                پارسا رضائی خسروی
-            </div>
-        </div>
-    </section>
-
-    <!-- ==========================================================================
-       روند همکاری با افکت موشن گرافیک چرخش دایره‌ای دور محور مرکزی
-       ========================================================================== -->
+    <!-- روند همکاری با افکت موشن گرافیک چرخش دایره‌ای دور محور مرکزی -->
     <section class="process-section" id="process">
         <div style="text-align: center; margin-bottom: 20px;">
             <span class="service-badge" id="badge-cooperation">روند همکاری</span>
@@ -1966,7 +1936,7 @@
 
                 <!-- مرحله واسط تایید ایمیل (noreply@parsa.studio) -->
                 <div id="register-step-email-verify" style="display: none;">
-                    <p style="font-size: 0.8rem; color: var(--neon-gold); margin-bottom: 15px;" id="lbl-verify-tip">یک کد تایید فعال‌سازی از طرف فرستنده امن <strong style="color:white;"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="3f51504d5a4f53467f4f5e4d4c5e114c4b4a5b5650">[email&#160;protected]</a></strong> به ایمیل شما ارسال شد. لطفاً کد ۴ رقمی را وارد کنید:</p>
+                    <p style="font-size: 0.8rem; color: var(--neon-gold); margin-bottom: 15px;" id="lbl-verify-tip">یک کد تایید فعال‌سازی از طرف فرستنده امن <strong style="color:white;"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="9ef0f1ecfbeef2e7deeeffecedffb0edeaebfaf7f1">[email&#160;protected]</a></strong> به ایمیل شما ارسال شد. لطفاً کد ۴ رقمی را وارد کنید:</p>
                     <div class="form-group">
                         <label>کد تایید ۴ رقمی ایمیل (کد تست: ۴۸۱۵)</label>
                         <input type="text" id="email-verification-code-input" class="form-input" style="text-align: center; font-size: 1.3rem; letter-spacing: 5px; font-weight: bold;" placeholder="****" required>
@@ -2018,8 +1988,6 @@
                 "hero-desc": "هیچ سایت موفقی با قالب‌های کپی شده ساخته نشده است. من به عنوان طراح خلاق، به صورت کاملاً سفارشی و با استفاده از استودیوی هوش مصنوعی، سایت‌های شما را از صفر طراحی و کدنویسی می‌کنم. برای دیدن کیفیت و پویایی کار، ماوس خود را روی کارت نمونه‌کار تعاملی سمت چپ بگیرید!",
                 "btn-services-hero": "سفارش و تعرفه خدمات",
                 "lbl-support-btn": "پشتیبانی",
-                "about-title-main": "خالق آینده دیجیتال شما",
-                "about-desc-main": "من پارسا رضائی خسروی، طراح و توسعه‌دهنده مستقل وب‌سایت‌های اختصاصی هستم. رسالت من این است که کسب‌وکار شما را با طراحی‌های خاص، لوکس و متمایز، از شلوغی بازار متمایز کنم. من قالب‌های آماده را کنار گذاشته‌ام و هر پروژه را به عنوان یک اثر هنری دیجیتال منحصر‌به‌فرد خلق می‌کنم.",
                 "process-title-main": "ما چطور رویای شما را به واقعیت تبدیل می‌کنیم؟",
                 "process-sub-text": "برای تجربه قدرت تعاملی وب‌سایت‌های اختصاصی، ماوس خود را روی رینگ چرخان زیر بیاورید تا متوقف شود و اطلاعات کامل هر مرحله را در قلب چرخش به صورت لایو تماشا کنید.",
                 "services-title-main": "تعرفه‌گذاری و سفارش آنلاین خدمات اختصاصی",
@@ -2033,8 +2001,6 @@
                 "hero-desc": "No successful website is built with copied templates. As a creative designer, I design and code your sites from scratch with custom styling using the AI Studio.",
                 "btn-services-hero": "View Services",
                 "lbl-support-btn": "Support",
-                "about-title-main": "Creator of Your Digital Future",
-                "about-desc-main": "I am Parsa Rezaei Khosravi, a custom web designer. My mission is to differentiate your business in the market with luxury and unique custom layouts.",
                 "process-title-main": "How Do We Turn Your Dream Into Reality?",
                 "process-sub-text": "Hover over the rotating ring to pause the animation and view details of each stage at the center of the orbit.",
                 "services-title-main": "Pricing & Online Ordering of Custom Services",
