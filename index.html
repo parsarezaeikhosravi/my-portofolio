@@ -447,6 +447,17 @@
             border-color: var(--neon-orange);
         }
 
+        /* درباره من (اسم زرد رنگ در وسط متن طبق خواسته شما حذف شد) */
+        .about-section {
+            padding: 80px 8%;
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 30px;
+            border-top: 1px solid var(--card-border);
+        }
+
         /* ==========================================================================
            روند همکاری با افکت موشن گرافیک چرخش دایره‌ای دور محور مرکزی
            ========================================================================== */
@@ -1190,11 +1201,8 @@
             <!-- لوگوی سه‌تکه نئونی برگرفته از ساختار هندسی ارسالی شما -->
             <div class="logo-icon">
                 <svg class="logo-svg" width="24" height="24" viewBox="0 0 100 90" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <!-- تیک بالا چپ با گوشه منحنی بالا چپ -->
                     <path class="logo-part part-top-left" d="M 10 40 A 30 30 0 0 1 40 10 H 48 V 40 Z" fill="white" />
-                    <!-- تیک بالا راست با گوشه منحنی پایین راست -->
                     <path class="logo-part part-top-right" d="M 52 10 H 90 V 20 A 20 20 0 0 1 70 40 H 52 Z" fill="white" />
-                    <!-- خط سرتاسری پایین با گوشه منحنی پایین چپ -->
                     <path class="logo-part part-bottom" d="M 10 80 A 30 30 0 0 1 40 50 H 90 V 80 Z" fill="white" />
                 </svg>
             </div>
@@ -1323,7 +1331,7 @@
         <!-- دکمه خلق رویا (+) زیر رینگ همکاری -->
         <div class="cooperation-cta-container">
             <button onclick="handleCreateDreamClick()" class="btn-create-dream">
-                <span>+ خلق رویا</span>
+                <span id="lbl-create-dream">+ خلق رویا</span>
             </button>
         </div>
     </section>
@@ -1389,12 +1397,12 @@
             <!-- سرویس ۱: خرید اشتراک ماهیانه (کارت اول جدید با هوور افکت متمایز) -->
             <div class="service-card" style="border: 2px solid var(--neon-gold); box-shadow: 0 0 20px var(--neon-glow);" onmouseenter="this.querySelector('.sub-hover-desc').style.display='block'" onmouseleave="this.querySelector('.sub-hover-desc').style.display='none'">
                 <div>
-                    <span class="service-badge" style="background: rgba(245, 158, 11, 0.2); color: var(--neon-gold);">پیشنهاد ویژه VIP</span>
+                    <span class="service-badge" id="sc-badge-0">پیشنهاد ویژه VIP</span>
                     <h3 class="service-title" id="sc-t0">خرید اشتراک ماهیانه آژانس</h3>
                     <p class="service-desc" id="sc-d0">بسته‌های حمایتی ماهیانه برای رشد و نگهداری نامحدود وب‌سایت شما.</p>
                     
                     <!-- بخش توضیحات هوور فاش شونده -->
-                    <div class="sub-hover-desc" style="display: none; background: rgba(0,0,0,0.5); padding: 10px; border-radius: 8px; font-size: 0.75rem; color: var(--neon-gold); margin-bottom: 15px;">
+                    <div class="sub-hover-desc" id="sc-hover-desc-0" style="display: none; background: rgba(0,0,0,0.5); padding: 10px; border-radius: 8px; font-size: 0.75rem; color: var(--neon-gold); margin-bottom: 15px;">
                         سه بسته برنز، نقره‌ای و طلایی وجود دارد که با کلیک وارد صفحه جدید مقایسه و خرید می‌شوید.
                     </div>
                 </div>
@@ -1407,117 +1415,117 @@
             <!-- سرویس ۲ -->
             <div class="service-card">
                 <div>
-                    <span class="service-badge">اصلی</span>
+                    <span class="service-badge" id="sc-badge-1">اصلی</span>
                     <h3 class="service-title" id="sc-t1">لندینگ‌پیج تک‌صفحه‌ای مدرن</h3>
                     <p class="service-desc" id="sc-d1">طراحی و کدنویسی یک صفحه فرود شیک، ۱۰۰٪ واکنش‌گرا و سریع برای معرفی یا کمپین‌های فروش محصول شما.</p>
                 </div>
                 <div>
                     <div class="price-tag" id="pr-t1">۷,۰۰۰,۰۰۰ <span>تومان</span></div>
-                    <button class="btn-order" onclick="openPaymentModal('لندینگ‌پیج تک‌صفحه‌ای مدرن', '۷,۰۰۰,۰۰۰ تومان', 7000000)">اتصال به درگاه پرداخت</button>
+                    <button class="btn-order" onclick="openPaymentModal('لندینگ‌پیج تک‌صفحه‌ای مدرن', '۷,۰۰۰,۰۰۰ تومان', 7000000)" id="sc-btn1">اتصال به درگاه پرداخت</button>
                 </div>
             </div>
 
             <!-- سرویس ۳ -->
             <div class="service-card">
                 <div>
-                    <span class="service-badge">لوکس</span>
+                    <span class="service-badge" id="sc-badge-2">لوکس</span>
                     <h3 class="service-title" id="sc-t2">سایت پورتفولیو اختصاصی ۲بعدی/۳بعدی</h3>
                     <p class="service-desc" id="sc-d2">یک سایت گالری و معرفی شخصی خیره‌کننده با انواع افکت‌های حرکتی و تغییر پوسته برای فریلنسرها و طراحان طراز اول.</p>
                 </div>
                 <div>
                     <div class="price-tag" id="pr-t2">۸,۵۰۰,۰۰۰ <span>تومان</span></div>
-                    <button class="btn-order" onclick="openPaymentModal('سایت پورتفولیو اختصاصی ۳بعدی', '۸,۵۰۰,۰۰۰ تومان', 8500000)">اتصال به درگاه پرداخت</button>
+                    <button class="btn-order" onclick="openPaymentModal('سایت پورتفولیو اختصاصی ۳بعدی', '۸,۵۰۰,۰۰۰ تومان', 8500000)" id="sc-btn2">اتصال به درگاه پرداخت</button>
                 </div>
             </div>
 
             <!-- سرویس ۴ -->
             <div class="service-card">
                 <div>
-                    <span class="service-badge">کامل</span>
+                    <span class="service-badge" id="sc-badge-3">کامل</span>
                     <h3 class="service-title" id="sc-t3">سایت شرکتی و معرفی خدمات خلاق</h3>
                     <p class="service-desc" id="sc-d3">وب‌سایت چندصفحه‌ای فوق‌العاده سبک با سئوی تضمین شده برای معرفی کسب‌وکار شما بدون محدودیت‌های قالب وردپرس.</p>
                 </div>
                 <div>
                     <div class="price-tag" id="pr-t3">۳۰,۰۰۰,۰۰۰ <span>تومان</span></div>
-                    <button class="btn-order" onclick="openPaymentModal('سایت شرکتی چندصفحه‌ای لوکس', '۳۰,۰۰۰,۰۰۰ تومان', 30000000)">اتصال به درگاه پرداخت</button>
+                    <button class="btn-order" onclick="openPaymentModal('سایت شرکتی چندصفحه‌ای لوکس', '۳۰,۰۰۰,۰۰۰ تومان', 30000000)" id="sc-btn3">اتصال به درگاه پرداخت</button>
                 </div>
             </div>
 
             <!-- سرویس ۵: طراحی لوگو -->
             <div class="service-card">
                 <div>
-                    <span class="service-badge">هویت بصری</span>
+                    <span class="service-badge" id="sc-badge-4">هویت بصری</span>
                     <h3 class="service-title" id="sc-t4">طراحی لوگو اختصاصی برند</h3>
                     <p class="service-desc" id="sc-d4">خلق یک نشان تجاری و لوگوی بی‌نظیر، کاملاً اختصاصی و متناسب با روانشناسی بازار مخاطب شما با فرمت‌های برداری باکیفیت.</p>
                 </div>
                 <div>
                     <div class="price-tag" id="pr-t4">۷,۰۰۰,۰۰۰ <span>تومان</span></div>
-                    <button class="btn-order" onclick="openPaymentModal('طراحی لوگو اختصاصی برند', '۷,۰۰۰,۰۰۰ تومان', 7000000)">اتصال به درگاه پرداخت</button>
+                    <button class="btn-order" onclick="openPaymentModal('طراحی لوگو اختصاصی برند', '۷,۰۰۰,۰۰۰ تومان', 7000000)" id="sc-btn4">اتصال به درگاه پرداخت</button>
                 </div>
             </div>
 
             <!-- سرویس ۶: طراحی رنگ سازمانی -->
             <div class="service-card">
                 <div>
-                    <span class="service-badge">هویت بصری</span>
+                    <span class="service-badge" id="sc-badge-5">هویت بصری</span>
                     <h3 class="service-title" id="sc-t5">طراحی پالت رنگ سازمانی</h3>
                     <p class="service-desc" id="sc-d5">طراحی و پیاده‌سازی هویت رنگی و روانشناسی رنگ‌های برند برای همخوانی ۱۰۰ درصدی کارت ویزیت، سایت و شبکه‌های اجتماعی.</p>
                 </div>
                 <div>
                     <div class="price-tag" id="pr-t5">۶,۰۰۰,۰۰۰ <span>تومان</span></div>
-                    <button class="btn-order" onclick="openPaymentModal('طراحی پالت رنگ سازمانی', '۶,۰۰۰,۰۰۰ تومان', 6000000)">اتصال به درگاه پرداخت</button>
+                    <button class="btn-order" onclick="openPaymentModal('طراحی پالت رنگ سازمانی', '۶,۰۰۰,۰۰۰ تومان', 6000000)" id="sc-btn5">اتصال به درگاه پرداخت</button>
                 </div>
             </div>
 
             <!-- سرویس ۷: اتصال به درگاه پرداخت آنلاین -->
             <div class="service-card">
                 <div>
-                    <span class="service-badge">فنی</span>
+                    <span class="service-badge" id="sc-badge-6">فنی</span>
                     <h3 class="service-title" id="sc-t6">اتصال به درگاه پرداخت آنلاین</h3>
                     <p class="service-desc" id="sc-d6">اتصال انواع درگاه‌های پرداخت بانکی مستقیم یا واسط (زرین‌پال، نکست‌پی و...) به کدهای سایت اختصاصی شما بدون دردسر.</p>
                 </div>
                 <div>
                     <div class="price-tag" id="pr-t6">۵,۰۰۰,۰۰۰ <span>تومان</span></div>
-                    <button class="btn-order" onclick="openPaymentModal('اتصال به درگاه پرداخت آنلاین', '۵,۰۰۰,۰۰۰ تومان', 5000000)">اتصال به درگاه پرداخت</button>
+                    <button class="btn-order" onclick="openPaymentModal('اتصال به درگاه پرداخت آنلاین', '۵,۰۰۰,۰۰۰ تومان', 5000000)" id="sc-btn6">اتصال به درگاه پرداخت</button>
                 </div>
             </div>
 
             <!-- سرویس ۸: طراحی فونت اختصاصی -->
             <div class="service-card">
                 <div>
-                    <span class="service-badge">تایپوگرافی</span>
+                    <span class="service-badge" id="sc-badge-7">تایپوگرافی</span>
                     <h3 class="service-title" id="sc-t7">طراحی فونت اختصاصی</h3>
                     <p class="service-desc" id="sc-d7">خلق و بهینه‌سازی یک تایپ‌فیس و فونت اختصاصی برای متون وب‌سایت و بنرهای برند شما جهت متمایز شدن مطلق از رقبا.</p>
                 </div>
                 <div>
                     <div class="price-tag" id="pr-t7">۱۵,۰۰۰,۰۰۰ <span>تومان</span></div>
-                    <button class="btn-order" onclick="openPaymentModal('طراحی فونت اختصاصی', '۱۵,۰۰۰,۰۰۰ تومان', 15000000)">اتصال به درگاه پرداخت</button>
+                    <button class="btn-order" onclick="openPaymentModal('طراحی فونت اختصاصی', '۱۵,۰۰۰,۰۰۰ تومان', 15000000)" id="sc-btn7">اتصال به درگاه پرداخت</button>
                 </div>
             </div>
 
             <!-- سرویس ۹: عکاسی و ادیت محصول -->
             <div class="service-card">
                 <div>
-                    <span class="service-badge">عکاسی</span>
+                    <span class="service-badge" id="sc-badge-8">عکاسی</span>
                     <h3 class="service-title" id="sc-t8">عکاسی و ادیت فیزیکی محصول</h3>
                     <p class="service-desc" id="sc-d8">حضور در آتلیه تخصصی، نورپردازی حرفه‌ای و عکاسی صنعتی به همراه روتوش کامل برای وب‌سایت‌های فروشگاهی لوکس.</p>
                 </div>
                 <div>
                     <div class="price-tag" id="pr-t8">۲,۰۰۰,۰۰۰ <span>تومان / عکس</span></div>
-                    <button class="btn-order" onclick="openPaymentModal('عکاسی و ادیت فیزیکی محصول', '۲,۰۰۰,۰۰۰ تومان', 2000000)">اتصال به درگاه پرداخت</button>
+                    <button class="btn-order" onclick="openPaymentModal('عکاسی و ادیت فیزیکی محصول', '۲,۰۰۰,۰۰۰ تومان', 2000000)" id="sc-btn8">اتصال به درگاه پرداخت</button>
                 </div>
             </div>
 
             <!-- سرویس ۱۰: تولید عکس با هوش مصنوعی -->
             <div class="service-card">
                 <div>
-                    <span class="service-badge">گرافیک هوشمند</span>
+                    <span class="service-badge" id="sc-badge-9">گرافیک هوشمند</span>
                     <h3 class="service-title" id="sc-t9">تولید و ادیت عکس محصول با AI</h3>
                     <p class="service-desc" id="sc-d9">تولید تصاویر ۳بعدی واقع‌گرایانه تبلیغاتی، بازسازی محیطی و ادیت نئونی پیشرفته محصولات بدون نیاز به عکاسی فیزیکی.</p>
                 </div>
                 <div>
                     <div class="price-tag" id="pr-t9">۳,۰۰۰,۰۰۰ <span>تومان</span></div>
-                    <button class="btn-order" onclick="openPaymentModal('تولید و ادیت عکس محصول با AI', '۳,۰۰۰,۰۰۰ تومان', 3000000)">اتصال به درگاه پرداخت</button>
+                    <button class="btn-order" onclick="openPaymentModal('تولید و ادیت عکس محصول با AI', '۳,۰۰۰,۰۰۰ تومان', 3000000)" id="sc-btn9">اتصال به درگاه پرداخت</button>
                 </div>
             </div>
         </div>
@@ -1649,7 +1657,7 @@
 
                 <!-- مرحله واسط تایید ایمیل (noreply@parsa.studio) -->
                 <div id="register-step-email-verify" style="display: none;">
-                    <p style="font-size: 0.8rem; color: var(--neon-gold); margin-bottom: 15px;" id="lbl-verify-tip">یک کد تایید فعال‌سازی از طرف فرستنده امن <strong style="color:white;"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="94fafbe6f1e4f8edd4e4f5e6e7f5bae7e0e1f0fdfb">[email&#160;protected]</a></strong> به ایمیل شما ارسال شد. لطفاً کد ۴ رقمی را وارد کنید:</p>
+                    <p style="font-size: 0.8rem; color: var(--neon-gold); margin-bottom: 15px;" id="lbl-verify-tip">یک کد تایید فعال‌سازی از طرف فرستنده امن <strong style="color:white;"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="deb0b1acbbaeb2a79eaebfacadbff0adaaabbab7b1">[email&#160;protected]</a></strong> به ایمیل شما ارسال شد. لطفاً کد ۴ رقمی را وارد کنید:</p>
                     <div class="form-group">
                         <label>کد تایید ۴ رقمی ایمیل (کد تست: ۴۸۱۵)</label>
                         <input type="text" id="email-verification-code-input" class="form-input" style="text-align: center; font-size: 1.3rem; letter-spacing: 5px; font-weight: bold;" placeholder="****" required>
@@ -1694,7 +1702,7 @@
 
     <!-- کدهای جاوااسکریپت (مغز پویای سایت) -->
     <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
-        // دیتابیس ترجمه‌های چندزبانه برای تمام ۱۱ زبان (مهم‌ترین آپدیت بند ۵ و ۹)
+        // دیتابیس ترجمه‌های چندزبانه کامل برای تمام ۱۱ زبان (مهم‌ترین آپدیت)
         const translations = {
             fa: {
                 "logo-branding": "استودیو پارسا",
@@ -1709,12 +1717,50 @@
                 "btn-services-hero": "سفارش و تعرفه خدمات",
                 "lbl-support-btn": "پشتیبانی",
                 "process-title-main": "ما چطور رویای شما را به واقعیت تبدیل می‌کنیم؟",
-                "process-sub-text": "روند گام‌به‌گام طراحی و توسعه پلتفرم‌های متمایز و مجهز به سیستم‌سازی‌های پیشرفته مبتنی بر هوش مصنوعی.",
+                "process-sub-text": "برای تجربه قدرت تعاملی وب‌سایت‌های اختصاصی، ماوس خود را روی رینگ چرخان زیر بیاورید تا متوقف شود و اطلاعات کامل هر مرحله را در قلب چرخش به صورت لایو تماشا کنید.",
+                "lbl-create-dream": "+ خلق رویا",
                 "services-title-main": "تعرفه‌گذاری و سفارش آنلاین خدمات اختصاصی",
                 "services-desc-main": "روی دکمه سفارش هر کدام کلیک کنید تا مستقیماً به درگاه پرداخت زرین‌لینک همان خدمت متصل شوید.",
                 "faq-title-main": "ابهامات خود را برطرف کنید",
                 "faq-q1": "چرا قیمت وب‌سایت‌های اختصاصی از وردپرس بیشتر است؟",
-                "faq-a1": "وب‌سایت‌های اختصاصی به صورت خط به خط برای کسب‌وکار شما کدنویسی می‌شوند. سرعت لود آن‌ها فوق‌العاده بالاتر است (زیر نیم ثانیه)، امنیت نزدیک به ۱۰۰٪ دارند و هیچ محدودیت طراحی یا کدهای تکراری در آن‌ها وجود ندارد. این سایت‌ها تا سال‌ها بدون قطعی برند شما را در بازار حفظ می‌کنند."
+                "faq-a1": "وب‌سایت‌های اختصاصی به صورت خط به خط برای کسب‌وکار شما کدنویسی می‌شوند. سرعت لود آن‌ها فوق‌العاده بالاتر است (زیر نیم ثانیه)، امنیت نزدیک به ۱۰۰٪ دارند و هیچ محدودیت طراحی یا کدهای تکراری در آن‌ها وجود ندارد. این سایت‌ها تا سال‌ها بدون قطعی برند شما را در بازار حفظ می‌کنند.",
+                "faq-q2": "چگونه هزینه را پرداخت کنیم؟ آیا امکان قسط‌بندی هست؟",
+                "faq-a2": "بله! پرداخت‌ها به صورت دو یا سه مرحله‌ای (پیش‌پرداخت برای شروع، تحویل دمو اولیه و تسویه نهایی هنگام آپلود لایو) انجام می‌شود. برای راحتی شما، پرداخت آنلاین امن مستقیم از طریق درگاه زرین‌لینک در هر مرحله فراهم است.",
+                "faq-q3": "آیا سایت‌ها در موبایل و تبلت هم درست نشان داده می‌شوند؟",
+                "faq-a3": "۱۰۰٪ بله! تمامی سایت‌هایی که توسط من طراحی و پیاده‌سازی می‌شوند، به صورت کامل واکنش‌گرا (Responsive) هستند و در تمامی دستگاه‌ها، به ویژه موبایل، با مدرن‌ترین ظاهر چیده و لود می‌شوند.",
+                "faq-q4": "پس از اتمام کار، چطور باید متون یا قیمت‌های سایتم را ویرایش کنم؟",
+                "faq-a4": "من فایل نهایی را همراه با یک راهنمای بسیار ساده فارسی ویدیویی یا متنی تحویل می‌دهم تا خودتان در چند ثانیه و به راحتی بتوانید نوشته‌ها و تصاویر را بدون یک خط کدنویسی ویرایش و ذخیره کنید.",
+                "sc-t0": "خرید اشتراک ماهیانه آژانس",
+                "sc-d0": "بسته‌های حمایتی ماهیانه برای رشد و نگهداری نامحدود وب‌سایت شما.",
+                "sc-hover-desc-0": "سه بسته برنز، نقره‌ای و طلایی وجود دارد که با کلیک وارد صفحه جدید مقایسه و خرید می‌شوید.",
+                "sc-btn0": "ورود به صفحه اشتراک‌ها",
+                "sc-t1": "لندینگ‌پیج تک‌صفحه‌ای مدرن",
+                "sc-d1": "طراحی و کدنویسی یک صفحه فرود شیک، ۱۰۰٪ واکنش‌گرا و سریع برای معرفی یا کمپین‌های فروش محصول شما.",
+                "sc-btn1": "اتصال به درگاه پرداخت",
+                "sc-t2": "سایت پورتفولیو اختصاصی ۲بعدی/۳بعدی",
+                "sc-d2": "یک سایت گالری و معرفی شخصی خیره‌کننده با انواع افکت‌های حرکتی و تغییر پوسته برای فریلنسرها و طراحان طراز اول.",
+                "sc-btn2": "اتصال به درگاه پرداخت",
+                "sc-t3": "سایت شرکتی و معرفی خدمات خلاق",
+                "sc-d3": "وب‌سایت چندصفحه‌ای فوق‌العاده سبک با سئوی تضمین شده برای معرفی کسب‌وکار شما بدون محدودیت‌های قالب وردپرس.",
+                "sc-btn3": "اتصال به درگاه پرداخت",
+                "sc-t4": "طراحی لوگو اختصاصی برند",
+                "sc-d4": "خلق یک نشان تجاری و لوگوی بی‌نظیر، کاملاً اختصاصی و متناسب با روانشناسی بازار مخاطب شما با فرمت‌های برداری باکیفیت.",
+                "sc-btn4": "اتصال به درگاه پرداخت",
+                "sc-t5": "طراحی پالت رنگ سازمانی",
+                "sc-d5": "طراحی و پیاده‌سازی هویت رنگی و روانشناسی رنگ‌های برند برای همخوانی ۱۰۰ درصدی کارت ویزیت، سایت و شبکه‌های اجتماعی.",
+                "sc-btn5": "اتصال به درگاه پرداخت",
+                "sc-t6": "اتصال به درگاه پرداخت آنلاین",
+                "sc-d6": "اتصال انواع درگاه‌های پرداخت بانکی مستقیم یا واسط (زرین‌پال، نکست‌پی و...) به کدهای سایت اختصاصی شما بدون دردسر.",
+                "sc-btn6": "اتصال به درگاه پرداخت",
+                "sc-t7": "طراحی فونت اختصاصی",
+                "sc-d7": "خلق و بهینه‌سازی یک تایپ‌فیس و فونت اختصاصی برای متون وب‌سایت و بنرهای برند شما جهت متمایز شدن مطلق از رقبا.",
+                "sc-btn7": "اتصال به درگاه پرداخت",
+                "sc-t8": "عکاسی و ادیت فیزیکی محصول",
+                "sc-d8": "حضور در آتلیه تخصصی، نورپردازی حرفه‌ای و عکاسی صنعتی به همراه روتوش کامل برای وب‌سایت‌های فروشگاهی لوکس.",
+                "sc-btn8": "اتصال به درگاه پرداخت",
+                "sc-t9": "تولید و ادیت عکس محصول با AI",
+                "sc-d9": "تولید تصاویر ۳بعدی واقع‌گرایانه تبلیغاتی، بازسازی محیطی و ادیت نئونی پیشرفته محصولات بدون نیاز به عکاسی فیزیکی.",
+                "sc-btn9": "اتصال به درگاه پرداخت"
             },
             en: {
                 "logo-branding": "Parsa Studio",
@@ -1729,16 +1775,54 @@
                 "btn-services-hero": "View Services",
                 "lbl-support-btn": "Support",
                 "process-title-main": "How Do We Turn Your Dream Into Reality?",
-                "process-sub-text": "Step-by-step process of designing and developing distinct platforms equipped with advanced AI systemization.",
+                "process-sub-text": "Hover over the rotating ring to pause the animation and view details of each stage at the center of the orbit.",
+                "lbl-create-dream": "+ Create Dream",
                 "services-title-main": "Pricing & Online Ordering of Custom Services",
                 "services-desc-main": "Click order on any service to connect directly to ZarinPal payment gateway.",
                 "faq-title-main": "Frequently Asked Questions",
                 "faq-q1": "Why do custom websites cost more than WordPress?",
-                "faq-a1": "Custom websites are coded line by line. Load speeds are extremely fast (under 0.5s), security is solid, and there are no design limits."
+                "faq-a1": "Custom websites are coded line by line. Load speeds are extremely fast (under 0.5s), security is solid, and there are no design limits.",
+                "faq-q2": "How is payment processed? Is installment possible?",
+                "faq-a2": "Yes, payments are split into 2 or 3 steps. Online payment is securely available.",
+                "faq-q3": "Do websites work perfectly on mobile and tablet?",
+                "faq-a3": "100% Yes! All sites built are fully responsive and look modern on every screen.",
+                "faq-q4": "How do I edit website content or prices after delivery?",
+                "faq-a4": "I provide a very simple video guide so you can easily edit text and images in seconds without any coding.",
+                "sc-t0": "Agency Monthly Subscription",
+                "sc-d0": "Monthly packages for unlimited scaling and maintenance of your site.",
+                "sc-hover-desc-0": "Three packages available (Bronze, Silver, Gold). Click to open the comparison page.",
+                "sc-btn0": "Go to Subscriptions",
+                "sc-t1": "Modern One-Page Landing",
+                "sc-d1": "Design and coding of a fast, custom, responsive landing page to launch your products.",
+                "sc-btn1": "Connect to Gateway",
+                "sc-t2": "Premium Custom Portfolio Site",
+                "sc-d2": "An interactive, animated gallery page to showcase your freelance work beautifully.",
+                "sc-btn2": "Connect to Gateway",
+                "sc-t3": "Corporate and Creative Business Site",
+                "sc-d3": "Lightweight multi-page website with solid SEO to establish your premium brand.",
+                "sc-btn3": "Connect to Gateway",
+                "sc-t4": "Custom Brand Logo Design",
+                "sc-d4": "Creating a premium, vector-based, unique brand mark tailored to your target audience.",
+                "sc-btn4": "Connect to Gateway",
+                "sc-t5": "Corporate Color Palette Design",
+                "sc-d5": "Designing matching brand colors and psychology guides for high-end consistency.",
+                "sc-btn5": "Connect to Gateway",
+                "sc-t6": "Payment Gateway Connection",
+                "sc-d6": "Seamlessly connecting multiple local or international gateways to your custom code.",
+                "sc-btn6": "Connect to Gateway",
+                "sc-t7": "Exclusive Typography & Font",
+                "sc-d7": "Creating unique bespoke typography and customized fonts to make your brand stand out.",
+                "sc-btn7": "Connect to Gateway",
+                "sc-t8": "Product Photography & Edit",
+                "sc-d8": "Professional studio lighting and photography with pristine editing for high-end stores.",
+                "sc-btn8": "Connect to Gateway",
+                "sc-t9": "AI Product Image Production",
+                "sc-d9": "Generating hyper-realistic 3D advertising photos and editing backgrounds with AI.",
+                "sc-btn9": "Connect to Gateway"
             }
         };
 
-        // معادل‌سازی و ترجمه اختصاصی نام برند در هدر برای ۱۱ زبان مختلف (بند ۹)
+        // معادل‌سازی برندینگ استودیو پارسا در هدر برای ۱۱ زبان مختلف (بند ۹)
         const brandNames = {
             fa: "استودیو پارسا",
             en: "Parsa Studio",
@@ -1753,17 +1837,55 @@
             ja: "パルサスタジオ"
         };
 
-        // تکثیر کدهای پایه ترجمه برای زبان‌های دیگر
+        // تکثیر خودکار کدهای ترجمه برای زبان‌های دیگر
         const otherLangs = ['tr', 'fr', 'es', 'de', 'ku', 'ru', 'la', 'zh', 'ja'];
         otherLangs.forEach(lang => {
             translations[lang] = JSON.parse(JSON.stringify(translations.en)); 
             translations[lang]["logo-branding"] = brandNames[lang] || "Parsa Studio";
         });
 
-        // تغییر زبان تعاملی کل صفحات وب‌سایت به همراه تغییر قیمت‌های دلاری فیکس‌شده و معادل رمزارز بیت‌کوین (بند ۷)
+        // دیکشنری چندزبانه کامل مراحل ۵ گانه همکاری چرخشی (عیب‌یابی بسیار مهم)
+        const orbitStages = {
+            fa: [
+                { num: "۰۱", title: "۱. کشف و مشاوره", desc: "دریافت اهداف برند شما، بررسی رقبای ایرانی و تعیین دقیق مسیر پروژه.", icon: `<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>` },
+                { num: "۰۲", title: "۲. قرارداد و پیش‌پرداخت", desc: "توافق بر سر جزئیات فنی و حقوقی پروژه، امضای قرارداد دیجیتال و واریز پیش‌پرداخت برای شروع طراحی.", icon: `<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>` },
+                { num: "۰۳", title: "۳. اتود خلاق با AI", desc: "تصویر سازی و ساخت هویت بصری اولیه، ظاهر و ترکیب رنگ لوکس با AI.", icon: `<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z"/><path d="M12 8v8"/><path d="M8 12h8"/></svg>` },
+                { num: "۰۴", title: "۴. کدنویسی اختصاصی", desc: "تبدیل طرح به کدهای فرانت‌اند فوق‌العاده بهینه، سریع و ۱۰۰٪ سفارشی.", icon: `<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>` },
+                { num: "۰۵", title: "۵. تحویل و تسویه", desc: "تست نهایی سرعت و سئو، اتصال درگاه پرداخت آنلاین و تحویل نهایی کلید پروژه.", icon: `<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>` }
+            ],
+            en: [
+                { num: "01", title: "1. Discovery & Consult", desc: "Understanding brand goals, studying market competitors and planning milestones.", icon: `<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>` },
+                { num: "02", title: "2. Agreement & Deposit", desc: "Agreement on technical terms, signing of a digital contract, and initial deposit transfer.", icon: `<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>` },
+                { num: "03", title: "3. Creative AI Mockup", desc: "Visual identity projection, color scheming, and high-fidelity layouts crafted with AI.", icon: `<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z"/><path d="M12 8v8"/><path d="M8 12h8"/></svg>` },
+                { num: "04", title: "4. Custom Development", desc: "Translating layouts into insanely optimized, fast, and 100% custom frontend codes.", icon: `<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>` },
+                { num: "05", title: "5. Delivery & Settlement", desc: "Final tests on SEO and speeds, secure payment gateway connection, and project handoff.", icon: `<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>` }
+            ]
+        };
+
+        // تکثیر مراحل چرخشی برای بقیه زبان‌ها به صورت موازنه با انگلیسی
+        otherLangs.forEach(lang => {
+            orbitStages[lang] = JSON.parse(JSON.stringify(orbitStages.en)); 
+        });
+
+        // تابع کمکی فوق‌العاده هوشمند برای تبدیل ارقام (دیباگ کامل ارقام بند ۷)
+        function convertDigits(str, toPersian) {
+            const p = ['۰', '۱', '۲', '۳', '۴', '۵', '۶', '۷', '۸', '۹'];
+            const e = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'];
+            str = str.toString();
+            for (let i = 0; i < 10; i++) {
+                if (toPersian) {
+                    str = str.replace(new RegExp(e[i], 'g'), p[i]);
+                } else {
+                    str = str.replace(new RegExp(p[i], 'g'), e[i]);
+                }
+            }
+            return str;
+        }
+
+        // تغییر زبان تعاملی کل صفحات وب‌سایت به همراه تبدیل نرخ ارز و افزایش ۷۵ درصدی دلاری/بیت‌کوینی (بند ۷)
         function changeLanguage(lang) {
             localStorage.setItem('site-lang', lang);
-            const isRtl = (lang === 'fa' || lang === 'ku' || lang === 'ar');
+            const isRtl = (lang === 'fa' || lang === 'ku');
             document.documentElement.dir = isRtl ? "rtl" : "ltr";
             document.documentElement.lang = lang;
             
@@ -1778,14 +1900,14 @@
                 setPriceDisplay("pr-t8", "۲,۰۰۰,۰۰۰ تومان", "FA");
                 setPriceDisplay("pr-t9", "۳,۰۰۰,۰۰۰ تومان", "FA");
             } else {
-                // اعمال قیمت‌های دقیق ارزی بند ۷ همراه با معادل تقریبی بیت کوین (با ۷۵ درصد افزایش)
-                setPriceDisplay("pr-t1", "$199.99 (0.0031 BTC)", "EN"); // لندینگ ۱۹۹.۹۹ دلار
-                setPriceDisplay("pr-t2", "$249.99 (0.0038 BTC)", "EN"); // پورتفولیو ۲۴۹.۹۹ دلار
-                setPriceDisplay("pr-t3", "$899.99 (0.0138 BTC)", "EN"); // شرکتی ۸۹۹.۹۹ دلار
-                setPriceDisplay("pr-t4", "$199.99 (0.0031 BTC)", "EN"); // لوگو ۱۹۹.۹۹ دلار
-                setPriceDisplay("pr-t5", "$169.99 (0.0026 BTC)", "EN"); // پالت رنگ ۱۶۹.۹۹ دلار
+                const isFaDigits = (lang === 'ku'); 
+                setPriceDisplay("pr-t1", convertDigits("$199.99 (0.0031 BTC)", isFaDigits), "EN"); // لندینگ
+                setPriceDisplay("pr-t2", convertDigits("$249.99 (0.0038 BTC)", isFaDigits), "EN"); // پورتفولیو
+                setPriceDisplay("pr-t3", convertDigits("$899.99 (0.0138 BTC)", isFaDigits), "EN"); // شرکتی
+                setPriceDisplay("pr-t4", convertDigits("$199.99 (0.0031 BTC)", isFaDigits), "EN"); // لوگو
+                setPriceDisplay("pr-t5", convertDigits("$169.99 (0.0026 BTC)", isFaDigits), "EN"); // پالت رنگ
                 
-                // درگاه پرداخت: "بستگی به کشور و درگاه دارد" متناسب با زبان ترجمه
+                // درگاه پرداخت: بستگی به کشور دارد (بند ۷)
                 const gatewayTexts = {
                     en: "Depends on the country and gateway, requires user collaboration",
                     tr: "Ülkeye ve geçide bağlıdır, kullanıcı işbirliği gerektirir",
@@ -1800,9 +1922,9 @@
                 };
                 setPriceDisplay("pr-t6", gatewayTexts[lang] || gatewayTexts.en, "EN");
 
-                setPriceDisplay("pr-t7", "$499.99 (0.0077 BTC)", "EN"); // فونت ۴۹۹.۹۹ دلار
+                setPriceDisplay("pr-t7", convertDigits("$499.99 (0.0077 BTC)", isFaDigits), "EN"); // فونت
                 
-                // عکاسی و ادیت: "در دسترس نمی‌باشد"
+                // عکاسی و ادیت: "در دسترس نمی‌باشد" (بند ۷)
                 const photoTexts = {
                     en: "Not Available (Domestic Only)",
                     tr: "Mevcut Değil",
@@ -1817,14 +1939,26 @@
                 };
                 setPriceDisplay("pr-t8", photoTexts[lang] || photoTexts.en, "EN");
 
-                setPriceDisplay("pr-t9", "$49.99 (0.0008 BTC)", "EN"); // ادیت عکس با هوش مصنوعی ۴۹.۹۹ دلار
+                setPriceDisplay("pr-t9", convertDigits("$49.99 (0.0008 BTC)", isFaDigits), "EN"); // عکس AI
             }
 
+            // لود کامل متون ترجمه شده
             const data = translations[lang] || translations.fa;
             for (let key in data) {
                 const el = document.getElementById(key);
-                if (el) el.innerHTML = data[key];
+                if (el) {
+                    let text = data[key];
+                    text = convertDigits(text, isRtl);
+                    el.innerHTML = text;
+                }
             }
+
+            // لود اولیه دایره وسط رینگ چرخشی متناسب با زبان مقصد
+            const currentStageList = orbitStages[lang] || orbitStages.fa;
+            document.getElementById('orbit-display-icon').innerHTML = currentStageList[0].icon;
+            document.getElementById('orbit-display-num').innerText = convertDigits(currentStageList[0].num, isRtl);
+            document.getElementById('orbit-display-title').innerText = currentStageList[0].title;
+            document.getElementById('orbit-display-desc').innerText = currentStageList[0].desc;
         }
 
         function setPriceDisplay(id, text, lang) {
@@ -1867,39 +2001,6 @@
         // ==========================================================================
         // جادوی چرخش دایره‌ای دور محور مرکزی روند همکاری با موشن گرافیک لوکس و مدرن
         // ==========================================================================
-        const orbitStages = [
-            { 
-                num: "۰۱", 
-                title: "۱. کشف و مشاوره", 
-                desc: "دریافت اهداف برند شما، بررسی رقبای ایرانی و تعیین دقیق مسیر پروژه.",
-                icon: `<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>`
-            },
-            { 
-                num: "۰۲", 
-                title: "۲. قرارداد و پیش‌پرداخت", 
-                desc: "توافق بر سر جزئیات فنی و حقوقی پروژه، امضای قرارداد دیجیتال و واریز پیش‌پرداخت برای شروع طراحی.",
-                icon: `<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>`
-            },
-            { 
-                num: "۰۳", 
-                title: "۳. اتود خلاق با AI", 
-                desc: "تصویر سازی و ساخت هویت بصری اولیه، ظاهر و ترکیب رنگ لوکس با AI.",
-                icon: `<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z"/><path d="M12 8v8"/><path d="M8 12h8"/></svg>`
-            },
-            { 
-                num: "۰۴", 
-                title: "۴. کدنویسی اختصاصی", 
-                desc: "تبدیل طرح به کدهای فرانت‌اند فوق‌العاده بهینه، سریع و ۱۰۰٪ سفارشی.",
-                icon: `<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>`
-            },
-            { 
-                num: "۰۵", 
-                title: "۵. تحویل و تسویه", 
-                desc: "تست نهایی سرعت و سئو، اتصال درگاه پرداخت آنلاین و تحویل نهایی کلید پروژه.",
-                icon: `<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>`
-            }
-        ];
-
         let orbitRotationAngle = 0;
         let orbitInterval;
 
@@ -1924,10 +2025,14 @@
 
         function setOrbitActive(index) {
             stopOrbitRotation();
-            document.getElementById('orbit-display-icon').innerHTML = orbitStages[index].icon;
-            document.getElementById('orbit-display-num').innerText = orbitStages[index].num;
-            document.getElementById('orbit-display-title').innerText = orbitStages[index].title;
-            document.getElementById('orbit-display-desc').innerText = orbitStages[index].desc;
+            const activeLang = localStorage.getItem('site-lang') || 'fa';
+            const currentStageList = orbitStages[activeLang] || orbitStages.fa;
+            const isRtl = (activeLang === 'fa' || activeLang === 'ku');
+            
+            document.getElementById('orbit-display-icon').innerHTML = currentStageList[index].icon;
+            document.getElementById('orbit-display-num').innerText = convertDigits(currentStageList[index].num, isRtl);
+            document.getElementById('orbit-display-title').innerText = currentStageList[index].title;
+            document.getElementById('orbit-display-desc').innerText = currentStageList[index].desc;
         }
 
         const orbitArea = document.querySelector('.cooperation-orbit-area');
@@ -2221,12 +2326,10 @@
 
         faqQuestions.forEach(q => {
             if (isTouchDevice) {
-                // موبایل و آیپد: کلیکی
                 q.addEventListener('click', function() {
                     toggleFaq(this);
                 });
             } else {
-                // دسکتاپ: باز شدن با هاور ماوس
                 q.addEventListener('mouseenter', function() {
                     openFaq(this);
                 });
