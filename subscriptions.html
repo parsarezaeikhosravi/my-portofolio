@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta id="viewport-meta" name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>اشتراک‌های ویژه | استودیو پارسا</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;700;900&display=swap');
+
+        :root {
+            --bg: #0F172A;                        
+            --card-bg: rgba(30, 41, 59, 0.6);     
+            --card-border: rgba(255, 255, 255, 0.12); 
+            --neon-orange: #FF7A00;               
+            --neon-gold: #F59E0B;                 
+            --neon-glow: rgba(255, 122, 0, 0.25);  
+            --text-main: #F9FAFB;                 
+            --text-muted: #CBD5E1;                
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Vazirmatn', 'Tahoma', sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--bg);
+            color: var(--text-main);
+            overflow-x: hidden;
+            position: relative;
+            line-height: 1.7;
+            padding: 40px 8%;
+        }
+
+        .orb {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(140px);
+            z-index: -1;
+            pointer-events: none;
+            opacity: 0.45;
+        }
+        .orb-1 {
+            top: -100px;
+            right: -100px;
+            width: 500px;
+            height: 500px;
+            background: var(--neon-orange);
+        }
+
+        /* دکمه بازگشت لوکس */
+        .btn-back {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: linear-gradient(135deg, var(--neon-orange) 0%, #D97706 100%);
+            color: white;
+            border: none;
+            padding: 12px 28px;
+            border-radius: 50px;
+            font-weight: bold;
+            font-size: 0.95rem;
+            cursor: pointer;
+            box-shadow: 0 0 20px var(--neon-glow);
+            text-decoration: none;
+            transition: transform 0.2s, box-shadow 0.2s;
+            margin-bottom: 40px;
+        }
+
+        .btn-back:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 0 25px rgba(255, 122, 0, 0.5);
+        }
+
+        .header-title {
+            font-size: 2.5rem;
+            font-weight: 900;
+            text-align: center;
+            margin-bottom: 10px;
+            background: linear-gradient(to left, #FFFFFF, var(--neon-gold));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .header-desc {
+            text-align: center;
+            color: var(--text-muted);
+            max-width: 600px;
+            margin: 0 auto 50px auto;
+        }
+
+        /* جدول مقایسه اشتراک‌ها */
+        .table-container {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 24px;
+            padding: 40px;
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            box-shadow: 0 30px 60px rgba(0,0,0,0.4);
+            overflow-x: auto;
+            margin-bottom: 50px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            text-align: right;
+        }
+
+        th, td {
+            padding: 18px 20px;
+            border-bottom: 1px solid rgba(255,255,255,0.06);
+        }
+
+        th {
+            font-weight: 900;
+            font-size: 1.1rem;
+            color: var(--neon-gold);
+        }
+
+        tr:last-child td {
+            border-bottom: none;
+        }
+
+        .check-icon {
+            color: #10B981;
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        .cross-icon {
+            color: #EF4444;
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        .package-header {
+            font-size: 1.3rem;
+            font-weight: 900;
+            color: white;
+        }
+
+        .package-price {
+            font-size: 1.1rem;
+            color: var(--neon-orange);
+            font-weight: bold;
+            margin-top: 5px;
+        }
+
+        .btn-sub-buy {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--card-border);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 10px;
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 0.85rem;
+            transition: all 0.2s;
+        }
+
+        .btn-sub-buy:hover {
+            background: var(--neon-orange);
+            border-color: var(--neon-orange);
+            color: white;
+            box-shadow: 0 0 15px var(--neon-glow);
+        }
+    </style>
+</head>
+<body>
+
+    <div class="orb orb-1"></div>
+
+    <a href="index.html" class="btn-back">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="transform: scaleX(-1);"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 19 12 12 5"/></svg>
+        بازگشت به استودیو پارسا
+    </a>
+
+    <h1 class="header-title" id="sub-title">پلن‌های اشتراک ماهیانه اختصاصی</h1>
+    <p class="header-desc" id="sub-desc">تفاوت و امکانات بی‌نظیر هر سه بسته برنز، نقره‌ای و طلایی را در جدول پویا و متمایز زیر با هم مقایسه کنید.</p>
+
+    <div class="table-container">
+        <table>
+            <thead>
+                <tr>
+                    <th style="width: 40%;" id="th-feat">ویژگی‌ها و امکانات</th>
+                    <th style="text-align: center;">
+                        <div class="package-header" id="pkg-b">برنز (Bronze)</div>
+                        <div class="package-price" id="pr-b">۴,۹۰۰,۰۰۰ تومان</div>
+                    </th>
+                    <th style="text-align: center;">
+                        <div class="package-header" id="pkg-s" style="color: var(--neon-gold);">نقره‌ای (Silver)</div>
+                        <div class="package-price" id="pr-s">۹,۹۰۰,۰۰۰ تومان</div>
+                    </th>
+                    <th style="text-align: center;">
+                        <div class="package-header" id="pkg-g" style="color: var(--neon-orange);">طلایی (Gold)</div>
+                        <div class="package-price" id="pr-g">۱۹,۹۰۰,۰۰۰ تومان</div>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td id="f-1">پشتیبانی آنلاین ۲۴ ساعته</td>
+                    <td style="text-align: center;"><span class="check-icon">✔</span></td>
+                    <td style="text-align: center;"><span class="check-icon">✔</span></td>
+                    <td style="text-align: center;"><span class="check-icon">✔</span></td>
+                </tr>
+                <tr>
+                    <td id="f-2">ادیت و تولید عکس با AI</td>
+                    <td style="text-align: center;" id="f-2-b">تا ۵ عکس در ماه</td>
+                    <td style="text-align: center;" id="f-2-s">تا ۲۰ عکس در ماه</td>
+                    <td style="text-align: center;"><span class="check-icon" id="f-2-g">نامحدود ✔</span></td>
+                </tr>
+                <tr>
+                    <td id="f-3">تغییر و ویرایش کدهای اختصاصی</td>
+                    <td style="text-align: center;"><span class="cross-icon">✖</span></td>
+                    <td style="text-align: center;" id="f-3-s">۲ بار در ماه</td>
+                    <td style="text-align: center;"><span class="check-icon" id="f-3-g">نامحدود ✔</span></td>
+                </tr>
+                <tr>
+                    <td id="f-4">مشاوره اختصاصی سئو و رشد برند</td>
+                    <td style="text-align: center;"><span class="cross-icon">✖</span></td>
+                    <td style="text-align: center;"><span class="check-icon">✔</span></td>
+                    <td style="text-align: center;"><span class="check-icon">✔</span></td>
+                </tr>
+                <tr>
+                    <td id="f-5">هاست ابری فوق‌سریع رایگان</td>
+                    <td style="text-align: center;"><span class="cross-icon">✖</span></td>
+                    <td style="text-align: center;"><span class="cross-icon">✖</span></td>
+                    <td style="text-align: center;"><span class="check-icon">✔</span></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td style="text-align: center;">
+                        <button class="btn-sub-buy" onclick="purchaseSubscription('Bronze', '۴,۹۰۰,۰۰۰')" id="btn-b">انتخاب برنز</button>
+                    </td>
+                    <td style="text-align: center;">
+                        <button class="btn-sub-buy" onclick="purchaseSubscription('Silver', '۹,۹۰۰,۰۰۰')" id="btn-s">انتخاب نقره‌ای</button>
+                    </td>
+                    <td style="text-align: center;">
+                        <button class="btn-sub-buy" onclick="purchaseSubscription('Gold', '۱۹,۹۰۰,۰۰۰')" id="btn-g">انتخاب طلایی</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <script>
+        // کنترل خرید اشتراک با تایید احراز هویت
+        function purchaseSubscription(packName, priceText) {
+            const isLoggedIn = localStorage.getItem('is-logged-in') === 'true';
+            if (!isLoggedIn) {
+                alert('کاربر گرامی، لطفاً ابتدا در صفحه اصلی سایت ثبت‌نام یا ورود کنید تا بتوانید اشتراک تهیه کنید.');
+                window.location.href = "index.html?triggerAuth=true";
+            } else {
+                alert(`درخواست خرید اشتراک ماهیانه "${packName}" با قیمت ${priceText} تومان صادر شد. شما اکنون به درگاه پرداخت متصل می‌شوید.`);
+                window.open('https://zarinp.al', '_blank');
+            }
+        }
+
+        // یکپارچه‌سازی ارز و زبان
+        const savedLang = localStorage.getItem('site-lang') || 'fa';
+        if (savedLang !== 'fa') {
+            document.documentElement.dir = "ltr";
+            document.getElementById('sub-title').innerText = "Premium Monthly Subscriptions";
+            document.getElementById('sub-desc').innerText = "Compare and choose our premium subscription packages: Bronze, Silver, and Gold.";
+            document.getElementById('th-feat').innerText = "Features & Limits";
+            
+            // تبدیل قیمت‌ها به دلار با ۷۵٪ افزایش
+            document.getElementById('pr-b').innerText = "$140.00 / mo";
+            document.getElementById('pr-s').innerText = "$280.00 / mo";
+            document.getElementById('pr-g').innerText = "$560.00 / mo";
+
+            document.getElementById('f-1').innerText = "24/7 Premium Support";
+            document.getElementById('f-2').innerText = "AI Product Photo Generation";
+            document.getElementById('f-2-b').innerText = "5 photos / mo";
+            document.getElementById('f-2-s').innerText = "20 photos / mo";
+            document.getElementById('f-2-g').innerText = "Unlimited";
+            document.getElementById('f-3').innerText = "Custom Code Maintenance";
+            document.getElementById('f-3-s').innerText = "2 updates / mo";
+            document.getElementById('f-3-g').innerText = "Unlimited";
+            document.getElementById('f-4').innerText = "SEO & Branding Consultations";
+            document.getElementById('f-5').innerText = "Free Ultra-fast Cloud Hosting";
+
+            document.getElementById('btn-b').innerText = "Buy Bronze";
+            document.getElementById('btn-s').innerText = "Buy Silver";
+            document.getElementById('btn-g').innerText = "Buy Gold";
+        }
+    </script>
+</body>
+</html>
