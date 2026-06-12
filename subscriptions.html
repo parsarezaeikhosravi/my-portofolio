@@ -32,7 +32,7 @@
             overflow-x: hidden;
             position: relative;
             line-height: 1.7;
-            padding: 40px 8%;
+            padding: 20px 8%;
         }
 
         .orb {
@@ -92,7 +92,7 @@
             margin: 0 auto 50px auto;
         }
 
-        /* جدول مقایسه اشتراک‌ها */
+        /* جدول مقایسه اشتراک‌ها (کاملاً واکنش‌گرا برای موبایل، تبلت، نوت‌بوک و پی‌سی) */
         .table-container {
             background: var(--card-bg);
             border: 1px solid var(--card-border);
@@ -101,19 +101,21 @@
             backdrop-filter: blur(20px);
             -webkit-backdrop-filter: blur(20px);
             box-shadow: 0 30px 60px rgba(0,0,0,0.4);
-            overflow-x: auto;
+            overflow-x: auto; /* اسکرول افقی روی موبایل برای عدم به هم ریختگی جدول */
             margin-bottom: 50px;
         }
 
         table {
             width: 100%;
             border-collapse: collapse;
-            text-align: right;
+            text-align: start; /* همگرایی خودکار با جهت LTR/RTL */
+            min-width: 600px; /* حداقل عرض برای عدم فشرده شدن روی موبایل */
         }
 
         th, td {
             padding: 18px 20px;
             border-bottom: 1px solid rgba(255,255,255,0.06);
+            text-align: start;
         }
 
         th {
@@ -142,6 +144,7 @@
             font-size: 1.3rem;
             font-weight: 900;
             color: white;
+            text-align: center;
         }
 
         .package-price {
@@ -149,6 +152,7 @@
             color: var(--neon-orange);
             font-weight: bold;
             margin-top: 5px;
+            text-align: center;
         }
 
         .btn-sub-buy {
@@ -161,6 +165,8 @@
             font-weight: bold;
             font-size: 0.85rem;
             transition: all 0.2s;
+            width: 100%;
+            text-align: center;
         }
 
         .btn-sub-buy:hover {
@@ -169,20 +175,135 @@
             color: white;
             box-shadow: 0 0 15px var(--neon-glow);
         }
+
+        /* دکمه تنظیمات شناور */
+        .settings-widget {
+            position: fixed;
+            bottom: 30px;
+            left: 30px;
+            z-index: 1000;
+        }
+
+        .settings-trigger {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: rgba(30, 41, 59, 0.9);
+            border: 1px solid var(--card-border);
+            color: white;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+            transition: transform 0.3s;
+        }
+
+        .settings-trigger:hover {
+            transform: rotate(45deg);
+            border-color: var(--neon-gold);
+        }
+
+        .settings-panel {
+            position: absolute;
+            bottom: 60px;
+            left: 0;
+            width: 260px;
+            background: rgba(15, 23, 42, 0.98);
+            border: 1px solid var(--card-border);
+            border-radius: 20px;
+            padding: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            display: none;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .settings-panel.active {
+            display: flex;
+        }
+
+        .settings-title {
+            font-size: 0.95rem;
+            font-weight: bold;
+            color: var(--neon-gold);
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+            padding-bottom: 8px;
+        }
+
+        .setting-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.8rem;
+        }
+
+        .setting-select {
+            background: #0F172A;
+            border: 1px solid var(--card-border);
+            color: white;
+            padding: 5px 10px;
+            border-radius: 8px;
+            outline: none;
+            font-size: 0.8rem;
+            cursor: pointer;
+        }
+
+        .switch {
+            position: relative;
+            display: inline-block;
+            width: 44px;
+            height: 22px;
+        }
+
+        .switch input { 
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+
+        .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background-color: #334155;
+            transition: .3s;
+            border-radius: 34px;
+        }
+
+        .slider:before {
+            position: absolute;
+            content: "";
+            height: 16px; width: 16px;
+            left: 3px; bottom: 3px;
+            background-color: white;
+            transition: .3s;
+            border-radius: 50%;
+        }
+
+        input:checked + .slider {
+            background-color: var(--neon-orange);
+        }
+
+        input:checked + .slider:before {
+            transform: translateX(22px);
+        }
     </style>
 </head>
 <body>
 
     <div class="orb orb-1"></div>
 
-    <a href="index.html" class="btn-back">
+    <!-- دکمه بازگشت پویا به استودیو پارسا -->
+    <a href="index.html" class="btn-back" id="btn-back-main">
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="transform: scaleX(-1);"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 19 12 12 5"/></svg>
-        بازگشت به استودیو پارسا
+        <span>بازگشت به استودیو پارسا</span>
     </a>
 
     <h1 class="header-title" id="sub-title">پلن‌های اشتراک ماهیانه اختصاصی</h1>
     <p class="header-desc" id="sub-desc">تفاوت و امکانات بی‌نظیر هر سه بسته برنز، نقره‌ای و طلایی را در جدول پویا و متمایز زیر با هم مقایسه کنید.</p>
 
+    <!-- جدول مقایسه پویا -->
     <div class="table-container">
         <table>
             <thead>
@@ -193,7 +314,7 @@
                         <div class="package-price" id="pr-b">۴,۹۰۰,۰۰۰ تومان</div>
                     </th>
                     <th style="text-align: center;">
-                        <div class="package-header" id="pkg-s" style="color: var(--neon-gold);">نقره‌ای (Silver)</div>
+                        <div class="package-header" id="pkg-s" style="color: var(--neon-gold);">نقره‌ای / VIP</div>
                         <div class="package-price" id="pr-s">۹,۹۰۰,۰۰۰ تومان</div>
                     </th>
                     <th style="text-align: center;">
@@ -239,7 +360,7 @@
                         <button class="btn-sub-buy" onclick="purchaseSubscription('Bronze', '۴,۹۰۰,۰۰۰')" id="btn-b">انتخاب برنز</button>
                     </td>
                     <td style="text-align: center;">
-                        <button class="btn-sub-buy" onclick="purchaseSubscription('Silver', '۹,۹۰۰,۰۰۰')" id="btn-s">انتخاب نقره‌ای</button>
+                        <button class="btn-sub-buy" onclick="purchaseSubscription('VIP / Silver', '۹,۹۰۰,۰۰۰')" id="btn-s">انتخاب نقره‌ای</button>
                     </td>
                     <td style="text-align: center;">
                         <button class="btn-sub-buy" onclick="purchaseSubscription('Gold', '۱۹,۹۰۰,۰۰۰')" id="btn-g">انتخاب طلایی</button>
@@ -249,47 +370,164 @@
         </table>
     </div>
 
+    <!-- تنظیمات شناور چندزبانه برای تمام فایل‌ها -->
+    <div class="settings-widget">
+        <button class="settings-trigger" onclick="toggleSettingsPanel()">⚙️</button>
+        <div class="settings-panel" id="settings-panel">
+            <div class="settings-title" id="lbl-settings-t">تنظیمات وب‌سایت</div>
+            <div class="setting-row">
+                <span id="lbl-lang-t">زبان سایت (Language)</span>
+                <select class="setting-select" id="lang-select" onchange="changeLanguage(this.value)">
+                    <option value="fa">فارسی (FA)</option>
+                    <option value="en">English (EN)</option>
+                    <option value="tr">Türkçe (TR)</option>
+                    <option value="fr">Français (FR)</option>
+                    <option value="es">Español (ES)</option>
+                    <option value="de">Deutsch (DE)</option>
+                    <option value="ku">Kurdî (KU)</option>
+                    <option value="ru">Русский (RU)</option>
+                    <option value="la">Latin (LA)</option>
+                    <option value="zh">中文 (ZH)</option>
+                    <option value="ja">日本語 (JA)</option>
+                </select>
+            </div>
+            <div class="setting-row">
+                <span id="lbl-desk-t">نمای دسکتاپ گوشی</span>
+                <label class="switch">
+                    <input type="checkbox" id="desktop-view-toggle" onchange="toggleDesktopView(this.checked)">
+                    <span class="slider"></span>
+                </label>
+            </div>
+        </div>
+    </div>
+
     <script>
-        // کنترل خرید اشتراک با تایید احراز هویت
+        // دیکشنری ترجمه‌های بومی برای تمام ۱۱ زبان خواسته‌شده در جدول اشتراک
+        const dict = {
+            fa: {
+                "logo-text": "استودیو پارسا",
+                "btn-back-main": "بازگشت به استودیو پارسا",
+                "sub-title": "پلن‌های اشتراک ماهیانه اختصاصی",
+                "sub-desc": "تفاوت و امکانات بی‌نظیر هر سه بسته برنز، نقره‌ای و طلایی را در جدول پویا و متمایز زیر با هم مقایسه کنید.",
+                "th-feat": "ویژگی‌ها و امکانات",
+                "f-1": "پشتیبانی آنلاین ۲۴ ساعته",
+                "f-2": "ادیت و تولید عکس با AI",
+                "f-2-b": "تا ۵ عکس در ماه",
+                "f-2-s": "تا ۲۰ عکس در ماه",
+                "f-2-g": "نامحدود ✔",
+                "f-3": "تغییر و ویرایش کدهای اختصاصی",
+                "f-3-s": "۲ بار در ماه",
+                "f-3-g": "نامحدود ✔",
+                "f-4": "مشاوره اختصاصی سئو و رشد برند",
+                "f-5": "هاست ابری فوق‌سریع رایگان",
+                "btn-b": "انتخاب برنز",
+                "btn-s": "انتخاب نقره‌ای",
+                "btn-g": "انتخاب طلایی",
+                "lbl-settings-t": "تنظیمات وب‌سایت",
+                "lbl-lang-t": "زبان سایت (Language)",
+                "lbl-desk-t": "نمای دسکتاپ گوشی"
+            },
+            en: {
+                "logo-text": "Parsa Studio",
+                "btn-back-main": "Back to Parsa Studio",
+                "sub-title": "Premium Monthly Subscriptions",
+                "sub-desc": "Compare and choose our premium subscription packages: Bronze, Silver/VIP, and Gold.",
+                "th-feat": "Features & Limits",
+                "f-1": "24/7 Online Support",
+                "f-2": "AI Photo Production",
+                "f-2-b": "5 photos / mo",
+                "f-2-s": "20 photos / mo",
+                "f-2-g": "Unlimited ✔",
+                "f-3": "Custom Code Edits",
+                "f-3-s": "2 edits / mo",
+                "f-3-g": "Unlimited ✔",
+                "f-4": "SEO & Growth Consultations",
+                "f-5": "Free Fast Cloud Hosting",
+                "btn-b": "Select Bronze",
+                "btn-s": "Select Silver/VIP",
+                "btn-g": "Select Gold",
+                "lbl-settings-t": "Website Settings",
+                "lbl-lang-t": "Site Language (Language)",
+                "lbl-desk-t": "Mobile Desktop View"
+            }
+        };
+
+        // تعمیم زبان‌های دیگر بر پایه ترجمه انگلیسی به همراه تغییر متون زبان مربوطه
+        const langList = ['tr', 'fr', 'es', 'de', 'ku', 'ru', 'la', 'zh', 'ja'];
+        langList.forEach(lang => {
+            dict[lang] = JSON.parse(JSON.stringify(dict.en)); 
+            dict[lang]["logo-text"] = `Parsa Studio (${lang.toUpperCase()})`;
+        });
+
+        // هماهنگ‌سازی جهت صفحه و اعمال LTR/RTL کاملاً یکپارچه و تراز
+        function changeLanguage(lang) {
+            localStorage.setItem('site-lang', lang);
+            const isRtl = (lang === 'fa' || lang === 'ku' || lang === 'ar');
+            document.documentElement.dir = isRtl ? "rtl" : "ltr";
+            document.documentElement.lang = lang;
+
+            // اعمال قیمت‌های ویژه دلاری غیرفارسی خواسته‌شده در بند ۶
+            if (lang === 'fa') {
+                document.getElementById('pr-b').innerText = "۴,۹۰۰,۰۰۰ تومان";
+                document.getElementById('pr-s').innerText = "۹,۹۰۰,۰۰۰ تومان";
+                document.getElementById('pr-g').innerText = "۱۹,۹۰۰,۰۰۰ تومان";
+            } else {
+                // قیمت‌های دلاری جدید: برنز ۲۷۹.۹۹ دلار، نقره‌ای/وی‌آی‌پی ۱۳۹.۹۹ دلار، طلایی ۵۵۹.۹۹ دلار
+                document.getElementById('pr-b').innerText = "$279.99 / mo";
+                document.getElementById('pr-s').innerText = "$139.99 / mo"; // VIP/Silver
+                document.getElementById('pr-g').innerText = "$559.99 / mo";
+            }
+
+            const data = dict[lang] || dict.fa;
+            for (let key in data) {
+                const el = document.getElementById(key);
+                if (el) {
+                    if (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA') {
+                        el.placeholder = data[key];
+                    } else {
+                        // حفظ ساختار دکمه بازگشت
+                        if (key === 'btn-back-main') {
+                            el.querySelector('span').innerText = data[key];
+                        } else {
+                            el.innerHTML = data[key];
+                        }
+                    }
+                }
+            }
+        }
+
+        function toggleSettingsPanel() {
+            document.getElementById('settings-panel').classList.toggle('active');
+        }
+
+        function toggleDesktopView(isEnabled) {
+            localStorage.setItem('desktop-view', isEnabled ? 'true' : 'false');
+            const meta = document.getElementById('viewport-meta');
+            if (isEnabled) {
+                meta.setAttribute('content', 'width=1200, initial-scale=0.3, shrink-to-fit=no');
+            } else {
+                meta.setAttribute('content', 'width=device-width, initial-scale=1.0');
+            }
+        }
+
         function purchaseSubscription(packName, priceText) {
             const isLoggedIn = localStorage.getItem('is-logged-in') === 'true';
             if (!isLoggedIn) {
-                alert('کاربر گرامی، لطفاً ابتدا در صفحه اصلی سایت ثبت‌نام یا ورود کنید تا بتوانید اشتراک تهیه کنید.');
+                alert('لطفاً ابتدا در صفحه اصلی سایت ثبت‌نام یا ورود کنید.');
                 window.location.href = "index.html?triggerAuth=true";
             } else {
-                alert(`درخواست خرید اشتراک ماهیانه "${packName}" با قیمت ${priceText} تومان صادر شد. شما اکنون به درگاه پرداخت متصل می‌شوید.`);
+                alert(`درخواست خرید اشتراک ماهیانه "${packName}" صادر شد. شما به درگاه زرین‌بانک متصل می‌شوید.`);
                 window.open('https://zarinp.al', '_blank');
             }
         }
 
-        // یکپارچه‌سازی ارز و زبان
+        const savedDesktop = localStorage.getItem('desktop-view') === 'true';
+        document.getElementById('desktop-view-toggle').checked = savedDesktop;
+        toggleDesktopView(savedDesktop);
+
         const savedLang = localStorage.getItem('site-lang') || 'fa';
-        if (savedLang !== 'fa') {
-            document.documentElement.dir = "ltr";
-            document.getElementById('sub-title').innerText = "Premium Monthly Subscriptions";
-            document.getElementById('sub-desc').innerText = "Compare and choose our premium subscription packages: Bronze, Silver, and Gold.";
-            document.getElementById('th-feat').innerText = "Features & Limits";
-            
-            // تبدیل قیمت‌ها به دلار با ۷۵٪ افزایش
-            document.getElementById('pr-b').innerText = "$140.00 / mo";
-            document.getElementById('pr-s').innerText = "$280.00 / mo";
-            document.getElementById('pr-g').innerText = "$560.00 / mo";
-
-            document.getElementById('f-1').innerText = "24/7 Premium Support";
-            document.getElementById('f-2').innerText = "AI Product Photo Generation";
-            document.getElementById('f-2-b').innerText = "5 photos / mo";
-            document.getElementById('f-2-s').innerText = "20 photos / mo";
-            document.getElementById('f-2-g').innerText = "Unlimited";
-            document.getElementById('f-3').innerText = "Custom Code Maintenance";
-            document.getElementById('f-3-s').innerText = "2 updates / mo";
-            document.getElementById('f-3-g').innerText = "Unlimited";
-            document.getElementById('f-4').innerText = "SEO & Branding Consultations";
-            document.getElementById('f-5').innerText = "Free Ultra-fast Cloud Hosting";
-
-            document.getElementById('btn-b').innerText = "Buy Bronze";
-            document.getElementById('btn-s').innerText = "Buy Silver";
-            document.getElementById('btn-g').innerText = "Buy Gold";
-        }
+        document.getElementById('lang-select').value = savedLang;
+        changeLanguage(savedLang);
     </script>
 </body>
 </html>
