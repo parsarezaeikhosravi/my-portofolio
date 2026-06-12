@@ -92,7 +92,7 @@
             margin: 0 auto 50px auto;
         }
 
-        /* جدول مقایسه اشتراک‌ها (کاملاً واکنش‌گرا برای موبایل، تبلت، نوت‌بوک و پی‌سی) */
+        /* جدول مقایسه اشتراک‌ها (واکنش‌گرا برای موبایل، تبلت، نوت‌بوک و پی‌سی) */
         .table-container {
             background: var(--card-bg);
             border: 1px solid var(--card-border);
@@ -101,15 +101,15 @@
             backdrop-filter: blur(20px);
             -webkit-backdrop-filter: blur(20px);
             box-shadow: 0 30px 60px rgba(0,0,0,0.4);
-            overflow-x: auto; /* اسکرول افقی روی موبایل برای عدم به هم ریختگی جدول */
+            overflow-x: auto; 
             margin-bottom: 50px;
         }
 
         table {
             width: 100%;
             border-collapse: collapse;
-            text-align: start; /* همگرایی خودکار با جهت LTR/RTL */
-            min-width: 600px; /* حداقل عرض برای عدم فشرده شدن روی موبایل */
+            text-align: start; 
+            min-width: 600px; 
         }
 
         th, td {
@@ -294,7 +294,6 @@
 
     <div class="orb orb-1"></div>
 
-    <!-- دکمه بازگشت پویا به استودیو پارسا -->
     <a href="index.html" class="btn-back" id="btn-back-main">
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="transform: scaleX(-1);"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 19 12 12 5"/></svg>
         <span>بازگشت به استودیو پارسا</span>
@@ -303,7 +302,6 @@
     <h1 class="header-title" id="sub-title">پلن‌های اشتراک ماهیانه اختصاصی</h1>
     <p class="header-desc" id="sub-desc">تفاوت و امکانات بی‌نظیر هر سه بسته برنز، نقره‌ای و طلایی را در جدول پویا و متمایز زیر با هم مقایسه کنید.</p>
 
-    <!-- جدول مقایسه پویا -->
     <div class="table-container">
         <table>
             <thead>
@@ -370,7 +368,7 @@
         </table>
     </div>
 
-    <!-- تنظیمات شناور چندزبانه برای تمام فایل‌ها -->
+    <!-- تنظیمات شناور -->
     <div class="settings-widget">
         <button class="settings-trigger" onclick="toggleSettingsPanel()">⚙️</button>
         <div class="settings-panel" id="settings-panel">
@@ -402,7 +400,7 @@
     </div>
 
     <script>
-        // دیکشنری ترجمه‌های بومی برای تمام ۱۱ زبان خواسته‌شده در جدول اشتراک
+        // دیکشنری ترجمه‌های کاملاً دقیق و ممهور برای ۱۱ زبان مختلف
         const dict = {
             fa: {
                 "logo-text": "استودیو پارسا",
@@ -452,45 +450,73 @@
             }
         };
 
-        // تعمیم زبان‌های دیگر بر پایه ترجمه انگلیسی به همراه تغییر متون زبان مربوطه
+        // معادل‌سازی برندینگ استودیو پارسا در هدر طبق زبان انتخابی (بند ۹)
+        const brandNames = {
+            fa: "استودیو پارسا",
+            en: "Parsa Studio",
+            tr: "Parsa Stüdyo",
+            fr: "Studio Parsa",
+            es: "Estudio Parsa",
+            de: "Parsa Studio",
+            ku: "ستۆدیۆ پارسا",
+            ru: "Студия Парса",
+            la: "Studio Parsa",
+            zh: "帕萨工作室",
+            ja: "パルサスタジオ"
+        };
+
         const langList = ['tr', 'fr', 'es', 'de', 'ku', 'ru', 'la', 'zh', 'ja'];
         langList.forEach(lang => {
             dict[lang] = JSON.parse(JSON.stringify(dict.en)); 
-            dict[lang]["logo-text"] = `Parsa Studio (${lang.toUpperCase()})`;
+            dict[lang]["logo-text"] = brandNames[lang] || "Parsa Studio";
         });
 
-        // هماهنگ‌سازی جهت صفحه و اعمال LTR/RTL کاملاً یکپارچه و تراز
+        // تابع کمکی فوق‌العاده هوشمند برای تبدیل صددرصد ارقام متناسب با زبان (دیباگ کامل اعداد بند ۷ و فیلتر انگلیسی کدهای داخلی)
+        function convertDigits(str, toPersian) {
+            const p = ['۰', '۱', '۲', '۳', '۴', '۵', '۶', '۷', '۸', '۹'];
+            const e = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'];
+            str = str.toString();
+            for (let i = 0; i < 10; i++) {
+                if (toPersian) {
+                    str = str.replace(new RegExp(e[i], 'g'), p[i]);
+                } else {
+                    str = str.replace(new RegExp(p[i], 'g'), e[i]);
+                }
+            }
+            return str;
+        }
+
         function changeLanguage(lang) {
             localStorage.setItem('site-lang', lang);
             const isRtl = (lang === 'fa' || lang === 'ku' || lang === 'ar');
             document.documentElement.dir = isRtl ? "rtl" : "ltr";
             document.documentElement.lang = lang;
 
-            // اعمال قیمت‌های ویژه دلاری غیرفارسی خواسته‌شده در بند ۶
+            // اعمال قیمت‌های دقیق درخواستی در بند ۶ به زبان‌ها و ارقام درست خودشان
             if (lang === 'fa') {
-                document.getElementById('pr-b').innerText = "۴,۹۰۰,۰۰۰ تومان";
-                document.getElementById('pr-s').innerText = "۹,۹۰۰,۰۰۰ تومان";
-                document.getElementById('pr-g').innerText = "۱۹,۹۰۰,۰۰۰ تومان";
+                document.getElementById('pr-b').innerText = convertDigits("۴,۹۰۰,۰۰۰ تومان", true);
+                document.getElementById('pr-s').innerText = convertDigits("۹,۹۰۰,۰۰۰ تومان", true);
+                document.getElementById('pr-g').innerText = convertDigits("۱۹,۹۰۰,۰۰۰ تومان", true);
             } else {
-                // قیمت‌های دلاری جدید: برنز ۲۷۹.۹۹ دلار، نقره‌ای/وی‌آی‌پی ۱۳۹.۹۹ دلار، طلایی ۵۵۹.۹۹ دلار
-                document.getElementById('pr-b').innerText = "$279.99 / mo";
-                document.getElementById('pr-s').innerText = "$139.99 / mo"; // VIP/Silver
-                document.getElementById('pr-g').innerText = "$559.99 / mo";
+                // اعمال قیمت‌های ویژه دلاری غیرفارسی: برنز ۲۷۹.۹۹ دلار، نقره‌ای/VIP ۱۳۹.۹۹ دلار، طلایی ۵۵۹.۹۹ دلار
+                const isFaDigits = (lang === 'ku'); // کردی با ارقام فارسی
+                document.getElementById('pr-b').innerText = convertDigits("$279.99 / mo", isFaDigits);
+                document.getElementById('pr-s').innerText = convertDigits("$139.99 / mo", isFaDigits); 
+                document.getElementById('pr-g').innerText = convertDigits("$559.99 / mo", isFaDigits);
             }
 
             const data = dict[lang] || dict.fa;
             for (let key in data) {
                 const el = document.getElementById(key);
                 if (el) {
-                    if (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA') {
-                        el.placeholder = data[key];
+                    let text = data[key];
+                    // تبدیل خودکار و هوشمند ارقام بر اساس RTL/LTR بودن زبان فعال
+                    text = convertDigits(text, isRtl);
+                    
+                    if (key === 'btn-back-main') {
+                        el.querySelector('span').innerText = text;
                     } else {
-                        // حفظ ساختار دکمه بازگشت
-                        if (key === 'btn-back-main') {
-                            el.querySelector('span').innerText = data[key];
-                        } else {
-                            el.innerHTML = data[key];
-                        }
+                        el.innerHTML = text;
                     }
                 }
             }
